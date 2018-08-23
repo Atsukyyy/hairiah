@@ -1,0 +1,50 @@
+.first-view {
+  height: auto;
+  min-height: 100vh; //レスポンシブのため
+  width: 100vw;
+  background-color: gray;
+  background-size: cover;
+  background-position: center;
+  background-image: url("http://tricle-magazine.com/wp-content/uploads/2016/10/85ee80583b959e57ef3ea664b714f069-800x514.jpg");
+
+  // アニメーション
+  // overflow: hidden;
+  // position: relative;
+
+  //
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  /* 左右中央寄せ */
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+
+  /* 上下中央寄せ */
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+// .first-view:before,
+// .first-view:after {
+//   animation: 2s cubic-bezier(.4, 0, .2, 1) forwards;
+//   background: #fff;
+//   content: '';
+//   left: 0;
+//   pointer-events: none;
+//   position: absolute;
+//   right: 0;
+//   z-index: 1;
+// }
+//
+// .first-view:before {
+//   animation-name: img-wrap-before;
+//   top: 0;
+// }
+
+.first-view-text {
+  font-size: 1.5em;
+  color: white;
+}

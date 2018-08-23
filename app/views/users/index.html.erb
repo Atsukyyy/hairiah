@@ -1,0 +1,15 @@
+<% provide(:title, 'All users') %>
+<h1>カットモデル一覧</h1>
+
+<%= render partial: 'users/search_form' %>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <% if !@users.present? %>
+    <div class="none-users">検索条件に一致するカットモデルはいません</div>
+  <% end %>
+  <%= render @users %>
+</ul>
+
+<%= will_paginate %>
