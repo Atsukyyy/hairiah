@@ -1,0 +1,88 @@
+<% provide(:title, @user.name) %>
+
+<div class="row">
+  <aside class="col-md-4">
+    <% if @user.thumbnails.present? %>
+
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <% if @user.thumbnails[1].present? %>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <% end %>
+          <% if @user.thumbnails[2].present? %>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <% end %>
+        </ol>
+
+        <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <%= image_tag @user.thumbnails[0].image_url, class: "thumbnail" %>
+            </div>
+            <% if @user.thumbnails[1].present? %>
+              <div class="item">
+                <%= image_tag @user.thumbnails[1].image_url, class: "thumbnail" %>
+              </div>
+            <% end %>
+            <% if @user.thumbnails[2].present? %>
+              <div class="item">
+                <%= image_tag @user.thumbnails[2].image_url, class: "thumbnail" %>
+              </div>
+            <% end %>
+          </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <!-- <span class="glyphicon glyphicon-chevron-left"></span> -->
+          <span>←</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
+          <span>→</span>
+        </a>
+      </div>
+    <% else %>
+      <%= image_tag '/no-image.png', class: "no-image"%>
+    <% end %>
+
+
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+
+    <% if !current_user?(@user) && logged_in? && ((@user.staff == false && current_user.staff == true) || (current_user.staff == false && @user.staff == true))  %>
+      <section class="message_box">
+        <div id="messages">
+          <%= render @messages %>
+        </div>
+      </section>
+      <script type="text/javascript">
+        var height = 0;
+        $("div.message").each( function() {
+          height += ($(this).height());
+        });
+        $('section.message_box').scrollTop(height);
+      </script>
+      <div class="message_form">
+       <%= render 'messages/message_form',
+         {from_user: current_user, to_user: @user, room_id: @room_id} %>
+      </div>
+    <% end %>
+
+
+  </aside>
+
+  <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
+
+</div>
