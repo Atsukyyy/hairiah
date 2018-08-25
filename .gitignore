@@ -21,8 +21,7 @@
 /yarn-error.log
 
 .byebug_history
-
-/config/secrets.yml 
+ 
 
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
