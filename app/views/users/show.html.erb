@@ -8,10 +8,10 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <% if @user.thumbnails[1].present? %>
+          <% if @user.thumbnails[1].image.present? %>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
           <% end %>
-          <% if @user.thumbnails[2].present? %>
+          <% if @user.thumbnails[2].image.present? %>
             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
           <% end %>
         </ol>
@@ -21,12 +21,12 @@
             <div class="item active">
               <%= image_tag @user.thumbnails[0].image_url, class: "thumbnail" %>
             </div>
-            <% if @user.thumbnails[1].present? %>
+            <% if @user.thumbnails[1].image.present? %>
               <div class="item">
                 <%= image_tag @user.thumbnails[1].image_url, class: "thumbnail" %>
               </div>
             <% end %>
-            <% if @user.thumbnails[2].present? %>
+            <% if @user.thumbnails[2].image.present? %>
               <div class="item">
                 <%= image_tag @user.thumbnails[2].image_url, class: "thumbnail" %>
               </div>

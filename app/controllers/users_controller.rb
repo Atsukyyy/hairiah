@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     @room_id = message_room_id(current_user, @user)
     @messages = Message.recent_in_room(@room_id)
     @thumbnails = @user.thumbnails
-
+    # debugger
   end
 
   # GET /users/new
