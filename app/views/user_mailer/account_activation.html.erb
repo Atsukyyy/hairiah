@@ -1,9 +1,9 @@
-<h1>Sample App</h1>
+<h1>Hairiah</h1>
 
-<p>Hi <%= @user.name %>,</p>
+<p><%= @user.name %>さん、Hairiahへのご登録ありがとうございます！</p>
 
 <p>
-Welcome to the Sample App! Click on the link below to activate your account:
+以下のURLをクリックしてユーザー認証を行ってください。
 </p>
 
 <%= link_to "Activate", edit_account_activation_url(@user.activation_token,

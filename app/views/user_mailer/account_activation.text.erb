@@ -1,5 +1,5 @@
-Hi <%= @user.name %>,
+<%= @user.name %>さん、Hairiahへのご登録ありがとうございます！
 
-Welcome to the Sample App! Click on the link below to activate your account:
+以下のURLをクリックしてユーザー認証を行ってください。
 
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
