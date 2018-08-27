@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180827060213) do
+ActiveRecord::Schema.define(version: 20180827081344) do
 
   create_table "applies", force: :cascade do |t|
     t.string "memo"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20180827060213) do
     t.string "remember_digest"
     t.boolean "admin", default: false
     t.string "activation_digest"
-    t.boolean "activated", default: true
+    t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
