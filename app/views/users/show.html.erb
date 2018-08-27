@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-4 col-xs-4">
     <% if @user.thumbnails.present? %>
 
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -17,6 +17,7 @@
         </ol>
 
         <!-- Wrapper for slides -->
+
           <div class="carousel-inner">
             <div class="item active">
               <%= image_tag @user.thumbnails[0].image_url, class: "thumbnail" %>
@@ -75,14 +76,15 @@
   </aside>
 
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
+    <div class="user-info-detail">
+      <div>ユーザー名</div>
+      <div><%= @user.name %></div>
+      <div>トーク履歴</div>
+      <% if Message.find_by(to_id: @user.id).present? %>
+      <%= link_to(User.find(Message.find_by(to_id: @user.id).from_id).name, user_path(User.find(Message.find_by(to_id: @user.id).id))) %></div>
+      <% end %>
+
+    </div>
   </div>
 
 </div>

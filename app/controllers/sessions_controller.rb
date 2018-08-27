@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         user.last_accessed_at = Time.now
         user.save!
+        flash[:success] = "ログインしました。"
         redirect_back_or user
       else
         message  = "Account not activated. "
@@ -24,7 +25,7 @@ class SessionsController < ApplicationController
       end
     else
       # Failure
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'メールアドレスとパスワードの組み合わせが正しくありません。'
       render 'new'
     end
   end
@@ -32,6 +33,7 @@ class SessionsController < ApplicationController
   # DELETE /logout
   def destroy
     log_out if logged_in?
+    flash[:success] = "ログアウトしました。"
     redirect_to root_url
   end
 end

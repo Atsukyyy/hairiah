@@ -1,0 +1,74 @@
+<div class="user-index">
+  <div class="container">
+    <div class="find-users">
+      <div>
+        <%= form_tag(users_path, method: "get") do %>
+          <div class="row">
+            <div class="form-group col-md-3">
+              <%= label_tag :last_name, "名前" %>
+              <%= text_field_tag :last_name, "", class: "form-control" %>
+            </div>
+
+            <div class="form-group col-md-2">
+              <%= label_tag :sex, "性別" %>
+              <%= select_tag :sex, options_for_select(User.sexes), include_blank: true, class: "form-control" %>
+            </div>
+
+            <div class="form-group col-md-2">
+              <%= label_tag :age, "年齢（何歳から）" %>
+              <%= number_field_tag :age_from, "", class: "form-control" %>
+            </div>
+            <div class="form-group col-md-2">
+              <%= label_tag :age, "年齢（何歳まで）" %>
+              <%= number_field_tag :age_to, "", class: "form-control" %>
+            </div>
+
+          </div>
+          <script>
+            $(function() {
+              $('#prefecture_id').change(function() {
+                var prefecture_id = $("#prefecture_id").val();
+                if (prefecture_id !== "") {
+                  $.get("<%= prefectures_areas_path %>",
+                    { prefecture_id: prefecture_id },
+                    function(data){ }
+                  );
+                }
+              });
+            });
+          </script>
+          <div class="row">
+            <div class="form-group col-md-3">
+              <%= label_tag :prefecture_id, "都道府県" %>
+              <%= select_tag :prefecture_id, options_from_collection_for_select(Prefecture.all, :id, :name), include_blank: true, id: "prefecture_id", class: "form-control" %>
+            </div>
+
+            <div class="form-group col-md-3">
+              <%= label_tag :area_id, "市町村区" %>
+              <%= select_tag :area_id, options_from_collection_for_select(Area.all, :id, :name), include_blank: true, id: "area_id", class: "form-control" %>
+            </div>
+            <!-- regionからは検索しない -->
+
+          </div>
+
+          <div class="row">
+            <div class="form-group col-md-3">
+              <%= label_tag :color, "メンズ練習中" %>
+              <%= check_box_tag(:color, "可能", checked = false, class: "") %>
+            </div>
+            <div class="form-group col-md-3">
+              <%= label_tag :hair_extension, "カラー練習中" %>
+              <%= check_box_tag(:hair_extension, "可能", checked = false, class: "") %>
+            </div>
+            <div class="form-group col-md-3">
+              <%= label_tag :nail, "ネイル練習中" %>
+              <%= check_box_tag(:nail, "希望", checked = false, class: "") %>
+            </div>
+            
+            <%= submit_tag "検索", id: "user_find_btn", class: "form-control" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

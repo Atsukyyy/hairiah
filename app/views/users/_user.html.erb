@@ -1,4 +1,4 @@
-<li class="col-md-4 col-sm-6">
+<li class="user-item col-md-4 col-sm-6">
   <% if user.thumbnails.present? %>
     <div><%= link_to image_tag(user.thumbnails[0].image_url), user_path(user) %></div>
   <% else %>

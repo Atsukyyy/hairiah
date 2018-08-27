@@ -1,6 +1,8 @@
 <% provide(:title, 'All users') %>
 <h1>美容師一覧</h1>
 
+<%= render partial: 'users/staff_search_form' %>
+
 <%= will_paginate %>
 
 <ul class="users">
