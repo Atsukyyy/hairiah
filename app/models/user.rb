@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   belongs_to :prefecture, class_name: "Prefecture"
   belongs_to :area, class_name: "Area"
+  has_many :applies
 
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email

@@ -1,33 +1,30 @@
-class MicropostsController < ApplicationController
+class AppliesController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]
   before_action :correct_user,   only: :destroy
-  before_action :staff_user, only: [:new, :create, :destroy]
 
   def index
-    @microposts = Micropost.all
+
   end
 
   def show
-    @micropost = Micropost.find(params[:id])
-    @applies = @micropost.applies
-    @users = []
-    @applies.each do |apply|
-      @users << User.find(apply.user_id)
-    end
+
   end
 
   def new
-    @micropost = current_user.microposts.build
+    @micropost = Micropost.find(params[:micropost_id])
+    @apply = @micropost.applies.build
   end
 
   def create
-    @micropost = current_user.microposts.build(micropost_params)
-    if @micropost.save
+    @micropost = Micropost.find(params[:micropost_id])
+    @apply = @micropost.applies.build(apply_params)
+    @apply.user_id = current_user.id
+    if @apply.save
       flash[:success] = "投稿しました。ユーザーからの通知をお待ち下さい。"
       redirect_to root_url
     else
-      @feed_items = current_user.feed.paginate(page: params[:page])
-      render 'static_pages/home'
+
+      render root_url
     end
   end
 
@@ -45,8 +42,8 @@ class MicropostsController < ApplicationController
 
   private
 
-    def micropost_params
-      params.require(:micropost).permit(:content, :picture)
+    def apply_params
+      params.require(:apply).permit(:memo, :micropost_id, :user_id)
     end
 
     def correct_user

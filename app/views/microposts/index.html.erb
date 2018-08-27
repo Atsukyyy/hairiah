@@ -1,0 +1,4 @@
+<% @microposts.each do |micropost| %>
+ <%= micropost.content %>
+ <%= link_to "詳細情報を見る", micropost_path(micropost) %> 
+<% end %>

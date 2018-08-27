@@ -319,6 +319,8 @@ div.message_form {
   font-size: 1.0em;
 }
 
+// Add
+
 .navbar-inverse {
   background-color: gray;
   border-color: gray;
@@ -337,4 +339,12 @@ div.message_form {
 
 .no-image {
   width: 100%;
+}
+
+body {
+  font-size: 18px;
+  padding-top: 100px;
+}
+header {
+  height: 100px;
 }

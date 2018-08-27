@@ -22,6 +22,7 @@
       <!-- ulタグ内に「id="navbar"」を追記、classに「navbar-collapse collapse」を追記 -->
       <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse">
         <li><%= link_to "ホーム", root_path %></li>
+        <li><%= link_to "モデル募集掲示板", microposts_path %></li>
         <% if logged_in? %>
           <li><%= link_to "美容院を探す", staffs_path %></li>
           <li><%= link_to "カットモデルを探す", users_path %></li>
