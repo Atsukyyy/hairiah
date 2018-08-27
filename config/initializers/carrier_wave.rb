@@ -12,11 +12,9 @@ if Rails.env.production?
   end
   case Rails.env
     when 'development'
-        config.fog_directory  = ENV['S3_BUCKET']
-        config.asset_host = 'https://s3.amazonaws.com/#{ENV['S3_BUCKET']}'
+        config.asset_host = 'https://s3.amazonaws.com/ap-northeast-1'
     when 'production'
-        config.fog_directory  = '自分のバケツ名'
-        config.asset_host = 'https://s3.amazonaws.com/#{ENV['S3_BUCKET']}'
+        config.asset_host = 'https://s3.amazonaws.com/ap-northeast-1
     end
   end
 end
