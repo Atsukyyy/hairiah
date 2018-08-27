@@ -5,8 +5,8 @@
         <%= form_tag(users_path, method: "get") do %>
           <div class="row">
             <div class="form-group col-md-3">
-              <%= label_tag :last_name, "名前" %>
-              <%= text_field_tag :last_name, "", class: "form-control" %>
+              <%= label_tag :name, "名前" %>
+              <%= text_field_tag :name, "", class: "form-control" %>
             </div>
 
             <div class="form-group col-md-2">
@@ -64,7 +64,7 @@
               <%= label_tag :nail, "ネイル練習中" %>
               <%= check_box_tag(:nail, "希望", checked = false, class: "") %>
             </div>
-            
+
             <%= submit_tag "検索", id: "user_find_btn", class: "form-control" %>
           </div>
         <% end %>

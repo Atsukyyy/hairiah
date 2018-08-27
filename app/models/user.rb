@@ -162,8 +162,8 @@ class User < ApplicationRecord
   }
 
   # ユーザー名による絞り込み
-  scope :get_by_name, ->(last_name) {
-    where("last_name like ?", "%#{last_name}%")
+  scope :get_by_name, ->(name) {
+    where("name like ?", "%#{name}%")
   }
   # 年齢による絞り込み
   scope :get_by_age, ->(age_from, age_to) {

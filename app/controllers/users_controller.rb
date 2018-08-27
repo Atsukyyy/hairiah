@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     #@users = User.all
     @users = User.where(staff: false).paginate(page: params[:page], per_page: 20)
 
-    if params[:last_name].present?
-      @users = @users.get_by_name params[:last_name]
+    if params[:name].present?
+      @users = @users.get_by_name params[:name]
     end
     if params[:age_from].present? && params[:age_to].present?
       if params[:age_from].present? && params[:age_to].present?
