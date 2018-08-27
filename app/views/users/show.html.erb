@@ -80,8 +80,12 @@
       <div>ユーザー名</div>
       <div><%= @user.name %></div>
       <div>トーク履歴</div>
-      <% if Message.find_by(to_id: @user.id).present? %>
-      <%= link_to(User.find(Message.find_by(to_id: @user.id).from_id).name, user_path(User.find(Message.find_by(to_id: @user.id).id))) %></div>
+      <% if Message.find_by(to_id: @user.id).present? || Message.find_by(from_id: @user.id).present? %>
+        <% if !@user.staff? %>
+          <%= link_to(User.find(Message.find_by(to_id: @user.id).from_id).name, user_path(User.find(Message.find_by(to_id: @user.id).from_id))) %></div>
+        <% elsif @user.staff %>
+          <%= link_to(User.find(Message.find_by(from_id: @user.id).to_id).name, user_path(User.find(Message.find_by(from_id: @user.id).to_id))) %></div>
+        <% end %>
       <% end %>
 
     </div>
