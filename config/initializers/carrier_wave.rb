@@ -6,8 +6,17 @@ if Rails.env.production?
       :provider              => 'AWS',
       :region                => ENV['S3_REGION'],
       :aws_access_key_id     => ENV['S3_ACCESS_KEY'],
-      :aws_secret_access_key => ENV['S3_SECRET_KEY'] 
+      :aws_secret_access_key => ENV['S3_SECRET_KEY']
     }
     config.fog_directory     =  ENV['S3_BUCKET']
+  end
+  case Rails.env
+    when 'development'
+        config.fog_directory  = ENV['S3_BUCKET']
+        config.asset_host = 'https://s3.amazonaws.com/#{ENV['S3_BUCKET']}'
+    when 'production'
+        config.fog_directory  = '自分のバケツ名'
+        config.asset_host = 'https://s3.amazonaws.com/#{ENV['S3_BUCKET']}'
+    end
   end
 end
