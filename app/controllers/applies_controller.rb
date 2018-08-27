@@ -20,11 +20,11 @@ class AppliesController < ApplicationController
     @apply = @micropost.applies.build(apply_params)
     @apply.user_id = current_user.id
     if @apply.save
-      flash[:success] = "投稿しました。ユーザーからの通知をお待ち下さい。"
+      flash[:success] = "応募しました。美容師からの連絡をお待ち下さい。"
       redirect_to root_url
     else
-
-      render root_url
+      flas.now[:danger] = "応募に失敗しました。度画面を更新して再度応募してください。"
+      render 'new'
     end
   end
 

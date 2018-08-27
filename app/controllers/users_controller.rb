@@ -84,7 +84,7 @@ class UsersController < ApplicationController
     if @user.save # => Validation
       # Sucess
       @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
+      flash[:info] = "メールを送信しました。ユーザー認証のためにご確認ください。"
       redirect_to root_url
     else
       # Failure
@@ -128,7 +128,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       # Success
-      flash[:success] = "Profile updated"
+      flash[:success] = "情報を更新しました。"
       redirect_to @user
     else
       # Failure

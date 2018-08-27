@@ -18,8 +18,8 @@ class SessionsController < ApplicationController
         flash[:success] = "ログインしました。"
         redirect_back_or user
       else
-        message  = "Account not activated. "
-        message += "Check your email for the activation link."
+        message  = "まだユーザー認証が完了していません。"
+        message += "受信メールのリンクから認証を行ってください。"
         flash[:warning] = message
         redirect_to root_url
       end

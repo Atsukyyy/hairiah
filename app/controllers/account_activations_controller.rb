@@ -5,11 +5,11 @@ class AccountActivationsController < ApplicationController
       # Success => Signup
       user.activate
       log_in user
-      flash[:success] = "Account activated!"
+      flash[:success] = "ユーザー認証が完了しました！"
       redirect_to user
     else
       # Failure
-      flash[:danger] = "Invalid activation link"
+      flash[:danger] = "不正な認証リンクです。"
       redirect_to root_url
     end
   end

@@ -38,12 +38,12 @@
 </div>
 
 <div class="row">
-  <% if current_user.staff == false %>
+  <% if current_user.present? && current_user.staff == true %>
+  <% @applies.zip(@users).each do |apply, user| %>
+    <%= link_to user.name, user_path(user) %>
+    <%= apply.memo %>
+  <% end %>
+  <% elsif%>
     <%= link_to "応募する", new_micropost_apply_path(params[:id]) %>
-  <% elsif current_user.staff == true %>
-    <% @applies.zip(@users).each do |apply, user| %>
-      <%= link_to user.name, user_path(user) %>
-      <%= apply.memo %>
-    <% end %>
   <% end %>
 </div>

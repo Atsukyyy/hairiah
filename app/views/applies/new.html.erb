@@ -1,11 +1,11 @@
-<h1>カットモデル募集投稿</h1>
+<h1>応募フォーム</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for([@micropost, @apply]) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <div class="form-group">
-        <%= f.label :memo %>
+        <%= f.label :memo, "備考欄（応募にあたって伝えておきたいこと）" %>※任意
         <%= f.text_field :memo, class: 'form-control' %>
       </div>
 

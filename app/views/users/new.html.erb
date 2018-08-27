@@ -56,13 +56,13 @@
       </div>
 
       <div class="form-check form-check-inline">
-        <%= f.label :prefecture_id, "住まい" %>
+        <%= f.label :prefecture_id, "都道府県" %>
         <span class="required">※必須</span>
         <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: 'form-control' %>
       </div>
 
       <div class="form-check form-check-inline">
-        <%= f.label :area_id, "住まい" %>
+        <%= f.label :area_id, "市区町村" %>
         <span class="required">※必須</span>
         <%= f.collection_select :area_id, Area.all, :id, :name, {}, class: 'form-control' %>
       </div>
@@ -110,7 +110,7 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <%= f.submit "登録する", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
