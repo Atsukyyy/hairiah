@@ -23,7 +23,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      flash[:success] = "投稿しました。ユーザーからの通知をお待ち下さい。"
+      flash[:success] = "投稿しました。ユーザーからの応募をお待ち下さい。"
       redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
@@ -43,10 +43,11 @@ class MicropostsController < ApplicationController
 
   end
 
+
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :picture)
+      params.require(:micropost).permit(:content, :picture, :area_id, :prefecture_id, :color, :hair_extension, :mens, :reason)
     end
 
     def correct_user

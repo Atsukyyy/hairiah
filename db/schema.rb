@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180827052735) do
+ActiveRecord::Schema.define(version: 20180827060213) do
 
   create_table "applies", force: :cascade do |t|
     t.string "memo"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20180827052735) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.date "end_date"
+    t.integer "area_id"
+    t.integer "reason"
+    t.boolean "mens"
+    t.boolean "color"
+    t.boolean "hair_extension"
+    t.integer "prefecture_id"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
