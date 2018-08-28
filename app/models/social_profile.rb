@@ -5,6 +5,7 @@ class SocialProfile < ApplicationRecord
     self.uid = hash[:uid]
     self.provider = hash[:provider]
     self.email = hash[:info][:email]
+    self.name = hash[:info][:name]
   end
 
 end
