@@ -19,7 +19,7 @@ class OmniauthController < ApplicationController
         social_profile = SocialProfile.find_by(uid: auth_hash[:uid])
         if social_profile # ログイン処理
           user = User.find(social_profile.user_id)
-          sign_in(user)
+          log_in(user)
           flash[:success] = "ようこそ！"
           redirect_to root_path
         else # 新規登録
@@ -31,7 +31,7 @@ class OmniauthController < ApplicationController
             social_profile.assign_auth_hash(auth_hash)
             social_profile.save!
             user.save!(context: :omniauth)
-            sign_in(user)
+            log_in(user)
             flash[:success] = "Facebookと連携しました。"
             redirect_to root_path
           else
@@ -39,7 +39,7 @@ class OmniauthController < ApplicationController
             social_profile.assign_auth_hash(auth_hash)
             user.omniauth_sign_up = true
             user.save!(context: :omniauth)
-            sign_in(user)
+            log_in(user)
             flash[:success] = "ご登録ありがとうございます。下記フォームから都道府県を登録してください。"
             redirect_to root_path
           end
@@ -71,7 +71,7 @@ class OmniauthController < ApplicationController
         social_profile = SocialProfile.find_by(uid: auth_hash[:uid])
         if social_profile # ログイン処理
           user = User.find(social_profile.user_id)
-          sign_in(user)
+          log_in(user)
           flash[:success] = "ようこそ！"
           redirect_to root_path
         else # 新規登録
@@ -81,7 +81,7 @@ class OmniauthController < ApplicationController
           social_profile.assign_auth_hash(auth_hash)
           user.omniauth_sign_up = true
           user.save!(context: :omniauth)
-          sign_in(user)
+          log_in(user)
           flash[:success] = "ご登録ありがとうございます。下記フォームからお名前・都道府県・メールアドレスを登録してください。"
           redirect_to root_path
         end
