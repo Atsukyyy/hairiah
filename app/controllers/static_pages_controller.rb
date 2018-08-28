@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
       @micropost  = current_user.microposts.build
       @feed_items = current_user.feed.paginate(page: params[:page])
     end
-    render :layout => "application_not_container"
+    
 
     # app/views/リソース名/アクション名.html.erb
     # app/views/static_pages/home.html.erb

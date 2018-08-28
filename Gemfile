@@ -15,6 +15,9 @@ gem 'rails-i18n'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-line'
+gem "font-awesome-rails"
+gem 'font-awesome-sass'
+gem 'jquery-turbolinks'
 
 
 gem 'puma',         '3.9.1'

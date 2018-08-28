@@ -1,0 +1,89 @@
+@import "global";
+
+header {
+  color: black;
+  height: 80px;
+  padding: 20px;
+  @include mq-down() {
+    height: 100px;
+  }
+}
+
+;
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+#logo:hover {
+  text-decoration: none;
+}
+
+.header-items {
+  text-align: right;
+  height: 100%;
+  display: flex;
+	align-items: center;
+  justify-content: flex-end;
+  @include mq-down(xl) {
+    display: none;
+  }
+  .header-item {
+    margin-left: 25px;
+    padding: 15px 0;
+  }
+  .header-item a {
+    text-decoration: none;
+  }
+
+  .header-item a:after {
+  	content: '';
+  	width: 0;
+  	transition: all 0.3s ease;
+  	border-bottom: 3px solid #000;
+  	display: block;
+  }
+  .header-item a:hover:after {
+  	width: 100%;
+  	border-bottom: 3px solid #000;
+  }
+}
+
+.hamburger-open-btn {
+  padding-top: 8px;
+  display: inline-block;
+  @include mq-up(xl) {
+    display: none;
+  }
+}
+
+.hamburger-close-btn {
+  padding-top: 8px;
+  display: inline-block;
+  display: none;
+}
+
+.hamburger-menu {
+
+  background-color: white;
+  position: fixed;
+  top: 80px;
+  @include mq-down(md) {
+    top: 100px;
+  }
+
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  display: none;
+  padding: 20px;
+  .hamburger-close-btn {
+    padding-top: 12px;
+  }
+  .header-item-hm {
+    margin-bottom: 10px;
+  }
+}

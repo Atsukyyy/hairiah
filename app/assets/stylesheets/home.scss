@@ -1,4 +1,5 @@
 .first-view {
+
   height: auto;
   min-height: 100vh; //レスポンシブのため
   width: 100vw;
@@ -6,7 +7,9 @@
   background-size: cover;
   background-position: center;
   background-image: url("http://tricle-magazine.com/wp-content/uploads/2016/10/85ee80583b959e57ef3ea664b714f069-800x514.jpg");
-
+  position: absolute;
+  right: 0;
+  left: 0;
   // アニメーション
   // overflow: hidden;
   // position: relative;
