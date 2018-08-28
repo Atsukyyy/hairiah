@@ -129,6 +129,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def password
+    @user = User.find(params[:id])
+  end
+
   #PATCH /users/:id
   def update
     @user = User.find(params[:id])

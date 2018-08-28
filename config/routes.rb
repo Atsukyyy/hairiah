@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   get '/privacy_policy', to: 'static_pages#privacy_policy'
   get '/terms', to: 'static_pages#terms'
+
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/staff_signup', to: 'users#staff_new'
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
     member do
       # /users/:id/ ...
       get :following, :followers
+      get '/change_password', to: 'users#password'
       # GET /users/1/following => following action
       # GET /users/1/followers => followers action
     end

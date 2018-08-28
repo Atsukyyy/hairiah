@@ -154,27 +154,11 @@
         </div>
       </div>
       <div class="row">
-        <div class="form-group">
-          <div class="control-label">
-            <%= f.label :password, "パスワード" %>
-            <span class="required">※必須</span>
-          </div>
-          <%= f.password_field :password, class: 'form-control input-lg' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group">
-          <div class="control-label">
-            <%= f.label :password_confirmation, "パスワード（確認）" %>
-            <span class="required">※必須</span>
-          </div>
-          <%= f.password_field :password_confirmation, class: 'form-control input-lg' %>
-        </div>
-      </div>
-      <div class="row">
         <%= f.submit "変更する", class: "btn btn-primary" %>
       </div>
     <% end %>
-
+    <div class="row">
+      パスワードの再設定は<%= link_to "こちら", change_password_user_path %>
+    </div>
   </div>
 </div>
