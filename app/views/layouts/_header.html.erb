@@ -23,7 +23,7 @@
         <li><%= link_to "ホーム", root_path %></li>
         <li><%= link_to "モデル募集掲示板", microposts_path %></li>
         <% if logged_in? %>
-          <li><%= link_to "美容院を探す", staffs_path %></li>
+          <li><%= link_to "美容師を探す", staffs_path %></li>
           <li><%= link_to "カットモデルを探す", users_path %></li>
           <li><%= link_to "マイページへ", current_user %></li>
           <li><%= link_to "個人設定", edit_user_path(current_user) %></li>

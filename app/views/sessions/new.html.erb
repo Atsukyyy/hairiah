@@ -18,9 +18,9 @@
         </div>
       </div>
       <div class="row">
-        <%= f.label :remember_me, class: "checkbox inline" do %>
-          <%= f.check_box :remember_me %>
-          <span>ログイン情報を保持する</span>
+        <%= f.label :remember_me, class: "" do %>
+          <%= f.check_box(:remember_me, {id: "checkbox01"}) %>
+          <label for="checkbox01" class="checkbox">ログイン状態を保持する</label>
         <% end %>
       </div>
       <div class="row">
