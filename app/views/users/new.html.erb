@@ -4,37 +4,50 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-
-      <div class="form-group">
-        <%= f.label :birth, "生年月日" %>
-        <span class="required">※必須</span>
-        <%= raw sprintf(
-          f.date_select(
-            :birth,
-            {
-              start_year:     Time.zone.now.prev_year.year,
-              end_year:       Time.zone.now.next_year.year,
-              default:        Time.zone.now,
-              use_two_digit_numbers: true,
-              date_separator: '%s'
-            },
-            { class: 'form-control' }
-          ),
-          '年 ', '月 ') + '日'
-        %>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :name, "お名前/ニックネーム" %>
+          <span class="required">※必須</span>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
       </div>
 
-      <div class="form-check form-check-inline">
-        <%= f.label :sex, "性別" %>
-        <span class="required">※必須</span>
-        <%= f.radio_button :sex, "女性" %>女性
-        <%= f.radio_button :sex, "男性" %>男性
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :birth, "生年月日" %>
+          <span class="required">※必須</span>
+          <div class="form-inline">
+            <%= raw sprintf(
+              f.date_select(
+                :birth,
+                {
+                  start_year: 1951,
+                  end_year: Time.zone.now.year,
+                  default: Time.zone.now.ago(25.years),
+                  use_two_digit_numbers: true,
+                  date_separator: '%s'
+                },
+                { class: 'form-control' }
+              ),
+              '年 ', '月 ') + '日'
+            %>
+          </div>
+        </div>
       </div>
-
+      <div class="row">
+        <div class="form-group form-check-inline">
+          <div class="control-label">
+            <%= f.label :sex, "性別" %>
+            <span class="required">※必須</span>
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :sex, "女性" %>女性
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :sex, "男性" %>男性
+          </div>
+        </div>
+      </div>
       <script>
         $(function() {
           $('#user_prefecture_id').change(function() {
@@ -49,68 +62,125 @@
         });
       </script>
 
-      <div class="">
-        <%= f.fields_for :thumbnails do |thumbnail| %>
-          <%= thumbnail.file_field :image %>
-        <% end %>
-      </div>
-
-      <div class="form-check form-check-inline">
-        <%= f.label :prefecture_id, "都道府県" %>
-        <span class="required">※必須</span>
-        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: 'form-control' %>
-      </div>
-
-      <div class="form-check form-check-inline">
-        <%= f.label :area_id, "市区町村" %>
-        <span class="required">※必須</span>
-        <%= f.collection_select :area_id, Area.all, :id, :name, {}, class: 'form-control' %>
-      </div>
-
-
-      <div class="form-check form-check-inline">
-        <%= f.label :hair_style, "髪型" %>
-        <%= f.radio_button :hair_style, "ベリーショート" %>ベリーショート
-        <%= f.radio_button :hair_style, "ショート" %>ショート
-        <%= f.radio_button :hair_style, "ミディアム" %>ミディアム
-        <%= f.radio_button :hair_style, "セミロング" %>セミロング
-        <%= f.radio_button :hair_style, "ロング" %>ロング
-      </div>
-
-      <div class="form-check form-check-inline">
-        <%= f.label :hair_type, "髪質" %>
-        <%= f.radio_button :hair_type, "直毛" %>直毛
-        <%= f.radio_button :hair_type, "ややクセ毛" %>ややクセ毛
-        <%= f.radio_button :hair_type, "強いクセ毛" %>強いクセ毛
-      </div>
-
-      <div class="form-row">
-        <div class="form-group col-md-2">
-          <%= f.label :color, "カラー可否" %>
-          <%= f.check_box(:color, {:checked=> false}, "可能", "不可能") %>
+      <div class="row">
+        <div class="form-gourp">
+          <%= f.fields_for :thumbnails do |thumbnail| %>
+            <%= thumbnail.file_field :image %>
+          <% end %>
         </div>
-        <div class="form-group col-md-2">
-          <%= f.label :hair_extension, "エクステ可否" %>
-          <%= f.check_box(:hair_extension, {:checked=> false}, "可能", "不可能") %>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :prefecture_id, "都道府県" %>
+          <span class="required">※必須</span>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {selected: 12}, class: 'form-control' %>
         </div>
-        <div class="form-group col-md-2">
-          <%= f.label :reason, "理由" %>
-          <%= f.radio_button :reason, "単なる節約のため" %>単なる節約のため
-          <%= f.radio_button :reason, "モデルを目指しているため" %>モデルを目指しているため
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :area_id, "市区町村" %>
+          <span class="required">※必須</span>
+          <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control' %>
         </div>
       </div>
 
+      <div class="row">
+        <div class="form-gourp">
+          <div class="control-label">
+            <%= f.label :hair_style, "現在の髪型" %>
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :hair_style, "ベリーショート" %>ベリーショート
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :hair_style, "ショート" %>ショート
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :hair_style, "ミディアム" %>ミディアム
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :hair_style, "セミロング" %>セミロング
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :hair_style, "ロング" %>ロング
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="control-label">
+            <%= f.label :hair_type, "髪質" %>
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :hair_type, "直毛" %>直毛
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :hair_type, "ややクセ毛" %>ややクセ毛
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :hair_type, "強いクセ毛" %>強いクセ毛
+          </div>
+        </div>
+      </div>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "登録する", class: "btn btn-primary" %>
+      <div class="row options-label">
+        可能なオプション
+      </div>
+      <div class="row user-form-options">
+        <div class="form-group">
+          <div class="col-md-6">
+            <%= f.label :color, "カラー可否" %>
+            <%= f.check_box(:color, {:checked=> false}, "可能", "不可能") %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :hair_extension, "エクステ可否" %>
+            <%= f.check_box(:hair_extension, {:checked=> false}, "可能", "不可能") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="control-label">
+            <%= f.label :reason, "理由" %>
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :reason, "単なる節約のため" %>単なる節約のため
+          </div>
+          <div class="radio-inline">
+            <%= f.radio_button :reason, "モデルを目指しているため" %>モデルを目指しているため
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-gourp">
+          <div class="control-label">
+            <%= f.label :email, "メールアドレス" %>
+            <span class="required">※必須</span>
+          </div>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-gourp">
+          <div class="control-label">
+            <%= f.label :password, "パスワード" %>
+            <span class="required">※必須</span>
+          </div>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-gourp">
+          <div class="control-label">
+            <%= f.label :password_confirmation, "パスワード（確認）" %>
+            <span class="required">※必須</span>
+          </div>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="row">
+        <%= f.submit "登録する", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

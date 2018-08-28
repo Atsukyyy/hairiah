@@ -82,9 +82,9 @@
       <div>トーク履歴</div>
       <% if Message.find_by(to_id: @user.id).present? || Message.find_by(from_id: @user.id).present? %>
         <% if !@user.staff? %>
-          <%= link_to(User.find(Message.find_by(to_id: @user.id).from_id).name, user_path(User.find(Message.find_by(to_id: @user.id).from_id))) %></div>
+          <%= link_to(User.find(Message.find_by(to_id: @user.id).from_id).name, user_path(User.find(Message.find_by(to_id: @user.id).from_id))) unless Message.find_by(to_id: @user.id).nil? %>
         <% elsif @user.staff %>
-          <%= link_to(User.find(Message.find_by(from_id: @user.id).to_id).name, user_path(User.find(Message.find_by(from_id: @user.id).to_id))) %></div>
+          <%= link_to(User.find(Message.find_by(from_id: @user.id).to_id).name, user_path(User.find(Message.find_by(from_id: @user.id).to_id))) unless Message.find_by(from_id: @user.id).nil? %>
         <% end %>
       <% end %>
 

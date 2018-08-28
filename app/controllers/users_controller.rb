@@ -60,6 +60,8 @@ class UsersController < ApplicationController
     @room_id = message_room_id(current_user, @user)
     @messages = Message.recent_in_room(@room_id)
     @thumbnails = @user.thumbnails
+    
+
     # debugger
   end
 
@@ -84,7 +86,7 @@ class UsersController < ApplicationController
     if @user.save # => Validation
       # Sucess
       @user.send_activation_email
-      flash[:info] = "メールを送信しました。ユーザー認証のためにご確認ください。"
+      flash[:info] = "メールを送信しました。ユーザー認証のためにご確認ください。メール送信に1〜2分かかることがあります。"
       redirect_to root_url
     else
       # Failure
