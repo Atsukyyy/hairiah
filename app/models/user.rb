@@ -209,4 +209,12 @@ class User < ApplicationRecord
       # @user.activation_digest => ハッシュ値
     end
 
+    def assign_auth_hash(hash)
+      # self.user_type = :customer
+      self.email = hash[:info][:email] unless email
+      # self.first_name = hash[:info][:first_name] unless first_name
+      # self.last_name = hash[:info][:last_name] unless last_name
+      self.password = SecureRandom.hex(16) unless password_digest
+    end
+
 end
