@@ -197,6 +197,14 @@ class User < ApplicationRecord
     self.created_at.strftime("%Y/%m/%d")
   end
 
+  def assign_auth_hash(hash)
+    # self.user_type = :customer
+    self.email = hash[:info][:email] unless email
+    # self.first_name = hash[:info][:first_name] unless first_name
+    # self.last_name = hash[:info][:last_name] unless last_name
+    self.password = SecureRandom.hex(16) unless password_digest
+  end
+
   private
 
     def downcase_email
@@ -207,14 +215,6 @@ class User < ApplicationRecord
       self.activation_token  = User.new_token
       self.activation_digest = User.digest(self.activation_token)
       # @user.activation_digest => ハッシュ値
-    end
-
-    def assign_auth_hash(hash)
-      # self.user_type = :customer
-      self.email = hash[:info][:email] unless email
-      # self.first_name = hash[:info][:first_name] unless first_name
-      # self.last_name = hash[:info][:last_name] unless last_name
-      self.password = SecureRandom.hex(16) unless password_digest
     end
 
 end
