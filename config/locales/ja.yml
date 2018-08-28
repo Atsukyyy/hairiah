@@ -8,3 +8,4 @@ ja:
         prefecture_id: 都道府県
         area_id: 市町村区
         password: パスワード
+        reason: 目的

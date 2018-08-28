@@ -35,16 +35,20 @@ class UsersController < ApplicationController
       @users = @users.get_by_area_id params[:area_id]
     end
     if params[:color].present?
-      @users = @users.get_by_color params[:color]
+      bool = ActiveRecord::Type::Boolean.new.cast(params[:color])
+      @users = @users.get_by_color bool
     end
     if params[:hair_extension].present?
-      @users = @users.get_by_hair_extension params[:hair_extension]
+      bool = ActiveRecord::Type::Boolean.new.cast(params[:hair_extension])
+      @users = @users.get_by_hair_extension bool
     end
     if params[:nail].present?
-      @users = @users.get_by_nail params[:nail]
+      bool = ActiveRecord::Type::Boolean.new.cast(params[:nail])
+      @users = @users.get_by_nail bool
     end
-    if params[:advertisement].present?
-      @users = @users.get_by_advertisement params[:advertisement]
+    if params[:reason].present?
+      @users = @users.get_by_reason params[:reason]
+      debugger
     end
   end
 

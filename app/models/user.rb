@@ -126,26 +126,28 @@ class User < ApplicationRecord
   end
 
   enum sex: {
-    female: 0,
-    male: 1
+    女性: 0,
+    男性: 1
   }
   enum hair_style: {
-    very_short: 0,
-    short: 1,
-    medium: 2,
-    semi_long: 3,
-    long: 4
+    ベリーショート: 0,
+    ショート: 1,
+    ミディアム: 2,
+    セミロング: 3,
+    ロング: 4
   }
 
   enum hair_type: {
-    straight: 0,
-    rather_curly: 1,
-    strong_curly: 2
+    直毛: 0,
+    ややクセ毛: 1,
+    クセ毛: 2
   }
 
+
+
   enum reason: {
-    money: 0,
-    model: 1
+    節約のため: 0,
+    モデルを目指しているため: 1
   }
 
   # ユーザー名による絞り込み
@@ -181,8 +183,8 @@ class User < ApplicationRecord
     where(nail: nail)
   }
   # 理由による絞り込み
-  scope :get_by_advertisement, ->(advertisement) {
-    where(advertisement: advertisement)
+  scope :get_by_reason, ->(reason) {
+    where(reason: reason)
   }
 
   def age

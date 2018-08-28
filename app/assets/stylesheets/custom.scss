@@ -352,3 +352,11 @@ header {
 .alert {
   margin-bottom: 0;
 }
+
+.navbar-collapse {
+  background-color: gray;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: white;
+}
