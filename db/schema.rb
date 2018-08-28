@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180828141820) do
+ActiveRecord::Schema.define(version: 20180828154245) do
 
   create_table "applies", force: :cascade do |t|
     t.string "memo"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20180828141820) do
     t.integer "age"
     t.boolean "staff", default: false
     t.date "last_accessed_at"
+    t.boolean "omniauth_sign_up"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

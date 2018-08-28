@@ -37,7 +37,7 @@ class OmniauthController < ApplicationController
           else
             social_profile = user.social_profiles.build
             social_profile.assign_auth_hash(auth_hash)
-            user.omniauth_sign_up = true
+            # user.omniauth_sign_up = true
             user.save!(context: :omniauth)
             log_in(user)
             flash[:success] = "ご登録ありがとうございます。下記フォームから都道府県を登録してください。"
@@ -79,7 +79,7 @@ class OmniauthController < ApplicationController
           user.assign_auth_hash(auth_hash)
           social_profile = user.social_profiles.build
           social_profile.assign_auth_hash(auth_hash)
-          user.omniauth_sign_up = true
+          # user.omniauth_sign_up = true
           user.save!(context: :omniauth)
           log_in(user)
           flash[:success] = "ご登録ありがとうございます。下記フォームからお名前・都道府県・メールアドレスを登録してください。"
