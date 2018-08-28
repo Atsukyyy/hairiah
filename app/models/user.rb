@@ -126,40 +126,26 @@ class User < ApplicationRecord
   end
 
   enum sex: {
-    女性: 0,
-    男性: 1
+    female: 0,
+    male: 1
   }
   enum hair_style: {
-    ベリーショート: 0,
-    ショート: 1,
-    ミディアム: 2,
-    セミロング: 3,
-    ロング: 4
+    very_short: 0,
+    short: 1,
+    medium: 2,
+    semi_long: 3,
+    long: 4
   }
 
   enum hair_type: {
-    直毛: 0,
-    ややクセ毛: 1,
-    強いクセ毛: 2
+    straight: 0,
+    rather_curly: 1,
+    strong_curly: 2
   }
 
   enum reason: {
-    単なる節約のため: 0,
-    モデルを目指しているため: 1
-  }
-  enum color: {
-    可能: true,
-    不可能: false
-  }, _suffix: true
-
-  enum hair_extension: {
-    可能: true,
-    不可能: false
-  }, _suffix: true
-
-  enum nail: {
-    希望: true,
-    希望しない: false
+    money: 0,
+    model: 1
   }
 
   # ユーザー名による絞り込み

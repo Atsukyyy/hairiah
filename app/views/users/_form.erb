@@ -56,7 +56,7 @@
 </script>
 
 <div class="row">
-  <div class="form-gourp">
+  <div class="form-group">
     <%= f.fields_for :thumbnails do |thumbnail| %>
       <%= thumbnail.file_field :image %>
     <% end %>
@@ -78,7 +78,7 @@
 </div>
 
 <div class="row">
-  <div class="form-gourp">
+  <div class="form-group">
     <div class="control-label">
       <%= f.label :hair_style, "現在の髪型" %>
     </div>
@@ -145,19 +145,19 @@
   </div>
 </div>
 <div class="row">
-  <div class="form-gourp">
+  <div class="form-group">
     <%= f.label :email, "メールアドレス" %>
     <%= f.email_field :email, class: 'form-control' %>
   </div>
 </div>
 <div class="row">
-  <div class="form-gourp">
+  <div class="form-group">
     <%= f.label :password, "パスワード" %>
     <%= f.password_field :password, class: 'form-control' %>
   </div>
 </div>
 <div class="row">
-  <div class="form-gourp">
+  <div class="form-group">
     <%= f.label :password_confirmation, "パスワード（確認）" %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>

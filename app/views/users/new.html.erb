@@ -35,18 +35,22 @@
         </div>
       </div>
       <div class="row">
-        <div class="form-group form-check-inline">
+        <div class="form-group">
           <div class="control-label">
             <%= f.label :sex, "性別" %>
             <span class="required">※必須</span>
           </div>
           <div class="radio-inline">
-            <%= f.radio_button :sex, "女性" %>女性
+            <%= f.radio_button :sex, :female, id: "radio01" %>
+            <label for="radio01" class="radio">女性</label>
           </div>
           <div class="radio-inline">
-            <%= f.radio_button :sex, "男性" %>男性
+            <%= f.radio_button :sex, :male, id: "radio02" %>
+            <label for="radio02" class="radio">男性</label>
           </div>
+
         </div>
+
       </div>
       <script>
         $(function() {
@@ -85,30 +89,20 @@
       </div>
 
       <div class="row">
-        <div class="form-gourp">
+        <div class="form-group">
           <div class="control-label">
             <%= f.label :hair_style, "現在の髪型" %>
           </div>
-          <div class="radio-inline">
-            <span>
-              <%= f.radio_button :hair_style, "ベリーショート" %>
-            </span>
-            <span>
-              ベリーショート
-            </span>
-          </div>
-          <div class="radio-inline">
-            <%= f.radio_button :hair_style, "ショート" %>ショート
-          </div>
-          <div class="radio-inline">
-            <%= f.radio_button :hair_style, "ミディアム" %>ミディアム
-          </div>
-          <div class="radio-inline">
-            <%= f.radio_button :hair_style, "セミロング" %>セミロング
-          </div>
-          <div class="radio-inline">
-            <%= f.radio_button :hair_style, "ロング" %>ロング
-          </div>
+          <%= f.radio_button :hair_style, :very_short, id: "radio03-1" %>
+          <label for="radio03-1" class="radio">ベリーショート</label>
+          <%= f.radio_button :hair_style, :short, id: "radio03-2" %>
+          <label for="radio03-2" class="radio">ショート</label>
+          <%= f.radio_button :hair_style, :medium, id: "radio04" %>
+          <label for="radio04" class="radio">ミディアム</label>
+          <%= f.radio_button :hair_style, :semi_long, id: "radio05" %>
+          <label for="radio05" class="radio">セミロング</label>
+          <%= f.radio_button :hair_style, :long, id: "radio06" %>
+          <label for="radio06" class="radio">ロング</label>
         </div>
       </div>
       <div class="row">
@@ -116,15 +110,12 @@
           <div class="control-label">
             <%= f.label :hair_type, "髪質" %>
           </div>
-          <div class="radio-inline">
-            <%= f.radio_button :hair_type, "直毛" %>直毛
-          </div>
-          <div class="radio-inline">
-            <%= f.radio_button :hair_type, "ややクセ毛" %>ややクセ毛
-          </div>
-          <div class="radio-inline">
-            <%= f.radio_button :hair_type, "強いクセ毛" %>強いクセ毛
-          </div>
+          <%= f.radio_button :hair_type, :straight, id: "radio07" %>
+          <label for="radio07" class="radio">直毛</label>
+          <%= f.radio_button :hair_type, :rather_curly, id: "radio08" %>
+          <label for="radio08" class="radio">ややクセ毛</label>
+          <%= f.radio_button :hair_type, :strong_curly, id: "radio09" %>
+          <label for="radio09" class="radio">強いクセ毛</label>
         </div>
       </div>
 
@@ -133,14 +124,10 @@
       </div>
       <div class="row user-form-options">
         <div class="form-group">
-          <div class="col-md-6">
-            <%= f.label :color, "カラー可否" %>
-            <%= f.check_box(:color, {:checked=> false}, "可能", "不可能") %>
-          </div>
-          <div class="col-md-6">
-            <%= f.label :hair_extension, "エクステ可否" %>
-            <%= f.check_box(:hair_extension, {:checked=> false}, "可能", "不可能") %>
-          </div>
+          <%= f.check_box(:color, {:checked=> false, id: "checkbox01"}) %>
+          <label for="checkbox01" class="checkbox">カラー</label>
+          <%= f.check_box(:hair_extension, {:checked=> false, id: "checkbox02"}) %>
+          <label for="checkbox02" class="checkbox">エクステ</label>
         </div>
       </div>
       <div class="row">
@@ -148,16 +135,14 @@
           <div class="control-label">
             <%= f.label :reason, "理由" %>
           </div>
-          <div class="radio-inline">
-            <%= f.radio_button :reason, "単なる節約のため" %>単なる節約のため
-          </div>
-          <div class="radio-inline">
-            <%= f.radio_button :reason, "モデルを目指しているため" %>モデルを目指しているため
-          </div>
+          <%= f.radio_button :reason, :money, id: "radio10" %>
+          <label for="radio10" class="radio">単なる節約のため</label>
+          <%= f.radio_button :reason, :model, id: "radio11" %>
+          <label for="radio11" class="radio">モデルを目指しているため</label>
         </div>
       </div>
       <div class="row">
-        <div class="form-gourp">
+        <div class="form-group">
           <div class="control-label">
             <%= f.label :email, "メールアドレス" %>
             <span class="required">※必須</span>
@@ -166,7 +151,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="form-gourp">
+        <div class="form-group">
           <div class="control-label">
             <%= f.label :password, "パスワード" %>
             <span class="required">※必須</span>
@@ -175,7 +160,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="form-gourp">
+        <div class="form-group">
           <div class="control-label">
             <%= f.label :password_confirmation, "パスワード（確認）" %>
             <span class="required">※必須</span>

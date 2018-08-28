@@ -60,7 +60,7 @@ class UsersController < ApplicationController
     @room_id = message_room_id(current_user, @user)
     @messages = Message.recent_in_room(@room_id)
     @thumbnails = @user.thumbnails
-    
+
 
     # debugger
   end
@@ -104,7 +104,7 @@ class UsersController < ApplicationController
     if @user.save # => Validation
       # Sucess
       @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
+      flash[:info] = "メールを送信しました。ユーザー認証のためにご確認ください。メール送信に1〜2分かかることがあります。"
       redirect_to root_url
     else
       # Failure
@@ -173,7 +173,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :name, :last_name, :first_name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :advertisement, :prefecture_id, :hair_type, :area_id, :hair_style, :thumbnail_cache,  thumbnails_attributes: [:id, :image, :_destroy])
+      params.require(:user).permit(:email, :name, :last_name, :first_name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :reason, :prefecture_id, :hair_type, :area_id, :hair_style, :thumbnail_cache,  thumbnails_attributes: [:id, :image, :_destroy])
     end
 
     # 正しいユーザーかどうか確認
