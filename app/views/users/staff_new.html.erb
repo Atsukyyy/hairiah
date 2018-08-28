@@ -9,7 +9,7 @@
         <div class="form-group">
           <%= f.label :name, "お名前/ニックネーム" %>
           <span class="required">※必須</span>
-          <%= f.text_field :name, class: 'form-control' %>
+          <%= f.text_field :name, class: 'form-control input-lg' %>
         </div>
       </div>
 
@@ -28,7 +28,7 @@
                   use_two_digit_numbers: true,
                   date_separator: '%s'
                 },
-                { class: 'form-control' }
+                { class: 'form-control input-lg' }
               ),
               '年 ', '月 ') + '日'
             %>
@@ -64,34 +64,27 @@
       </script>
 
       <div class="row">
-        <div class="form-gourp">
-          <%= f.fields_for :thumbnails do |thumbnail| %>
-            <%= thumbnail.file_field :image %>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
         <div class="form-group">
           <%= f.label :prefecture_id, "都道府県" %>
           <span class="required">※必須</span>
-          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {selected: 12}, class: 'form-control' %>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {selected: 12}, class: 'form-control input-lg' %>
         </div>
       </div>
       <div class="row">
         <div class="form-group">
           <%= f.label :area_id, "市区町村" %>
           <span class="required">※必須</span>
-          <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control' %>
+          <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control input-lg' %>
         </div>
       </div>
 
       <div class="row">
-        <div class="form-gourp">
+        <div class="form-group">
           <div class="control-label">
             <%= f.label :email, "メールアドレス" %>
             <span class="required">※必須</span>
           </div>
-          <%= f.email_field :email, class: 'form-control' %>
+          <%= f.email_field :email, class: 'form-control input-lg' %>
         </div>
       </div>
       <div class="row">
@@ -100,7 +93,7 @@
             <%= f.label :password, "パスワード" %>
             <span class="required">※必須</span>
           </div>
-          <%= f.password_field :password, class: 'form-control' %>
+          <%= f.password_field :password, class: 'form-control input-lg' %>
         </div>
       </div>
       <div class="row">
@@ -109,11 +102,11 @@
             <%= f.label :password_confirmation, "パスワード（確認）" %>
             <span class="required">※必須</span>
           </div>
-          <%= f.password_field :password_confirmation, class: 'form-control' %>
+          <%= f.password_field :password_confirmation, class: 'form-control input-lg' %>
         </div>
       </div>
       <div class="row">
-        <%= f.submit "登録する", class: "btn btn-primary" %>
+        <%= f.submit "登録する", class: "btn btn-primary btn-lg" %>
       </div>
     <% end %>
   </div>
