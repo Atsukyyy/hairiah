@@ -12,6 +12,9 @@ gem 'mini_magick',             '4.7.0'
 gem 'fog',                     '1.40.0'
 gem 'autoprefixer-rails'
 gem 'rails-i18n'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-line'
 
 
 gem 'puma',         '3.9.1'

@@ -5,6 +5,7 @@ class User < ApplicationRecord
             foreign_key: "to_id", dependent: :destroy
   has_many :sent_messages, through: :from_messages, source: :from
   has_many :received_messages, through: :to_messages, source: :to
+  has_many :social_profiles, dependent: :destroy
 
   # Send message to other user
   def send_message(other_user, room_id, content)

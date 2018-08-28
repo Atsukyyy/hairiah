@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
+  get '/privacy_policy', to: 'static_pages#privacy_policy'
+  get '/terms', to: 'static_pages#terms'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/staff_signup', to: 'users#staff_new'
@@ -18,6 +20,13 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
+  get 'auth/facebook/callback', to: 'omniauth#facebook'
+  post 'auth/facebook/callback', to: 'omniauth#facebook'
+  get 'auth/line/callback', to: 'omniauth#line'
+  post 'auth/line/callback', to: 'omniauth#line'
+  get 'auth/failure', to: 'omniauth#failure'
+  post 'auth/failure', to: 'omniauth#failure'
 
   resources :users do
     member do

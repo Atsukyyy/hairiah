@@ -20,4 +20,12 @@ class StaticPagesController < ApplicationController
   def contact
     # app/views/static_pages/contact.html.erb'
   end
+
+  def privacy_policy
+
+  end
+
+  def terms
+
+  end
 end
