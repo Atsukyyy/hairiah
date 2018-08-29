@@ -2,6 +2,6 @@
   "name": "sample_app",
   "private": true,
   "dependencies": {
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
   }
 }
