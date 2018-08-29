@@ -16,7 +16,7 @@
         <div class="form-group">
           <%= f.label :birth, "生年月日" %>
           <span class="required">※必須</span>
-          <div class="form-inline">
+          <div class="form-inline hidden-sp">
             <%= raw sprintf(
               f.date_select(
                 :birth,
@@ -30,6 +30,21 @@
                 { class: 'form-control input-lg' }
               ),
               '年 ', '月 ') + '日'
+            %>
+          </div>
+          <div class="form-inline visible-sp">
+            <%= raw sprintf(
+              f.date_select(
+                :birth,
+                {
+                  start_year: 1951,
+                  end_year: Time.zone.now.year,
+                  default: Time.zone.now.ago(25.years),
+                  use_two_digit_numbers: true
+                },
+                { class: 'form-control input-lg' }
+              )
+              )
             %>
           </div>
         </div>

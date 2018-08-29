@@ -30,3 +30,14 @@ $breakpoint-down: (
     @content;
   }
 }
+
+.hidden-sp {
+  @include mq-down() {
+    display: none;
+  }
+}
+.visible-sp {
+  @include mq-up() {
+    display: none;
+  }
+}

@@ -1,3 +1,5 @@
+@import "global";
+
 .first-view {
 
   height: auto;
@@ -6,7 +8,10 @@
   background-color: gray;
   background-size: cover;
   background-position: center;
-  background-image: url("http://tricle-magazine.com/wp-content/uploads/2016/10/85ee80583b959e57ef3ea664b714f069-800x514.jpg");
+  background-image: url("top.jpg");
+  @include mq-down(md) {
+    background-image: url("top-sp.png");
+  }
   position: absolute;
   right: 0;
   left: 0;
