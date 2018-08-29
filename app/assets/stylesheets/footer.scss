@@ -1,0 +1,46 @@
+@import "global";
+
+.footer-area {
+
+}
+footer {
+  padding: 20px;
+  color: white;
+  background-color: black;
+  font-size: 14px;
+}
+
+.footer-item {
+  margin-top: 5px;
+  @include mq-up() {
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 10px;
+  }
+}
+
+nav {
+
+}
+
+footer a {
+  color: white;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}

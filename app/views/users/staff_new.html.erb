@@ -36,16 +36,18 @@
         </div>
       </div>
       <div class="row">
-        <div class="form-group form-check-inline">
+        <div class="form-group">
           <div class="control-label">
             <%= f.label :sex, "性別" %>
             <span class="required">※必須</span>
           </div>
           <div class="radio-inline">
-            <%= f.radio_button :sex, "女性" %>女性
+            <%= f.radio_button :sex, "女性", id: "radio01" %>
+            <label for="radio01" class="radio">女性</label>
           </div>
           <div class="radio-inline">
-            <%= f.radio_button :sex, "男性" %>男性
+            <%= f.radio_button :sex, "男性", id: "radio02" %>
+            <label for="radio02" class="radio">男性</label>
           </div>
         </div>
       </div>

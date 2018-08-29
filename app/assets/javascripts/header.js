@@ -1,5 +1,5 @@
 document.addEventListener("turbolinks:load", function() {
-  console.log('kl;asfdja;');
+
   var state = false;
   var scrollpos;
 

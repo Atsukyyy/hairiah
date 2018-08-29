@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/terms', to: 'static_pages#terms'
 
   get '/signup_page', to: 'static_pages#signup_page'
+  get '/staff_signup_page', to: 'static_pages#staff_signup_page'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/staff_signup', to: 'users#staff_new'

@@ -1,7 +1,6 @@
 @import "global";
 
 .first-view {
-
   height: auto;
   min-height: 100vh; //レスポンシブのため
   width: 100vw;
@@ -12,7 +11,7 @@
   @include mq-down(md) {
     background-image: url("top-sp.png");
   }
-  position: absolute;
+  position: relative;
   right: 0;
   left: 0;
   // アニメーション

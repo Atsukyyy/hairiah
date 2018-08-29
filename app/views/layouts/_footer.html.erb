@@ -1,12 +1,13 @@
 <footer class="footer">
-  <small>
-    Hairiah
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About",   about_path   %></li>
-      <li><%= link_to "Contact", contact_path %></li>
-      <li><a href="#">News</a></li>
-    </ul>
-  </nav>
+  <div class="footer-area">
+        <div class="footer-item"><%= link_to "サービス概要", about_path %></div>
+        <div class="footer-item"><%= link_to "お問い合わせ", contact_path %></div>
+        <div class="footer-item"><%= link_to "利用規約", terms_path %></div>
+        <div class="footer-item"><%= link_to "プライバシーポリシー", privacy_policy_path %></div>
+        <div class="footer-item"><%= link_to "会社概要", "#" %></div>
+        <div class="footer-item"><a href="#">News</a></div>
+      </ul>
+    </nav>
+  </div>
+
 </footer>
