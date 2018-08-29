@@ -7,7 +7,7 @@ $(document).ready(function() {
       $('body').addClass('fixed').css({'top': -scrollpos});
       $(".hamburger-menu").slideToggle(150);
       $(".hamburger-close-btn").css("display", "inline-block");
-      $(".hamburger-open-btn").css("display", "none")
+      $(".hamburger-open-btn").css("display", "none");
       $(".header-fix").css("position", "fixed");
       state = true;
   });
@@ -17,7 +17,7 @@ $(document).ready(function() {
       window.scrollTo( 0 , scrollpos );
     $(".hamburger-menu").slideToggle(150);
     $(".hamburger-open-btn").css("display", "inline-block");
-    $(".hamburger-close-btn").css("display", "none")
+    $(".hamburger-close-btn").css("display", "none");
     $(".header-fix").css("position", "inherit");
     state = false;
   });
