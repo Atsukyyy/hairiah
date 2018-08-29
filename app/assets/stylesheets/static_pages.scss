@@ -1,9 +1,21 @@
+@import "global";
+
 // signup_page
 .signup_page {
   width: 500px;
+  @include mq-down() {
+    width: 100%;
+    padding: 0 20%;
+  }
   margin: 0 auto;
   text-align: center;
 }
 .btn {
   width: 250px;
+  @include mq-down() {
+    width: 100%;
+  }
+}
+.btn-lg, .btn-group-lg > .btn {
+  font-size: 16px;
 }
