@@ -2,7 +2,7 @@
 
 <div class="row">
   <aside class="col-md-4 col-xs-4">
-    <% if @user.thumbnails.count > 1 %>
+    <% if @user.thumbnails.count > 0 %>
 
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -71,7 +71,7 @@
        <%= render 'messages/message_form',
          {from_user: current_user, to_user: @user, room_id: @room_id} %>
       </div>
-      
+
     <% end %>
 
 
