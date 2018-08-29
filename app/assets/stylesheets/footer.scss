@@ -18,6 +18,12 @@ footer {
     margin-right: 10px;
   }
 }
+.footer-inline {
+  display: inline-block;;
+  @include mq-down() {
+    margin-right: 20px;
+  }
+}
 
 nav {
 
@@ -43,4 +49,12 @@ footer ul {
 footer ul li {
   float: left;
   margin-left: 15px;
+}
+
+.footer-logo {
+  margin-top: 15px;
+  text-align: center;
+  .footer-logo-text {
+    font-size: 24px;
+  }
 }

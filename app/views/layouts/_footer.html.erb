@@ -1,13 +1,18 @@
 <footer class="footer">
   <div class="footer-area">
-        <div class="footer-item"><%= link_to "サービス概要", about_path %></div>
-        <div class="footer-item"><%= link_to "お問い合わせ", contact_path %></div>
-        <div class="footer-item"><%= link_to "利用規約", terms_path %></div>
-        <div class="footer-item"><%= link_to "プライバシーポリシー", privacy_policy_path %></div>
-        <div class="footer-item"><%= link_to "会社概要", "#" %></div>
-        <div class="footer-item"><a href="#">News</a></div>
-      </ul>
-    </nav>
+    <div class="footer-inline">
+      <div class="footer-item"><%= link_to "サービス概要", about_path %></div>
+      <div class="footer-item"><%= link_to "お問い合わせ", contact_path %></div>
+      <div class="footer-item"><%= link_to "会社概要", "#" %></div>
+    </div>
+    <div class="footer-inline">
+      <div class="footer-item"><a href="#">お知らせ</a></div>
+      <div class="footer-item"><%= link_to "利用規約", terms_path %></div>
+      <div class="footer-item"><%= link_to "プライバシーポリシー", privacy_policy_path %></div>
+    </div>
   </div>
-
+  <div class="footer-logo">
+    <div class="footer-logo-text"><%= link_to "Hairiah", root_path %></div>
+    <div class="footer-copyright">© 2018 Hairiah</div>
+  </div>
 </footer>
