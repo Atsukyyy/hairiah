@@ -1,24 +1,26 @@
 <header>
-  <%= link_to "Hairiah", root_path, id: "logo" %>
-  <div class="hamburger-open-btn">
-    <i class="fa fa-chevron-down"></i>
-  </div>
-  <div class="hamburger-close-btn">
-    <i class="fa fa-chevron-up"></i>
-  </div>
-  <div  class="header-items">
-    <div class="header-item"><%= link_to "モデル募集掲示板", microposts_path %></div>
-    <% if logged_in? %>
-      <div class="header-item"><%= link_to "美容師を探す", staffs_path %></div>
-      <div class="header-item"><%= link_to "カットモデルを探す", users_path %></div>
-      <div class="header-item"><%= link_to "マイページへ", current_user %></div>
-      <div class="header-item"><%= link_to "個人設定", edit_user_path(current_user) %></div>
-      <div class="header-item"><%= link_to "ログアウト", logout_path, method: :delete %></div>
-    <% else %>
-      <div class="header-item"><%= link_to "モデル会員登録", signup_path %></div>
-      <div class="header-item"><%= link_to "美容師会員登録", staff_signup_path %></div>
-      <div class="header-item"><%= link_to "ログイン", login_path %></div>
-    <% end %>
+  <div class="header-fix">
+    <%= link_to "Hairiah", root_path, id: "logo" %>
+    <div class="hamburger-open-btn">
+      <i class="fa fa-chevron-down"></i>
+    </div>
+    <div class="hamburger-close-btn">
+      <i class="fa fa-chevron-up"></i>
+    </div>
+    <div  class="header-items">
+      <div class="header-item"><%= link_to "モデル募集掲示板", microposts_path %></div>
+      <% if logged_in? %>
+        <div class="header-item"><%= link_to "美容師を探す", staffs_path %></div>
+        <div class="header-item"><%= link_to "カットモデルを探す", users_path %></div>
+        <div class="header-item"><%= link_to "マイページへ", current_user %></div>
+        <div class="header-item"><%= link_to "個人設定", edit_user_path(current_user) %></div>
+        <div class="header-item"><%= link_to "ログアウト", logout_path, method: :delete %></div>
+      <% else %>
+        <div class="header-item"><%= link_to "モデル会員登録", signup_path %></div>
+        <div class="header-item"><%= link_to "美容師会員登録", staff_signup_path %></div>
+        <div class="header-item"><%= link_to "ログイン", login_path %></div>
+      <% end %>
+    </div>
   </div>
   <div class="hamburger-menu">
 
