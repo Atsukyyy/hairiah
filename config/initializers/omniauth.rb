@@ -6,5 +6,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, ENV['FB_KEY'], ENV['FB_SEC'],
     scope: 'email, public_profile',
     info_fields: 'email, first_name, last_name'
-  # provider :line, '1511152097', '9d0d7f2b16a97f75f2f320a35bb37b2b'
+  provider :line, ENV['LINE_KEY'], ENV['LINE_SEC']
 end

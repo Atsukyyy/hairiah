@@ -56,16 +56,16 @@ class OmniauthController < ApplicationController
       if current_user # ログイン中に連携する
         if current_user.social_profiles.where(provider: "line").first.present?
           flash[:danger] = "すでにLINEと連携されています。"
-          redirect_to root_path
+          redirect_to user_path(current_user)
         elsif social_profile = SocialProfile.find_by(uid: auth_hash[:uid])
           flash[:danger] = "すでに登録されているアカウントです。"
-          redirect_to root_path
+          redirect_to user_path(current_user)
         else
           social_profile = current_user.social_profiles.build
           social_profile.assign_auth_hash(auth_hash)
           social_profile.save!
           flash[:success] = "LINEと連携しました。"
-          redirect_to root_path
+          redirect_to user_path(current_user)
         end
       else # ログインしてない時
         social_profile = SocialProfile.find_by(uid: auth_hash[:uid])
@@ -73,7 +73,7 @@ class OmniauthController < ApplicationController
           user = User.find(social_profile.user_id)
           log_in(user)
           flash[:success] = "ようこそ！"
-          redirect_to root_path
+          redirect_to user_path(user)
         else # 新規登録
           user = User.new
           user.assign_auth_hash(auth_hash)
@@ -83,7 +83,7 @@ class OmniauthController < ApplicationController
           user.save!(context: :omniauth)
           log_in(user)
           flash[:success] = "ご登録ありがとうございます。下記フォームからお名前・都道府県・メールアドレスを登録してください。"
-          redirect_to root_path
+          redirect_to user_path(user)
         end
       end
     rescue ActiveRecord::RecordNotFound
