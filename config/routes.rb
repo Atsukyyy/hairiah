@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   post 'auth/facebook/callback', to: 'omniauth#facebook'
   get 'auth/line/callback', to: 'omniauth#line'
   post 'auth/line/callback', to: 'omniauth#line'
+  get 'auth/google_oauth2/callback', to: 'omniauth#google'
+  post 'auth/google_oauth2/callback', to: 'omniauth#google'
   get 'auth/failure', to: 'omniauth#failure'
   post 'auth/failure', to: 'omniauth#failure'
 

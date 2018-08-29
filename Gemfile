@@ -18,6 +18,7 @@ gem 'omniauth-line'
 gem "font-awesome-rails"
 gem 'font-awesome-sass'
 gem 'jquery-turbolinks'
+gem 'omniauth-google-oauth2'
 
 
 gem 'puma',         '3.9.1'
