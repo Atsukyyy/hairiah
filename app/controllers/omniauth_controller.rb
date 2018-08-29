@@ -77,6 +77,7 @@ class OmniauthController < ApplicationController
         else # 新規登録
           user = User.new
           user.assign_auth_hash(auth_hash)
+          debugger
           if User.find_by(email: user.email)
             user = User.find_by(email: user.email)
             social_profile = user.social_profiles.build
