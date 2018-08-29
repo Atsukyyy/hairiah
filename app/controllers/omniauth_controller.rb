@@ -77,13 +77,24 @@ class OmniauthController < ApplicationController
         else # 新規登録
           user = User.new
           user.assign_auth_hash(auth_hash)
-          social_profile = user.social_profiles.build
-          social_profile.assign_auth_hash(auth_hash)
-          # user.omniauth_sign_up = true
-          user.save!(context: :omniauth)
-          log_in(user)
-          flash[:success] = "ご登録ありがとうございます。下記フォームからお名前・都道府県・メールアドレスを登録してください。"
-          redirect_to user_path(user)
+          if User.find_by(email: user.email)
+            user = User.find_by(email: user.email)
+            social_profile = user.social_profiles.build
+            social_profile.assign_auth_hash(auth_hash)
+            social_profile.save!
+            user.save!(context: :omniauth)
+            log_in(user)
+            flash[:success] = "LINEと連携しました。"
+            redirect_to user_path(user)
+          else
+            social_profile = user.social_profiles.build
+            social_profile.assign_auth_hash(auth_hash)
+            # user.omniauth_sign_up = true
+            user.save!(context: :omniauth)
+            log_in(user)
+            flash[:success] = "ご登録ありがとうございます。下記フォームから追加の情報を登録してください。"
+            redirect_to edit_user_path(user)
+          end
         end
       end
     rescue ActiveRecord::RecordNotFound
