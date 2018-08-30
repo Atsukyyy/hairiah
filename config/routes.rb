@@ -52,6 +52,7 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => '/cable'
 
+
   # 連動プルダウン
   get 'prefectures/areas'
 
