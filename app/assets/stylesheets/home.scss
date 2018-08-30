@@ -48,8 +48,8 @@
 
 /* Animation */
 .anim-typewriter {
-  animation: typewriter 1.3s steps(15) 1s 1 normal both,
-  blinkTextCursor 400ms steps(15) infinite normal;
+  animation: typewriter 1.7s steps(15) 1s 1 normal both,
+  blinkTextCursor 800ms steps(15) infinite normal;
 }
 @keyframes typewriter {
   from { width: 0; }
