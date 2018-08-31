@@ -20,7 +20,7 @@ gem 'font-awesome-sass'
 gem 'jquery-turbolinks'
 gem 'omniauth-google-oauth2'
 gem 'redis', '3.3.5'
-gem 'resque'
+# gem 'resque'
 gem 'addressable'
 
 
