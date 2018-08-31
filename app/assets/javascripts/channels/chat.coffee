@@ -41,17 +41,37 @@ document.addEventListener 'turbolinks:load', ->
           "content": content
         }
 
-$(document).on 'keypress', '[data-behavior~=chat_speaker]', (event) ->
-  if event.which is 13
-    value = event.target.value
-    if value.replace(/\s/g, '').length > 0 && value.length <= 50
-      App.chat.speak(current_user_id(), user_id(), room_id(), value)
+$(document).on 'keydown', '[data-behavior~=chat_speaker]', (event) ->
+  if event.ctrlKey
+    if event.keyCode is 13
+      App.chat.speak(current_user_id(), user_id(), room_id(), event.target.value)
       event.target.value = ''
       event.preventDefault()
-    else if value.length > 50
-      alert("Message should be less than 51 characters.")
-      event.target.value = ''
-      event.preventDefault()
-    else
-      event.target.value = ''
-      event.preventDefault()
+
+$(document).on 'click', '.chat_submit', ->
+  App.chat.speak(current_user_id(), user_id(), room_id(), $('[data-behavior~=chat_speaker]').val())
+  $('[data-behavior~=chat_speaker]').val('')
+  event.preventDefault()
+
+#
+# $(document).on 'keypress', '[data-behavior~=chat_speaker]', (event) ->
+#   if event.which is 13
+#     value = event.target.value
+#     if value.replace(/\s/g, '').length > 0 && value.length <= 50
+#       App.chat.speak(current_user_id(), user_id(), room_id(), value)
+#       event.target.value = ''
+#       event.preventDefault()
+#     else if value.length > 50
+#       alert("Message should be less than 51 characters.")
+#       event.target.value = ''
+#       event.preventDefault()
+#     else
+#       event.target.value = ''
+#       event.preventDefault()
+#
+# postChatMessage = ->
+#   event.preventDefault()
+#   element = document.querySelector('input[type="text"]')
+#   App.chat.speak(current_user_id(), user_id(), room_id(), value)
+#   element.value = ''
+#   return

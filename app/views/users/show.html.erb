@@ -54,6 +54,26 @@
     </section>
     <%= render 'follow_form' if logged_in? %>
 
+  </aside>
+
+  <div class="col-md-8 col-xs-8">
+    <div class="user-info-detail">
+      <div>ユーザー名</div>
+      <div><%= @user.name %></div>
+      <div>トーク履歴</div>
+      <% if Message.find_by(to_id: @user.id).present? || Message.find_by(from_id: @user.id).present? %>
+        <% if !@user.staff? %>
+          <%= link_to(User.find(Message.find_by(to_id: @user.id).from_id).name, user_path(User.find(Message.find_by(to_id: @user.id).from_id))) unless Message.find_by(to_id: @user.id).nil? %>
+        <% elsif @user.staff %>
+          <%= link_to(User.find(Message.find_by(from_id: @user.id).to_id).name, user_path(User.find(Message.find_by(from_id: @user.id).to_id))) unless Message.find_by(from_id: @user.id).nil? %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
     <% if !current_user?(@user) && logged_in? && ((@user.staff == false && current_user.staff == true) || (current_user.staff == false && @user.staff == true))  %>
       <section class="message_box">
         <div id="messages">
@@ -71,26 +91,8 @@
        <%= render 'messages/message_form',
          {from_user: current_user, to_user: @user, room_id: @room_id} %>
       </div>
-
-    <% end %>
-
-
-  </aside>
-
-  <div class="col-md-8">
-    <div class="user-info-detail">
-      <div>ユーザー名</div>
-      <div><%= @user.name %></div>
-      <div>トーク履歴</div>
-      <% if Message.find_by(to_id: @user.id).present? || Message.find_by(from_id: @user.id).present? %>
-        <% if !@user.staff? %>
-          <%= link_to(User.find(Message.find_by(to_id: @user.id).from_id).name, user_path(User.find(Message.find_by(to_id: @user.id).from_id))) unless Message.find_by(to_id: @user.id).nil? %>
-        <% elsif @user.staff %>
-          <%= link_to(User.find(Message.find_by(from_id: @user.id).to_id).name, user_path(User.find(Message.find_by(from_id: @user.id).to_id))) unless Message.find_by(from_id: @user.id).nil? %>
-        <% end %>
-      <% end %>
-
     </div>
-  </div>
+
+  <% end %>
 
 </div>
