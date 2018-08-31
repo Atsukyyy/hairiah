@@ -61,13 +61,26 @@
       <div>ユーザー名</div>
       <div><%= @user.name %></div>
       <div>トーク履歴</div>
-      <% if Message.find_by(to_id: @user.id).present? || Message.find_by(from_id: @user.id).present? %>
-        <% if !@user.staff? %>
-          <%= link_to(User.find(Message.find_by(to_id: @user.id).from_id).name, user_path(User.find(Message.find_by(to_id: @user.id).from_id))) unless Message.find_by(to_id: @user.id).nil? %>
-        <% elsif @user.staff %>
-          <%= link_to(User.find(Message.find_by(from_id: @user.id).to_id).name, user_path(User.find(Message.find_by(from_id: @user.id).to_id))) unless Message.find_by(from_id: @user.id).nil? %>
-        <% end %>
-      <% end %>
+      <div>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">美容師名</th>
+                <th scope="col">最新のやりとり日</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @message_users.zip(@messages).each do |u, m| %>
+                <tr>
+                  <td><%= link_to u.name, user_path(u) %></td>
+                  <td><%= m.created_at_to_date %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

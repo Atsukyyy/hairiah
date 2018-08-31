@@ -64,9 +64,16 @@ class UsersController < ApplicationController
     @room_id = message_room_id(current_user, @user)
     @messages = Message.recent_in_room(@room_id)
     @thumbnails = @user.thumbnails
+    @messages = Message.where(from_id: @user.id).or(Message.where(to_id: @user.id)).reverse_order.uniq{|h| [h[:from_id],h[:to_id]]}
+    ids = []
+    # id = []
+    @messages.each do |message|
+      ids << message.to_id unless message.to_id == @user.id
+      ids << message.from_id unless message.from_id == @user.id
+    end
 
+    @message_users = User.where(id: ids)
 
-    # debugger
   end
 
   # GET /users/new

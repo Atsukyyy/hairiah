@@ -17,4 +17,8 @@ class Message < ApplicationRecord
   def Message.recent_in_room(room_id)
     where(room_id: room_id).last(500)
   end
+
+  def created_at_to_date
+    self.created_at.strftime("%Y/%m/%d")
+  end
 end

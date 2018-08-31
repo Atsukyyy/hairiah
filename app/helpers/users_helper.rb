@@ -6,7 +6,4 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
-  def lasstscreated_at_to_date
-    self.last_accessed_at.strftime("%Y/%m/%d")
-  end
 end
