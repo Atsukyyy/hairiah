@@ -1,7 +1,8 @@
 production:
-  adapter: redis
-  url: ENV['REDISCLOUD_URL']
+  # adapter: redis
+  # url: ENV['REDISCLOUD_URL']
   # channel_prefix: sample_app_production
+  adapter: async
 
 development:
   adapter: async
