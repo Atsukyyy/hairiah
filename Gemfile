@@ -19,7 +19,7 @@ gem "font-awesome-rails"
 gem 'font-awesome-sass'
 gem 'jquery-turbolinks'
 gem 'omniauth-google-oauth2'
-gem 'redis'
+gem 'redis', '3.3.5'
 
 
 gem 'puma',         '3.9.1'
