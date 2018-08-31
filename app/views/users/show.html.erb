@@ -71,7 +71,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @message_users.zip(@messages).each do |u, m| %>
+              <% @message_users.zip(@messages_history).each do |u, m| %>
                 <tr>
                   <td><%= link_to u.name, user_path(u) %></td>
                   <td><%= m.created_at_to_date %></td>
