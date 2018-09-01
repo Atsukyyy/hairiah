@@ -1,14 +1,5 @@
 @import "global";
 // signin
-.signin-page {
-  width: 500px;
-  @include mq-down() {
-    width: 100%;
-    padding: 0 20%;
-  }
-  margin: 0 auto;
-  text-align: center;
-}
 .signin-upper-up {
   padding: 20px 0;
   border-bottom: 1px solid #cccccc;
@@ -17,12 +8,15 @@
   margin-bottom: 40px;
   border-bottom: 1px solid #cccccc;
 }
-.signin-form {
-  width: 250px;
-  margin: 0 auto;
-  @include mq-down() {
-    width: 100%;
-  }
+// .signin-form {
+//   width: 250px;
+//   margin: 0 auto;
+//   @include mq-down() {
+//     width: 100%;
+//   }
+// }
+.signin-check {
+  width: 100%;
 }
 
 .signin-upper-down {
