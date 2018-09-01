@@ -3,7 +3,7 @@ development:
   api_key: ENV['CLOUD_KEY']
   api_secret: ENV['CLOUD_SEC']
   enhance_image_tag: true
-  static_image_support: false
+  static_image_support: true
 production:
   cloud_name: ENV['CLOUD_NAME']
   api_key: ENV['CLOUD_KEY']
