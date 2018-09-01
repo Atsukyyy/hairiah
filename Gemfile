@@ -22,6 +22,7 @@ gem 'omniauth-google-oauth2'
 # gem 'redis', '3.3.5'
 # gem 'resque'
 # gem 'addressable'
+gem 'cloudinary'
 
 
 gem 'puma',         '3.9.1'
