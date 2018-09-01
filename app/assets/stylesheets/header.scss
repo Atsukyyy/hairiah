@@ -3,10 +3,7 @@
 header {
   color: black;
   height: 80px;
-  padding: 20px;
-  @include mq-down() {
-    height: 100px;
-  }
+  padding: 10px 20px;
 }
 
 .header-fix {
@@ -17,15 +14,18 @@ header {
   // }
 }
 
-#logo {
+.logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
   font-weight: bold;
   z-index: 25;
+  @include mq-up(xl) {
+    margin-top: 8px;
+  }
 }
 
-#logo:hover {
+.logo:hover {
   text-decoration: none;
 }
 
@@ -71,6 +71,10 @@ header {
   padding-top: 8px;
   display: inline-block;
   display: none;
+}
+
+.fa {
+  padding-top: 13px;
 }
 
 .hamburger-menu {

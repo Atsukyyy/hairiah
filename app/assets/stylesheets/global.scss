@@ -41,3 +41,9 @@ $breakpoint-down: (
     display: none;
   }
 }
+
+.visible-xl {
+  @include mq-down(xl) {
+    display: none;
+  }
+}
