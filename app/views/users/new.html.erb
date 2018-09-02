@@ -44,7 +44,7 @@
                 default: Time.zone.now.ago(25.years),
                 use_two_digit_numbers: true
               },
-              { class: 'form-control input-lg' }
+              { class: 'input-lg col-sm-4 col-xs-4 birth-form-sp' }
             )
             )
           %>
@@ -86,10 +86,9 @@
     <div class="row">
       <div class="form-group">
         <div class="control-label form-align-left">
-          <%= f.label :image %>
+          <%= f.label :image, "写真（髪型がわかるように正面から）" %>
         </div>
-        <%= f.file_field :image, class: "form-control input-lg" %>
-
+        <%= f.file_field :image, id: "user_img", class: "form-control input-lg" %>
       </div>
     </div>
     <div class="row">

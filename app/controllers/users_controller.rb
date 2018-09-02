@@ -180,7 +180,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :name, :last_name, :first_name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :reason, :prefecture_id, :hair_type, :area_id, :hair_style, :image)
+      params.require(:user).permit(:email, :name, :last_name, :first_name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :reason, :prefecture_id, :hair_type, :area_id, :hair_style, :image, :remove_image)
     end
 
     # 正しいユーザーかどうか確認
