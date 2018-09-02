@@ -23,8 +23,6 @@ gem 'omniauth-google-oauth2'
 # gem 'resque'
 # gem 'addressable'
 gem 'cloudinary'
-gem 'dotenv-rails', require: 'dotenv/rails-now'
-
 
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
@@ -45,6 +43,7 @@ group :development do
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
   gem 'letter_opener_web'
+  gem 'dotenv-rails', require: 'dotenv/rails-now'
 end
 
 group :test do

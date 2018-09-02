@@ -92,7 +92,6 @@ class UsersController < ApplicationController
     @user = area.users.build(user_params)
     @user.prefecture = prefecture
     @user.age = @user.age
-    @user.activated = true # ad-hoc
     if @user.save # => Validation
       # Sucess
       @user.send_activation_email
