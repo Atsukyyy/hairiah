@@ -3,6 +3,8 @@
   <input type="hidden" name="to_id" value="<%= to_user.id %>">
   <input type="hidden" name="room_id" value="<%= room_id %>">
   <label><%= to_user.name %>さんにメッセージを送る↓</label><br>
-  <textarea class="" type="text" data-behavior="chat_speaker"></textarea>
+  <div class="form-group">
+    <textarea class="form-control" type="text" data-behavior="chat_speaker"></textarea>
+  </div>
   <button class='chat_submit btn-primary' type="button">送信</button>
 </form>
