@@ -63,16 +63,6 @@ range.each do |num|
   end
 end
 
-User.create!(name:  "Example User",
-             email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
-             admin: true,
-             activated: true,
-             activated_at: Time.zone.now,
-             prefecture_id: 1,
-             area_id: 1)
-
 birth = ["1992-03-15", "1994-07-23", "1995-12-30", "1998-02-02", "1991-01-14", "1993-11-11"]
 password = "aaaaaa"
 name = Faker::Name.name

@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     # => app/views/users/show.html.erb
     @room_id = message_room_id(current_user, @user)
     @messages = Message.recent_in_room(@room_id)
-    @thumbnails = @user.thumbnails
+    # @thumbnails = @user.thumbnails
     @messages_history = Message.where(from_id: @user.id).or(Message.where(to_id: @user.id)).reverse_order.uniq{|h| [h[:from_id],h[:to_id]]}
     ids = []
     @messages_history.each do |message|
@@ -79,7 +79,6 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     # => form_for @user
-    3.times { @user.thumbnails.build }
   end
 
   def staff_new
@@ -93,6 +92,7 @@ class UsersController < ApplicationController
     @user = area.users.build(user_params)
     @user.prefecture = prefecture
     @user.age = @user.age
+    @user.activated = true # ad-hoc
     if @user.save # => Validation
       # Sucess
       @user.send_activation_email
@@ -126,13 +126,7 @@ class UsersController < ApplicationController
   # params[:id] => :id
   def edit
     @user = User.find(params[:id])
-    if @user.thumbnails.count == 1
-      2.times { @user.thumbnails.build }
-    elsif @user.thumbnails.count == 2
-      2.times { @user.thumbnails.build }
-    elsif @user.thumbnails.count == 0
-      3.times { @user.thumbnails.build }
-    end
+
   end
 
   def password
@@ -187,7 +181,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :name, :last_name, :first_name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :reason, :prefecture_id, :hair_type, :area_id, :hair_style, :thumbnail_cache,  thumbnails_attributes: [:id, :image, :_destroy])
+      params.require(:user).permit(:email, :name, :last_name, :first_name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :reason, :prefecture_id, :hair_type, :area_id, :hair_style, :image)
     end
 
     # 正しいユーザーかどうか確認

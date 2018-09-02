@@ -1,6 +1,6 @@
 <li class="user-item col-md-4 col-sm-6">
-  <% if user.thumbnails.count >= 1 %>
-    <div><%= link_to image_tag(user.thumbnails[0].image_url), user_path(user) %></div>
+  <% if user.image.present?  %>
+    <div><%= link_to image_tag(user.image_url), user_path(user) %></div>
   <% else %>
     <div><%= link_to image_tag('/no-image.png', class: "no-image"), user_path(user) %></div>
   <% end %>

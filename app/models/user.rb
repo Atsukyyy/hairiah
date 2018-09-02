@@ -37,9 +37,9 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
-  has_many :thumbnails
-  accepts_nested_attributes_for :thumbnails
-  # mount_uploader :thumbnail, ThumbnailUploader
+
+  # attr_accessor :image
+  mount_uploader :image, ImageUploader
   # serialize :avatars, JSON # If you use SQLite, add this line.
 
 

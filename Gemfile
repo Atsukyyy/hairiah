@@ -23,6 +23,7 @@ gem 'omniauth-google-oauth2'
 # gem 'resque'
 # gem 'addressable'
 gem 'cloudinary'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 
 gem 'puma',         '3.9.1'

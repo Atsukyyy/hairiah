@@ -2,49 +2,8 @@
 
 <div class="row">
   <aside class="col-md-4 col-xs-4">
-    <% if @user.thumbnails.count > 0 %>
-
-      <div id="test-carousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-
-        <!-- 何枚目かの画像かを表すインディケーター -->
-        <ol class="carousel-indicators">
-          <li data-target="#test-carousel" data-slide-to="0" class="active"></li>
-          <% unless @user.thumbnails[1].nil? %>
-            <li data-target="#test-carousel" data-slide-to="1" class=""></li>
-          <% end %>
-          <% unless @user.thumbnails[2].nil? %>
-            <li data-target="#test-carousel" data-slide-to="2" class=""></li>
-          <% end %>
-        </ol>
-
-        <!-- 実際の画像の表示処理 -->
-        <div class="carousel-inner">
-          <div class="item active">    <!-- activeをつけたものがページ表示時に表示される -->
-            <%= cl_image_tag(@user.thumbnails[0].image_url(:thumbnail), :width => 300, :height => 300) %>
-
-          </div>
-          <% unless @user.thumbnails[1].nil? %>
-            <div class="item">
-              <%= image_tag @user.thumbnails[1].image_url(:thumbnail), class: "carousel-thumbnail" %>
-            </div>
-          <% end %>
-          <% unless @user.thumbnails[2].nil? %>
-            <div class="item">
-              <%= image_tag @user.thumbnails[2].image_url(:thumbnail), class: "carousel-thumbnail" %>
-            </div>
-          <% end %>
-        </div>
-        <% unless @user.thumbnails[1].nil? %>
-          <!-- 前の画像へ戻るための矢印ポインタ -->
-          <a class="left carousel-control" href="#test-carousel" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-          </a>
-          <!-- 次の画像へ進むための矢印ポインタ -->
-          <a class="right carousel-control" href="#test-carousel" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-          </a>
-        <% end %>
-      </div>
+    <% if @user.image.present?  %>
+      <%= image_tag @user.image_url %>
     <% else %>
       <%= image_tag '/no-image.png', class: "no-image"%>
     <% end %>
@@ -68,7 +27,7 @@
             <thead>
               <tr>
                 <th scope="col">美容師名</th>
-                <th scope="col">最新のやりとり日</th>
+                <th scope="col">最終やりとり日</th>
               </tr>
             </thead>
             <tbody>

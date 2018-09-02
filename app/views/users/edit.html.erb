@@ -69,9 +69,10 @@
 
       <div class="row">
         <div class="form-group">
-          <%= f.fields_for :thumbnails do |thumbnail| %>
-            <%= thumbnail.file_field :image, class: " input-lg" %>
-          <% end %>
+          <div class="control-label form-align-left">
+            <%= f.label :image %>
+          </div>
+          <%= f.file_field :image, class: "form-control input-lg" %>
         </div>
       </div>
       <div class="row">

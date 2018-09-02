@@ -27,3 +27,8 @@
 config/secrets.yml.key
 
 /vender/bundler
+
+# dotenv
+.env
+
+/public/uploads/tmp
