@@ -48,7 +48,24 @@ input[type=radio], input[type=checkbox] {
       }
     }
   }
-
+}
+.radio {
+  &:after {
+    -webkit-transition: border-color 0.2s linear;
+    transition: border-color 0.2s linear;
+    position: absolute;
+    top: 54%;
+    left: 17px;
+    display: block;
+    margin-top: -10px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #bbb;
+    border-radius: 6px;
+    content: '';
+  }
+}
+.checkbox {
   &:after {
     -webkit-transition: border-color 0.2s linear;
     transition: border-color 0.2s linear;
