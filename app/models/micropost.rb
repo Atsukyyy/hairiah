@@ -10,22 +10,26 @@ class Micropost < ApplicationRecord
                       length: { maximum: 140 }
   validate  :picture_size
 
-  enum reason: {
-    練習: 0,
-    練習兼サロンモデル募集: 1
+  enum sex: {
+    女性: 0,
+    男性: 1,
+    どちらでも: 2
   }
-  enum color: {
-    希望: true,
-    なし: false
-  }, _suffix: true
-  enum hair_extension: {
-    希望: true,
-    なし: false
-  }, _suffix: true
-  enum mens: {
-    希望: true,
-    なし: false
-  }, _suffix: true
+  enum hair_style: {
+    ベリーショート: 0,
+    ショート: 1,
+    ミディアム: 2,
+    セミロング: 3,
+    ロング: 4,
+    どの髪型でも: 5
+  }
+
+  enum hair_type: {
+    直毛: 0,
+    ややクセ毛: 1,
+    クセ毛: 2,
+    どの髪質でも: 3
+  }
 
   def created_at_to_date
     self.created_at.strftime("%Y/%m/%d")

@@ -146,9 +146,11 @@ class User < ApplicationRecord
 
 
 
-  enum reason: {
-    節約のため: 0,
-    モデルを目指しているため: 1
+  enum experience: {
+    "1年未満": 0,
+    "1~3年": 1,
+    "3~5年": 2,
+    "5年以上": 3
   }
 
   # ユーザー名による絞り込み

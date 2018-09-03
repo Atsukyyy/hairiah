@@ -65,9 +65,7 @@
           <%= f.radio_button :sex, "男性", id: "radio02" %>
           <label for="radio02" class="radio">男性</label>
         </div>
-
       </div>
-
     </div>
     <script>
       $(function() {
@@ -150,6 +148,15 @@
         <label for="checkbox1" class="checkbox">カラー</label>
         <%= f.check_box(:hair_extension, {id: "checkbox02"}) %>
         <label for="checkbox02" class="checkbox">エクステ</label>
+        <%= f.check_box(:nail, {id: "checkbox03"}) %>
+        <label for="checkbox03" class="checkbox">ネイル</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group form-align-left">
+        <%= f.check_box(:use, {id: "checkbox04"}) %>
+        <label for="checkbox04" class="checkbox">撮影/宣伝利用</label>
+        ※美容院/美容師の宣伝用の使用を許可する
       </div>
     </div>
     <div class="row">

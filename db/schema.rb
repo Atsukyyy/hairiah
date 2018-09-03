@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901160416) do
+ActiveRecord::Schema.define(version: 20180903133626) do
 
   create_table "applies", force: :cascade do |t|
     t.string "memo"
@@ -37,22 +37,8 @@ ActiveRecord::Schema.define(version: 20180901160416) do
     t.index ["room_id", "created_at"], name: "index_messages_on_room_id_and_created_at"
   end
 
-  create_table "microposts", force: :cascade do |t|
-    t.text "content"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "picture"
-    t.date "end_date"
-    t.integer "area_id"
-    t.integer "reason"
-    t.boolean "mens"
-    t.boolean "color"
-    t.boolean "hair_extension"
-    t.integer "prefecture_id"
-    t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_microposts_on_user_id"
-  end
+# Could not dump table "microposts" because of following StandardError
+#   Unknown type 'bolean' for column 'nail'
 
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
@@ -93,7 +79,6 @@ ActiveRecord::Schema.define(version: 20180901160416) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_digest"
-    t.boolean "admin", default: false
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
@@ -104,16 +89,18 @@ ActiveRecord::Schema.define(version: 20180901160416) do
     t.boolean "color"
     t.boolean "hair_extension"
     t.boolean "nail"
-    t.integer "reason"
     t.integer "hair_type"
     t.integer "area_id"
     t.integer "prefecture_id"
     t.integer "hair_style"
-    t.integer "age"
     t.boolean "staff", default: false
     t.date "last_accessed_at"
-    t.boolean "omniauth_sign_up"
     t.string "image"
+    t.boolean "fb_sign_up"
+    t.boolean "g_sign_up"
+    t.boolean "use"
+    t.date "qualification"
+    t.integer "experience"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

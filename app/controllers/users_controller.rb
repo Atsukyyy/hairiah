@@ -91,7 +91,6 @@ class UsersController < ApplicationController
     prefecture = area.prefecture
     @user = area.users.build(user_params)
     @user.prefecture = prefecture
-    @user.age = @user.age
     if @user.save # => Validation
       # Sucess
       @user.send_activation_email
@@ -108,7 +107,6 @@ class UsersController < ApplicationController
     prefecture = area.prefecture
     @user = area.users.build(user_params)
     @user.prefecture = prefecture
-    @user.age = @user.age
     @user.staff = true
     if @user.save # => Validation
       # Sucess
@@ -180,7 +178,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :name, :last_name, :first_name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :reason, :prefecture_id, :hair_type, :area_id, :hair_style, :image, :remove_image)
+      params.require(:user).permit(:email, :name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :use, :prefecture_id, :hair_type, :area_id, :hair_style, :image, :remove_image, :fb_sign_up, :g_sign_up)
     end
 
     # 正しいユーザーかどうか確認

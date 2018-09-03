@@ -4,11 +4,16 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@micropost) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
-      <div class="form-group">
-        <%= f.label :content, "タイトル" %>
-        <%= f.text_field :content, class: 'form-control' %>
+      <div class="row">
+        <div class="form-group">
+          <div class="control-label form-align-left">
+            <%= f.label :title, "タイトル" %>
+            <span class="required">※必須</span>
+          </div>
+          <%= f.text_field :title, class: 'form-control input-lg' %>
+        </div>
       </div>
+        
         <script>
           $(function() {
             $('#micropost_prefecture_id').change(function() {
@@ -23,37 +28,102 @@
           });
         </script>
 
-        <div class="form-check form-check-inline">
-          <%= f.label :prefecture_id, "都道府県" %>
-          <span class="required">※必須</span>
-          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: 'form-control' %>
-        </div>
-
-        <div class="form-check form-check-inline">
-          <%= f.label :area_id, "市区町村" %>
-          <span class="required">※必須</span>
-          <%= f.collection_select :area_id, Area.all, :id, :name, {}, class: 'form-control' %>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group col-md-2">
-            <%= f.label :color, "カラー希望" %>
-            <%= f.check_box(:color, {:checked=> false}, "希望", "なし") %>
-          </div>
-          <div class="form-group col-md-2">
-            <%= f.label :hair_extension, "エクステ希望" %>
-            <%= f.check_box(:hair_extension, {:checked=> false}, "希望", "なし") %>
-          </div>
-          <div class="form-group col-md-2">
-            <%= f.label :hair_extension, "メンズ希望" %>
-            <%= f.check_box(:hair_extension, {:checked=> false}, "希望", "なし") %>
-          </div>
-          <div class="form-group col-md-2">
-            <%= f.label :reason, "理由" %>
-            <%= f.radio_button :reason, "練習" %>練習
-            <%= f.radio_button :reason, "練習兼サロンモデル募集" %>練習兼サロンモデル募集
+        <div class="row">
+          <div class="form-group">
+            <div class="control-label form-align-left">
+              <%= f.label :prefecture_id, "都道府県" %>
+              <span class="required">※必須</span>
+              <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {selected: 12}, class: 'form-control input-lg' %>
+            </div>
           </div>
         </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="control-label form-align-left">
+              <%= f.label :area_id, "市区町村" %>
+              <span class="required">※必須</span>
+            </div>
+            <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control input-lg' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <div class="control-label form-align-left">
+              <%= f.label :sex, "募集する性別" %>
+              <span class="required">※必須</span>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :sex, "女性", id: "radio01" %>
+              <label for="radio01" class="radio">女性</label>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :sex, "男性", id: "radio02" %>
+              <label for="radio02" class="radio">男性</label>
+            </div>
+            <div class="radio-inline">
+              <%= f.radio_button :sex, "どちらでも", id: "radio03" %>
+              <label for="radio03" class="radio">どちらでも</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group form-align-left">
+            <div class="control-label">
+              <%= f.label :hair_style, "現在の髪型" %>
+            </div>
+            <%= f.radio_button :hair_style, "ベリーショート", id: "radio03-1" %>
+            <label for="radio03-1" class="radio">ベリーショート</label>
+            <%= f.radio_button :hair_style, "ショート", id: "radio03-2" %>
+            <label for="radio03-2" class="radio">ショート</label>
+            <%= f.radio_button :hair_style, "ミディアム", id: "radio04" %>
+            <label for="radio04" class="radio">ミディアム</label>
+            <%= f.radio_button :hair_style, "セミロング", id: "radio05" %>
+            <label for="radio05" class="radio">セミロング</label>
+            <%= f.radio_button :hair_style, "ロング", id: "radio06" %>
+            <label for="radio06" class="radio">ロング</label>
+            <%= f.radio_button :hair_style, "どの髪型でも", id: "radio07" %>
+            <label for="radio07" class="radio">どれでも</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group form-align-left">
+            <div class="control-label">
+              <%= f.label :hair_type, "髪質" %>
+            </div>
+            <%= f.radio_button :hair_type, "直毛", id: "radio07" %>
+            <label for="radio07" class="radio">直毛</label>
+            <%= f.radio_button :hair_type, "ややクセ毛", id: "radio08" %>
+            <label for="radio08" class="radio">ややクセ毛</label>
+            <%= f.radio_button :hair_type, "クセ毛", id: "radio09" %>
+            <label for="radio09" class="radio">クセ毛</label>
+            <%= f.radio_button :hair_type, "どの髪質でも", id: "radio10" %>
+            <label for="radio10" class="radio">どれでも</label>
+          </div>
+        </div>
+        <div class="row options-label form-align-left">
+          希望オプション
+        </div>
+        <div class="row user-form-options">
+          <div class="form-group form-align-left">
+            <%= f.check_box(:color, {id: "checkbox01"}) %>
+            <label for="checkbox01" class="checkbox">カラー希望</label>
+            <%= f.check_box(:hair_extension, {id: "checkbox02"}) %>
+            <label for="checkbox02" class="checkbox">エクステ希望</label>
+            <%= f.check_box(:nail, {id: "checkbox03"}) %>
+            <label for="checkbox03" class="checkbox">ネイル希望</label>
+            <%= f.check_box(:shampoo, {id: "checkbox04"}) %>
+            <label for="checkbox04" class="checkbox">シャンプー希望</label>
+          </div>
+        </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="control-label form-align-left">
+            <%= f.label :content, "内容" %>
+            <span class="required">※必須</span>
+          </div>
+          <%= f.text_field :content, class: 'form-control input-lg' %>
+        </div>
+      </div>
 
       <%= f.submit "投稿する", class: "btn btn-primary" %>
     <% end %>
