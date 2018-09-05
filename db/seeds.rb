@@ -66,132 +66,75 @@ end
 birth = ["1992-03-15", "1994-07-23", "1995-12-30", "1998-02-02", "1991-01-14", "1993-11-11"]
 password = "aaaaaa"
 name = Faker::Name.name
+area_pref = [[1,1], [44,3], [267,15], [435,25],[707,47]]
 
-20.times do |n|
-  name     = Faker::Name.name
-  email    = "a#{n}@a.a"
+100.times do |n|
+  num = rand(0..4)
+  name = Faker::Name.name
+  email = "a#{n}@a.a"
   password = "aaaaaa"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now,
-               birth: birth[rand(1..6)],
-               sex: rand(0..1),
-               color: [true,false].shuffle.shift,
-               hair_extension: [true,false].shuffle.shift,
-               nail: [true,false].shuffle.shift,
-               reason: rand(0..1),
-               hair_type: rand(0..2),
-               area_id: 1,
-               prefecture_id: 1,
-               hair_style: rand(0..4))
+  User.create!(
+    name: name,
+    email: email,
+    password: password,
+    password_confirmation: password,
+    activated: true,
+    activated_at: Time.zone.now,
+    birth: birth[rand(1..6)],
+    sex: rand(0..1),
+    color: [true,false].shuffle.shift,
+    hair_extension: [true,false].shuffle.shift,
+    nail: [true,false].shuffle.shift,
+    hair_type: rand(0..2),
+    area_id: area_pref[num][0],
+    prefecture_id: area_pref[num][1],
+    hair_style: rand(0..4),
+    use: [true,false].shuffle.shift,
+    hair_permed: [true,false].shuffle.shift
+  )
 end
 
-20.times do |n|
-  name     = Faker::Name.name
-  email    = "a#{n+20}@a.a"
+date = Date.new(2019,03,31)
+15.times do |n|
+  num = rand(0..4)
+  name = Faker::Name.name
+  email = "s#{n}@a.a"
   password = "aaaaaa"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now,
-               birth: birth[rand(1..6)],
-               sex: rand(0..1),
-               color: [true,false].shuffle.shift,
-               hair_extension: [true,false].shuffle.shift,
-               nail: [true,false].shuffle.shift,
-               reason: rand(0..1),
-               hair_type: rand(0..2),
-               area_id: 44,
-               prefecture_id: 3,
-               hair_style: rand(0..4))
+  User.create!(
+    name: name,
+    email: email,
+    password: password,
+    password_confirmation: password,
+    activated: true,
+    activated_at: Time.zone.now,
+    birth: birth[rand(1..6)],
+    sex: rand(0..1),
+    area_id: area_pref[num][0],
+    prefecture_id: area_pref[num][1],
+    staff: true,
+    qualification: date.next_year(rand(0..5))
+  )
 end
 
-20.times do |n|
-  name     = Faker::Name.name
-  email    = "a#{n+40}@a.a"
+15.times do |n|
+  num = rand(0..4)
+  name = Faker::Name.name
+  email = "s#{n+15}@a.a"
   password = "aaaaaa"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now,
-               birth: birth[rand(1..6)],
-               sex: rand(0..1),
-               color: [true,false].shuffle.shift,
-               hair_extension: [true,false].shuffle.shift,
-               nail: [true,false].shuffle.shift,
-               reason: rand(0..1),
-               hair_type: rand(0..2),
-               area_id: 267,
-               prefecture_id: 15,
-               hair_style: rand(0..4))
-end
-
-20.times do |n|
-  name     = Faker::Name.name
-  email    = "a#{n+60}@a.a"
-  password = "aaaaaa"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now,
-               birth: birth[rand(1..6)],
-               sex: rand(0..1),
-               color: [true,false].shuffle.shift,
-               hair_extension: [true,false].shuffle.shift,
-               nail: [true,false].shuffle.shift,
-               reason: rand(0..1),
-               hair_type: rand(0..2),
-               area_id: 435,
-               prefecture_id: 25,
-               hair_style: rand(0..4))
-end
-
-20.times do |n|
-  name     = Faker::Name.name
-  email    = "a#{n+80}@a.a"
-  password = "aaaaaa"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now,
-               birth: birth[rand(1..6)],
-               sex: rand(0..1),
-               color: [true,false].shuffle.shift,
-               hair_extension: [true,false].shuffle.shift,
-               nail: [true,false].shuffle.shift,
-               reason: rand(0..1),
-               hair_type: rand(0..2),
-               area_id: 707,
-               prefecture_id: 47,
-               hair_style: rand(0..4))
-end
-
-20.times do |n|
-  name     = Faker::Name.name
-  email    = "s#{n}@a.a"
-  password = "aaaaaa"
-  User.create!(name:  name,
-               email: email,
-               password:              password,
-               password_confirmation: password,
-               activated: true,
-               activated_at: Time.zone.now,
-               birth: birth[rand(1..6)],
-               sex: rand(0..1),
-               area_id: 707,
-               prefecture_id: 47,
-               staff: true)
+  User.create!(
+    name: name,
+    email: email,
+    password: password,
+    password_confirmation: password,
+    activated: true,
+    activated_at: Time.zone.now,
+    birth: birth[rand(1..6)],
+    sex: rand(0..1),
+    area_id: area_pref[num][0],
+    prefecture_id: area_pref[num][1],
+    staff: true,
+    experience: rand(0..3)
+  )
 end
 #
 # users = User.order(:created_at).take(6)
