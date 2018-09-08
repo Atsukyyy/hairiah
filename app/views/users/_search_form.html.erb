@@ -64,10 +64,6 @@
               <%= check_box_tag(:nail, true, checked = false, class: "", id: "checkbox03") %>
               <label for="checkbox03" class="checkbox">ネイル</label>
             </div>
-            <div class="form-group col-md-3">
-              <%= label_tag :reason, "理由" %>
-              <%= select_tag :reason, options_for_select(User.reasons), include_blank: true, class: "form-control" %>
-            </div>
             <%= submit_tag "検索", id: "user_find_btn", class: "form-control" %>
           </div>
         <% end %>

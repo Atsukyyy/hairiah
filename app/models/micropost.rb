@@ -13,7 +13,7 @@ class Micropost < ApplicationRecord
   enum sex: {
     女性: 0,
     男性: 1,
-    どちらでも: 2
+    男女問わず: 2
   }
   enum hair_style: {
     ベリーショート: 0,

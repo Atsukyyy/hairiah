@@ -13,7 +13,7 @@
           <%= f.text_field :title, class: 'form-control input-lg' %>
         </div>
       </div>
-        
+
         <script>
           $(function() {
             $('#micropost_prefecture_id').change(function() {
@@ -100,11 +100,19 @@
             <label for="radio10" class="radio">どれでも</label>
           </div>
         </div>
+        <div class="row">
+          <div class="form-group">
+            <%= f.check_box(:transport_cost, {id: "checkbox05"}) %>
+            <label for="checkbox05" class="checkbox">交通費支給</label>
+          </div>
+        </div>
         <div class="row options-label form-align-left">
           希望オプション
         </div>
         <div class="row user-form-options">
           <div class="form-group form-align-left">
+            <%= f.check_box(:free_cut, {id: "checkbox00"}) %>
+            <label for="checkbox00" class="checkbox">カット希望</label>
             <%= f.check_box(:color, {id: "checkbox01"}) %>
             <label for="checkbox01" class="checkbox">カラー希望</label>
             <%= f.check_box(:hair_extension, {id: "checkbox02"}) %>
@@ -121,7 +129,7 @@
             <%= f.label :content, "内容" %>
             <span class="required">※必須</span>
           </div>
-          <%= f.text_field :content, class: 'form-control input-lg' %>
+          <%= f.text_area :content, rows: 10 %>
         </div>
       </div>
 
@@ -129,3 +137,11 @@
     <% end %>
   </div>
 </div>
+
+<script>
+$(function() {
+  $(document).on("keypress", "input:not(.allow_submit)", function(event) {
+    return event.which !== 13;
+  });
+});
+</script>
