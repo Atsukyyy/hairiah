@@ -49,5 +49,9 @@ $breakpoint-down: (
 }
 
 input, textarea, select{
-    font-size: 16px !important;
+  font-size: 16px !important;
+}
+
+.form-control {
+  background-color: white !important;
 }
