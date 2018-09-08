@@ -25,20 +25,18 @@
     </div>
   </div>
   <div class="hamburger-menu">
-      <div class="header-item-hm"><%= link_to "ホーム", root_path %></div>
-      <div class="header-item-hm"><%= link_to "モデル募集掲示板", microposts_path %></div>
-      <% if logged_in? %>
-        <div class="header-item-hm"><%= link_to "美容師を探す", staffs_path %></div>
-        <div class="header-item-hm"><%= link_to "カットモデルを探す", users_path %></div>
-        <div class="header-item-hm"><%= link_to "マイページへ", current_user %></div>
-        <div class="header-item-hm"><%= link_to "個人設定", edit_user_path(current_user) %></div>
-        <div class="header-item-hm"><%= link_to "ログアウト", logout_path, method: :delete %></div>
-      <% else %>
-        <div class="header-item-hm"><%= link_to "モデル会員登録", signup_page_path %></div>
-        <div class="header-item-hm"><%= link_to "美容師会員登録", staff_signup_page_path %></div>
-        <div class="header-item-hm"><%= link_to "ログイン", login_path %></div>
-      <% end %>
-    </div>
-
+    <div class="header-item-hm"><%= link_to "ホーム", root_path %></div>
+    <div class="header-item-hm"><%= link_to "モデル募集掲示板", microposts_path %></div>
+    <% if logged_in? %>
+      <div class="header-item-hm"><%= link_to "美容師を探す", staffs_path %></div>
+      <div class="header-item-hm"><%= link_to "カットモデルを探す", users_path %></div>
+      <div class="header-item-hm"><%= link_to "マイページへ", current_user %></div>
+      <div class="header-item-hm"><%= link_to "個人設定", edit_user_path(current_user) %></div>
+      <div class="header-item-hm"><%= link_to "ログアウト", logout_path, method: :delete %></div>
+    <% else %>
+      <div class="header-item-hm"><%= link_to "モデル会員登録", signup_page_path %></div>
+      <div class="header-item-hm"><%= link_to "美容師会員登録", staff_signup_page_path %></div>
+      <div class="header-item-hm"><%= link_to "ログイン", login_path %></div>
+    <% end %>
   </div>
 </header>

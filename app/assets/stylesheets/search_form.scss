@@ -1,0 +1,32 @@
+@import "global";
+.find-users {
+  @include mq-down(xl) {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+    background-color: white;
+    padding-top: 80px;
+  }
+  .search-form-inner {
+    height: 100%;
+    overflow: scroll;
+    // -webkit-overflow-scrolling: touch;
+  }
+}
+.search-hamburger-open-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.search-hamburger-close-btn {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 101;
+}
