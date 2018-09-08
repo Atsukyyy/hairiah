@@ -4,8 +4,8 @@
 <%= render partial: 'users/search_form' %>
 
 <%= will_paginate %>
-<div class="user-index row">
-  <ul class="users col-md-4 col-sm-6">
+<div class="user-index">
+  <ul class="users row">
     <% if !@users.present? %>
       <div class="none-users">検索条件に一致するカットモデルはいません</div>
     <% end %>
