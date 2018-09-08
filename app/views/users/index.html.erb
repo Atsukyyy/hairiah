@@ -5,12 +5,12 @@
 
 <%= will_paginate %>
 <div class="user-index">
-  <ul class="users row">
+  <div class="users row">
     <% if !@users.present? %>
       <div class="none-users">検索条件に一致するカットモデルはいません</div>
     <% end %>
     <%= render @users %>
-  </ul>
+  </div>
 </div>
 
 <%= will_paginate %>
