@@ -59,19 +59,17 @@
       </div>
     </div>
     <div class="post-area-right col-xs-4">
-      <div class="post-detail-btn">
-        <%= link_to "応募する", new_micropost_apply_path(@micropost), class: "btn btn-danger" %>
-      </div>
+      <% if current_user.present? && current_user.staff == true %>
+        <div class="post-applicant">応募者一覧</div>
+        <% @applies.zip(@users).each do |apply, user| %>
+          <div><%= link_to user.name, user_path(user) %></div>
+          <div><%= apply.memo %></div>
+        <% end %>
+      <% elsif %>
+        <div class="post-detail-btn">
+          <%= link_to "応募する", new_micropost_apply_path(@micropost), class: "btn btn-danger" %>
+        </div>
+      <% end %>
     </div>
   </div>
-</div>
-
-
-<div class="row">
-  <% if current_user.present? && current_user.staff == true %>
-    <% @applies.zip(@users).each do |apply, user| %>
-      <%= link_to user.name, user_path(user) %>
-      <%= apply.memo %>
-    <% end %>
-  <% end %>
 </div>
