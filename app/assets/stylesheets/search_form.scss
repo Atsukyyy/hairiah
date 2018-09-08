@@ -11,10 +11,13 @@
     z-index: 100;
     background-color: white;
     padding-top: 80px;
+    overflow-y: scroll;
+    height: 100%;
   }
   .search-form-inner {
-    height: 100%;
-    overflow: scroll;
+    // height: 100%;
+    // width: 100%;
+    // overflow: scroll;
     // -webkit-overflow-scrolling: touch;
   }
 }
