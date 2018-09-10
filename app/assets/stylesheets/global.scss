@@ -50,12 +50,16 @@ $breakpoint-down: (
 
 input, textarea, select{
   font-size: 16px !important;
+  background-color: white;
   // -webkit-appearance : none;
 }
 
-// select {
+select {
 //   border : 1px solid #ccc;
-//   -webkit-border-radius : 0;
-// -webkit-appearance : none;
-//   -webkit-tap-highlight-color : rgba(0,0,0,0);
-// }
+  -webkit-border-radius : 0;
+  -webkit-appearance : none;
+  -webkit-tap-highlight-color : rgba(0,0,0,0);
+}
+.fix-input-lg {
+  line-height: 1.33333333 !important;
+}

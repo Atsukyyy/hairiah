@@ -29,7 +29,7 @@
                 use_two_digit_numbers: true,
                 date_separator: '%s'
               },
-              { class: 'form-control input-lg' }
+              { class: 'form-control input-lg fix-input-lg' }
             ),
             '年 ', '月 ') + '日'
           %>
@@ -44,7 +44,7 @@
                 default: Time.zone.now.ago(25.years),
                 use_two_digit_numbers: true
               },
-              { class: 'input-lg col-sm-4 col-xs-4 birth-form-sp' }
+              { class: 'input-lg col-sm-4 col-xs-4 birth-form-sp fix-input-lg' }
             )
             )
           %>
@@ -93,7 +93,7 @@
         <div class="control-label form-align-left">
           <%= f.label :prefecture_id, "都道府県" %>
           <span class="required">※必須</span>
-          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {selected: 12}, class: 'form-control input-lg' %>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {selected: 12}, class: 'form-control input-lg fix-input-lg' %>
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@
           <%= f.label :area_id, "市区町村" %>
           <span class="required">※必須</span>
         </div>
-        <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control input-lg' %>
+        <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control input-lg fix-input-lg' %>
       </div>
     </div>
 
