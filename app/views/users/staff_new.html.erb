@@ -103,7 +103,7 @@
           <%= f.label :area_id, "市区町村" %>
           <span class="required">※必須</span>
         </div>
-        <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control input-lg' %>
+        <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control input-lg fix-input-lg' %>
       </div>
     </div>
     <div class="row">
@@ -111,7 +111,7 @@
         <div class="control-label form-align-left">
           <%= f.label :experience, "美容師歴" %>
         </div>
-        <%= f.select :experience, options_for_select(User.experiences), {include_blank: true}, class: "form-control input-lg" %>
+        <%= f.select :experience, options_for_select(User.experiences), {include_blank: true}, class: "form-control input-lg fix-input-lg" %>
         もしくは
         <div class="control-label form-align-left">
           <%= f.label :qualification, "美容師免許取得時期(予定)" %>
@@ -125,7 +125,7 @@
               discard_day: true,
               include_blank: true
             },
-            {class: "form-control input-lg"})
+            {class: "form-control input-lg fix-input-lg"})
           %>
         </div>
       </div>
