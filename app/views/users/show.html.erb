@@ -2,12 +2,6 @@
 
 <div class="row">
   <aside class="col-md-4 col-xs-4 ">
-    <% if @user.image.present?  %>
-      <%= cl_image_tag(@user.image_url, width: 300, height: 200, crop: :fill, class: 'user-image') %>
-    <% else %>
-      <%= image_tag '/no-image.png', class: "no-image"%>
-    <% end %>
-
 
     <section class="stats">
       <%= render 'shared/stats' %>

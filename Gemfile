@@ -43,6 +43,7 @@ group :development do
   gem 'spring-watcher-listen', '2.0.1'
   gem 'letter_opener_web'
   gem 'dotenv-rails', require: 'dotenv/rails-now'
+  gem 'rails-erd'
 end
 
 group :test do

@@ -7,6 +7,9 @@ margin-bottom: 10px;
   margin-bottom: 20px;
   padding: 10px;
   border: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @include mq-up(lg) {
     height: 250px;
   }
@@ -46,4 +49,10 @@ margin-bottom: 10px;
 
 .post-applicant {
   font-weight: bold;
+}
+
+.post-show {
+  .post-area {
+    display: block;
+  }
 }

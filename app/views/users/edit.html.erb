@@ -1,14 +1,22 @@
 <% provide(:title, "Edit user") %>
 <h1>個人設定画面</h1>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
+      <div class="row user-edit-image">
+        <div class="col-xs-6 col-xs-offset-3">
+          <% if @user.image.present?  %>
+            <%= cl_image_tag(@user.image_url, width: 300, height: 200, crop: :fill, class: 'user-image') %>
+          <% else %>
+            <%= image_tag '/no-image.png', class: "no-image"%>
+          <% end %>
+        </div>
+      </div>
 
       <div class="row">
         <div class="form-group">
           <%= f.label :name, "お名前/ニックネーム" %>
-          <span class="required">※必須</span>
           <%= f.text_field :name, class: 'form-control input-lg' %>
         </div>
       </div>
@@ -17,7 +25,6 @@
         <div class="form-group">
           <div class="control-label form-align-left">
             <%= f.label :birth, "生年月日" %>
-            <span class="required">※必須</span>
           </div>
           <div class="form-inline hidden-sp">
             <%= raw sprintf(
@@ -56,7 +63,6 @@
         <div class="form-group">
           <div class="control-label">
             <%= f.label :sex, "性別" %>
-            <span class="required">※必須</span>
           </div>
           <div class="radio-inline">
             <%= f.radio_button :sex, "女性", id: "radio01" %>
@@ -95,14 +101,12 @@
       <div class="row">
         <div class="form-group">
           <%= f.label :prefecture_id, "都道府県" %>
-          <span class="required">※必須</span>
           <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: 'form-control input-lg' %>
         </div>
       </div>
       <div class="row">
         <div class="form-group">
           <%= f.label :area_id, "市区町村" %>
-          <span class="required">※必須</span>
           <%= f.collection_select :area_id, Area.all, :id, :name, {}, class: 'form-control input-lg' %>
         </div>
       </div>
@@ -140,7 +144,7 @@
         </div>
 
         <div class="row options-label">
-          可能なオプション
+          施術可能なオプション
         </div>
         <div class="row user-form-options">
           <div class="form-group">
@@ -148,15 +152,42 @@
             <label for="checkbox01" class="checkbox">カラー</label>
             <%= f.check_box(:hair_extension, {id: "checkbox02"}) %>
             <label for="checkbox02" class="checkbox">エクステ</label>
-            <%= f.check_box(:nail, {id: "checkbox03"}) %>
-            <label for="checkbox03" class="checkbox">ネイル</label>
+            <%= f.check_box(:hair_permed, {id: "checkbox03"}) %>
+            <label for="checkbox03" class="checkbox">パーマ</label>
+            <%= f.check_box(:nail, {id: "checkbox04"}) %>
+            <label for="checkbox04" class="checkbox">ネイル</label>
           </div>
         </div>
         <div class="row">
           <div class="form-group form-align-left">
-            <%= f.check_box(:use, {id: "checkbox04"}) %>
-            <label for="checkbox04" class="checkbox">撮影/宣伝利用</label>
-            ※美容院/美容師の宣伝用の使用を許可する
+            <%= f.check_box(:use, {id: "checkbox05"}) %>
+            <label for="checkbox05" class="checkbox">撮影/宣伝利用</label>
+            <div>※美容院/美容師の宣伝用の使用を許可する</div>
+          </div>
+        </div>
+      <% else %>
+        <div class="row">
+          <div class="form-group">
+            <div class="control-label form-align-left">
+              <%= f.label :experience, "美容師歴" %>
+            </div>
+            <%= f.select :experience, options_for_select(User.experiences), {include_blank: true}, class: "form-control input-lg" %>
+            もしくは
+            <div class="control-label form-align-left">
+              <%= f.label :qualification, "美容師免許取得時期(予定)" %>
+            </div>
+            <div class="form-inline">
+              <%= f.date_select(
+                :qualification, {
+                  start_year: Time.now.year,
+                  end_year:   (Time.now.year + 5),
+                  default:    Date.new(1989, 1, 1),
+                  discard_day: true,
+                  include_blank: true
+                },
+                {class: "form-control input-lg"})
+              %>
+            </div>
           </div>
         </div>
       <% end %>
@@ -164,7 +195,6 @@
         <div class="form-group">
           <div class="control-label">
             <%= f.label :email, "メールアドレス" %>
-            <span class="required">※必須</span>
           </div>
           <%= f.email_field :email, class: 'form-control input-lg' %>
         </div>

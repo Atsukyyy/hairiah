@@ -55,7 +55,6 @@
       <div class="form-group">
         <div class="control-label form-align-left">
           <%= f.label :sex, "性別" %>
-          <span class="required">※必須</span>
         </div>
         <div class="radio-inline">
           <%= f.radio_button :sex, "女性", id: "radio01" %>
@@ -85,9 +84,8 @@
 
     <div class="row">
       <div class="form-group">
-        <%= f.fields_for :thumbnails do |thumbnail| %>
-          <%= thumbnail.file_field :image, class: " input-lg" %>
-        <% end %>
+        <%= f.label :image, "写真" %>
+        <%= f.file_field :image, id: "user_img", class: "form-control input-lg" %>
       </div>
     </div>
     <div class="row">

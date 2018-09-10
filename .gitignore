@@ -32,3 +32,5 @@ config/secrets.yml.key
 .env
 
 /public/uploads/tmp
+
+erd.pdf

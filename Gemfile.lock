@@ -58,6 +58,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    choice (0.2.0)
     cloudinary (1.9.1)
       aws_cf_signer
       rest-client
@@ -212,6 +213,11 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-erd (1.5.2)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
     rails-i18n (5.1.1)
@@ -231,6 +237,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    ruby-graphviz (1.2.3)
     ruby-progressbar (1.10.0)
     sass (3.5.7)
       sass-listen (~> 4.0.0)
@@ -316,6 +323,7 @@ DEPENDENCIES
   puma (= 3.9.1)
   rails (= 5.1.2)
   rails-controller-testing (= 1.0.2)
+  rails-erd
   rails-i18n
   sass-rails (= 5.0.6)
   spring (= 2.0.2)

@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 20180905085627) do
     t.boolean "hair_extension"
     t.integer "prefecture_id"
     t.text "title"
-    t.text "memo"
     t.integer "sex"
     t.datetime "start_datetime"
     t.boolean "free_cut"
@@ -64,13 +63,6 @@ ActiveRecord::Schema.define(version: 20180905085627) do
   end
 
   create_table "prefectures", force: :cascade do |t|
-    t.string "name"
-    t.integer "region_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "regions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -124,8 +116,7 @@ ActiveRecord::Schema.define(version: 20180905085627) do
     t.boolean "use"
     t.date "qualification"
     t.integer "experience"
-    t.string "hair_permed"
-    t.string "boolean"
+    t.boolean "hair_permed"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
