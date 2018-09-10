@@ -4,6 +4,14 @@ header {
   color: black;
   height: 80px;
   padding: 10px 20px;
+  a {
+    color: black;
+    &:hover {
+      opacity: 0.7;
+      color: black;
+      text-decoration: none;
+    }
+  }
 }
 
 .header-fix {

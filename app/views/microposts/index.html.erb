@@ -8,8 +8,8 @@
   <% end %>
   <div class="row">
     <% @microposts.each do |micropost| %>
-      <div class="post-area col-md-5 col-md-offset-1 row">
-        <div class="post-area-left col-xs-10 col-sm-8 col-lg-7">
+      <div class="post-area row">
+        <div class="post-area-left col-xs-10 col-sm-8">
           <div class="post-staff">
             <%= link_to micropost.user.name, user_path(micropost.user) %>
           </div>
@@ -17,44 +17,84 @@
             <%= micropost.title %>
           </div>
           <div class="post-tag">
-            <% if micropost.color.present? %>
+            <% if micropost.post_tag.women.present? %>
               <div class="post-tag-inner">
-                カラー
+                レディース
               </div>
             <% end %>
-            <% if micropost.hair_extension.present? %>
+            <% if micropost.post_tag.mens.present? %>
               <div class="post-tag-inner">
-                エクステ
+                メンズ
               </div>
             <% end %>
-            <% if micropost.sex.present? %>
-              <div class="post-tag-inner">
-                <%= micropost.sex %>
-              </div>
-            <% end %>
-            <% if micropost.free_cut.present? %>
+            <% if micropost.post_tag.cut.present? %>
               <div class="post-tag-inner">
                 カット
               </div>
             <% end %>
-            <% if micropost.transport_cost.present? %>
+            <% if micropost.post_tag.color.present? %>
               <div class="post-tag-inner">
-                交通費支給
+                カラー
               </div>
             <% end %>
-            <% if micropost.hair_style.present? %>
+            <% if micropost.post_tag.hair_extension.present? %>
               <div class="post-tag-inner">
-                <%= micropost.hair_style %>
+                エクステ
               </div>
             <% end %>
-            <% if micropost.hair_type.present? %>
+            <% if micropost.post_tag.very_short.present? %>
               <div class="post-tag-inner">
-                <%= micropost.hair_type %>
+                ベリーショート
               </div>
             <% end %>
-            <% if micropost.nail.present? %>
+            <% if micropost.post_tag.short.present? %>
+              <div class="post-tag-inner">
+                ショート
+              </div>
+            <% end %>
+            <% if micropost.post_tag.medium.present? %>
+              <div class="post-tag-inner">
+                ミディアム
+              </div>
+            <% end %>
+            <% if micropost.post_tag.semi_long.present? %>
+              <div class="post-tag-inner">
+                セミロング
+              </div>
+            <% end %>
+            <% if micropost.post_tag.long.present? %>
+              <div class="post-tag-inner">
+                ロング
+              </div>
+            <% end %>
+            <% if micropost.post_tag.straight.present? %>
+              <div class="post-tag-inner">
+                直毛
+              </div>
+            <% end %>
+            <% if micropost.post_tag.rather_curly.present? %>
+              <div class="post-tag-inner">
+                ややクセ毛
+              </div>
+            <% end %>
+            <% if micropost.post_tag.curly.present? %>
+              <div class="post-tag-inner">
+                クセ毛
+              </div>
+            <% end %>
+            <% if micropost.post_tag.shampoo.present? %>
+              <div class="post-tag-inner">
+                シャンプー
+              </div>
+            <% end %>
+            <% if micropost.post_tag.nail.present? %>
               <div class="post-tag-inner">
                 ネイル
+              </div>
+            <% end %>
+            <% if micropost.post_tag.transport_cost.present? %>
+              <div class="post-tag-inner">
+                交通費支給
               </div>
             <% end %>
           </div>
@@ -67,7 +107,7 @@
             <%= micropost.content.truncate(20) %>
           </div>
         </div>
-        <div class="post-area-right col-xs-2 col-sm-5 col-lg-4">
+        <div class="post-area-right col-xs-2 col-sm-4">
 
           <div class="">
             <%= link_to micropost_path(micropost), class: "visible-sp" do %>

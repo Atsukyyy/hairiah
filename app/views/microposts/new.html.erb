@@ -46,64 +46,56 @@
             <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control input-lg fix-input-lg' %>
           </div>
         </div>
+        <%= f.fields_for :post_tag, @micropost.post_tag || PostTag.new do |t| %>
+          <div class="row">
+            <div class="form-group">
+              <div class="control-label form-align-left">
+                募集する性別
+              </div>
+              <%= t.check_box(:women, {id: "checkbox13"}) %>
+              <label for="checkbox13" class="checkbox">女性</label>
+              <%= t.check_box(:mens, {id: "checkbox14"}) %>
+              <label for="checkbox14" class="checkbox">男性</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group form-align-left">
+
+              <div class="control-label">
+                募集する髪型
+              </div>
+              <%= t.check_box(:very_short, {id: "checkbox05"}) %>
+              <label for="checkbox05" class="checkbox">ベリーショート</label>
+              <%= t.check_box(:short, {id: "checkbox06"}) %>
+              <label for="checkbox06" class="checkbox">ショート</label>
+              <%= t.check_box(:medium, {id: "checkbox07"}) %>
+              <label for="checkbox07" class="checkbox">ミディアム</label>
+              <%= t.check_box(:semi_long, {id: "checkbox08"}) %>
+              <label for="checkbox08" class="checkbox">セミロング</label>
+              <%= t.check_box(:long, {id: "checkbox09"}) %>
+              <label for="checkbox09" class="checkbox">ロング</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group form-align-left">
+              <div class="control-label">
+                <%= t.label :hair_type, "髪質" %>
+              </div>
+              <%= t.check_box(:straight, {id: "checkbox10"}) %>
+              <label for="checkbox10" class="checkbox">直毛</label>
+              <%= t.check_box(:rather_curly, {id: "checkbox11"}) %>
+              <label for="checkbox11" class="checkbox">ややクセ毛</label>
+              <%= t.check_box(:curly, {id: "checkbox12"}) %>
+              <label for="checkbox12" class="checkbox">クセ毛</label>
+
+            </div>
+          </div>
+
         <div class="row">
           <div class="form-group">
-            <div class="control-label form-align-left">
-              <%= f.label :sex, "募集する性別" %>
-              <span class="required">※必須</span>
-            </div>
-            <div class="radio-inline">
-              <%= f.radio_button :sex, "女性", id: "radio01" %>
-              <label for="radio01" class="radio">女性</label>
-            </div>
-            <div class="radio-inline">
-              <%= f.radio_button :sex, "男性", id: "radio02" %>
-              <label for="radio02" class="radio">男性</label>
-            </div>
-            <div class="radio-inline">
-              <%= f.radio_button :sex, "男女問わず", id: "radio03" %>
-              <label for="radio03" class="radio">どちらでも</label>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group form-align-left">
-            <div class="control-label">
-              <%= f.label :hair_style, "現在の髪型" %>
-            </div>
-            <%= f.radio_button :hair_style, "ベリーショート", id: "radio03-1" %>
-            <label for="radio03-1" class="radio">ベリーショート</label>
-            <%= f.radio_button :hair_style, "ショート", id: "radio03-2" %>
-            <label for="radio03-2" class="radio">ショート</label>
-            <%= f.radio_button :hair_style, "ミディアム", id: "radio04" %>
-            <label for="radio04" class="radio">ミディアム</label>
-            <%= f.radio_button :hair_style, "セミロング", id: "radio05" %>
-            <label for="radio05" class="radio">セミロング</label>
-            <%= f.radio_button :hair_style, "ロング", id: "radio06" %>
-            <label for="radio06" class="radio">ロング</label>
-            <%= f.radio_button :hair_style, "どの髪型でも", id: "radio07" %>
-            <label for="radio07" class="radio">どれでも</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group form-align-left">
-            <div class="control-label">
-              <%= f.label :hair_type, "髪質" %>
-            </div>
-            <%= f.radio_button :hair_type, "直毛", id: "radio07" %>
-            <label for="radio07" class="radio">直毛</label>
-            <%= f.radio_button :hair_type, "ややクセ毛", id: "radio08" %>
-            <label for="radio08" class="radio">ややクセ毛</label>
-            <%= f.radio_button :hair_type, "クセ毛", id: "radio09" %>
-            <label for="radio09" class="radio">クセ毛</label>
-            <%= f.radio_button :hair_type, "どの髪質でも", id: "radio10" %>
-            <label for="radio10" class="radio">どれでも</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <%= f.check_box(:transport_cost, {id: "checkbox05"}) %>
-            <label for="checkbox05" class="checkbox">交通費支給</label>
+            <%= t.check_box(:transport_cost, {id: "checkbox15"}) %>
+            <label for="checkbox15" class="checkbox">交通費支給</label>
           </div>
         </div>
         <div class="row options-label form-align-left">
@@ -111,18 +103,19 @@
         </div>
         <div class="row user-form-options">
           <div class="form-group form-align-left">
-            <%= f.check_box(:free_cut, {id: "checkbox00"}) %>
-            <label for="checkbox00" class="checkbox">カット希望</label>
-            <%= f.check_box(:color, {id: "checkbox01"}) %>
-            <label for="checkbox01" class="checkbox">カラー希望</label>
-            <%= f.check_box(:hair_extension, {id: "checkbox02"}) %>
-            <label for="checkbox02" class="checkbox">エクステ希望</label>
-            <%= f.check_box(:nail, {id: "checkbox03"}) %>
-            <label for="checkbox03" class="checkbox">ネイル希望</label>
-            <%= f.check_box(:shampoo, {id: "checkbox04"}) %>
-            <label for="checkbox04" class="checkbox">シャンプー希望</label>
+            <%= t.check_box(:cut, {id: "checkbox00"}) %>
+            <label for="checkbox00" class="checkbox">カット</label>
+            <%= t.check_box(:color, {id: "checkbox01"}) %>
+            <label for="checkbox01" class="checkbox">カラー</label>
+            <%= t.check_box(:hair_extension, {id: "checkbox02"}) %>
+            <label for="checkbox02" class="checkbox">エクステ</label>
+            <%= t.check_box(:nail, {id: "checkbox03"}) %>
+            <label for="checkbox03" class="checkbox">ネイル</label>
+            <%= t.check_box(:shampoo, {id: "checkbox04"}) %>
+            <label for="checkbox04" class="checkbox">シャンプー</label>
           </div>
         </div>
+      <% end %>
       <div class="row">
         <div class="form-group">
           <div class="control-label form-align-left">

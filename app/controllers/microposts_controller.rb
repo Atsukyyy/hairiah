@@ -18,6 +18,8 @@ class MicropostsController < ApplicationController
 
   def new
     @micropost = current_user.microposts.build
+    # debugger
+    # @micropost.post_tag.build
   end
 
   def create
@@ -47,7 +49,7 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :picture, :area_id, :prefecture_id, :color, :hair_extension, :sex, :nail, :shampoo, :title)
+      params.require(:micropost).permit(:content, :picture, :area_id, :prefecture_id, :color, :hair_extension, :sex, :nail, :shampoo, :title, post_tag_attributes: [:very_short, :short, :medium, :semi_long, :long, :straight, :rather_curly, :curly, :mens, :women, :color, :cut, :hair_extension, :nail, :shampoo, :transport_cost])
     end
 
     def correct_user

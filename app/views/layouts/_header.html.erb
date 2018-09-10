@@ -10,6 +10,7 @@
       <i class="fa fa-chevron-up"></i>
     </div>
     <div  class="header-items">
+      <div class="header-item"><%= link_to "Hairiahの使い方", "#" %></div>
       <div class="header-item"><%= link_to "モデル募集掲示板", microposts_path %></div>
       <% if logged_in? %>
         <div class="header-item"><%= link_to "美容師を探す", staffs_path %></div>
@@ -26,6 +27,7 @@
   </div>
   <div class="hamburger-menu">
     <div class="header-item-hm"><%= link_to "ホーム", root_path %></div>
+    <div class="header-item-hm"><%= link_to "Hairiahの使い方", "#" %></div>
     <div class="header-item-hm"><%= link_to "モデル募集掲示板", microposts_path %></div>
     <% if logged_in? %>
       <div class="header-item-hm"><%= link_to "美容師を探す", staffs_path %></div>

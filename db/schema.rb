@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180905085627) do
+ActiveRecord::Schema.define(version: 20180910102317) do
 
   create_table "applies", force: :cascade do |t|
     t.string "memo"
@@ -60,6 +60,29 @@ ActiveRecord::Schema.define(version: 20180905085627) do
     t.boolean "nail"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "post_tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "very_short"
+    t.boolean "short"
+    t.boolean "medium"
+    t.boolean "semi_long"
+    t.boolean "long"
+    t.boolean "straight"
+    t.boolean "rather_curly"
+    t.boolean "curly"
+    t.integer "micropost_id"
+    t.integer "sex"
+    t.boolean "color"
+    t.boolean "cut"
+    t.boolean "hair_extension"
+    t.boolean "nail"
+    t.boolean "shampoo"
+    t.boolean "transport_cost"
+    t.boolean "mens"
+    t.boolean "women"
   end
 
   create_table "prefectures", force: :cascade do |t|
