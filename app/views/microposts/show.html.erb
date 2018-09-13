@@ -1,104 +1,106 @@
-<div class="row post-show">
-  <div class="post-area row post-area-height">
-    <div class="post-area-left col-xs-8">
-      <div class="post-staff">
-        <%= link_to @micropost.user.name, user_path(@micropost.user) %>
-      </div>
-      <div class="post-title">
-        <%= @micropost.title %>
-      </div>
-      <div class="post-tag">
-        <% if @micropost.post_tag.women.present? %>
-          <div class="post-tag-inner">
-            レディース
+<div class="row post-show row">
+  <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
+    <div class="post-area post-area-height">
+      <div class="post-area-left">
+        <div class="post-staff">
+          <%= link_to @micropost.user.name, user_path(@micropost.user) %>
+        </div>
+        <div class="post-title">
+          <%= @micropost.title %>
+        </div>
+        <div class="post-tag">
+          <% if @micropost.post_tag.women.present? %>
+            <div class="post-tag-inner">
+              レディース
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.mens.present? %>
+            <div class="post-tag-inner">
+              メンズ
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.cut.present? %>
+            <div class="post-tag-inner">
+              カット
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.color.present? %>
+            <div class="post-tag-inner">
+              カラー
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.hair_extension.present? %>
+            <div class="post-tag-inner">
+              エクステ
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.very_short.present? %>
+            <div class="post-tag-inner">
+              ベリーショート
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.short.present? %>
+            <div class="post-tag-inner">
+              ショート
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.medium.present? %>
+            <div class="post-tag-inner">
+              ミディアム
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.semi_long.present? %>
+            <div class="post-tag-inner">
+              セミロング
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.long.present? %>
+            <div class="post-tag-inner">
+              ロング
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.straight.present? %>
+            <div class="post-tag-inner">
+              直毛
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.rather_curly.present? %>
+            <div class="post-tag-inner">
+              ややクセ毛
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.curly.present? %>
+            <div class="post-tag-inner">
+              クセ毛
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.shampoo.present? %>
+            <div class="post-tag-inner">
+              シャンプー
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.nail.present? %>
+            <div class="post-tag-inner">
+              ネイル
+            </div>
+          <% end %>
+          <% if @micropost.post_tag.transport_cost.present? %>
+            <div class="post-tag-inner">
+              交通費支給
+            </div>
+          <% end %>
+        </div>
+        <div class="post-address">
+          <div class="post-address-text">
+            <%= @micropost.prefecture.name %> <%= @micropost.area.name %>
           </div>
-        <% end %>
-        <% if @micropost.post_tag.mens.present? %>
-          <div class="post-tag-inner">
-            メンズ
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.cut.present? %>
-          <div class="post-tag-inner">
-            カット
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.color.present? %>
-          <div class="post-tag-inner">
-            カラー
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.hair_extension.present? %>
-          <div class="post-tag-inner">
-            エクステ
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.very_short.present? %>
-          <div class="post-tag-inner">
-            ベリーショート
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.short.present? %>
-          <div class="post-tag-inner">
-            ショート
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.medium.present? %>
-          <div class="post-tag-inner">
-            ミディアム
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.semi_long.present? %>
-          <div class="post-tag-inner">
-            セミロング
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.long.present? %>
-          <div class="post-tag-inner">
-            ロング
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.straight.present? %>
-          <div class="post-tag-inner">
-            直毛
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.rather_curly.present? %>
-          <div class="post-tag-inner">
-            ややクセ毛
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.curly.present? %>
-          <div class="post-tag-inner">
-            クセ毛
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.shampoo.present? %>
-          <div class="post-tag-inner">
-            シャンプー
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.nail.present? %>
-          <div class="post-tag-inner">
-            ネイル
-          </div>
-        <% end %>
-        <% if @micropost.post_tag.transport_cost.present? %>
-          <div class="post-tag-inner">
-            交通費支給
-          </div>
-        <% end %>
-      </div>
-      <div class="post-address">
-        <div class="post-address-text">
-          <%= @micropost.prefecture.name %> <%= @micropost.area.name %>
+        </div>
+        <div class="post-content">
+          <%= simple_format(h(@micropost.content)) %>
         </div>
       </div>
-      <div class="post-content">
-        <%= simple_format(h(@micropost.content)) %>
-      </div>
     </div>
-    <div class="post-area-right col-xs-4">
+    <div class="post-area-right">
       <% if current_user.present? && current_user.staff == true %>
         <div class="post-applicant">応募者一覧</div>
         <% @applies.zip(@users).each do |apply, user| %>
@@ -107,9 +109,10 @@
         <% end %>
       <% elsif %>
         <div class="post-detail-btn">
-          <%= link_to "応募する", new_micropost_apply_path(@micropost), class: "btn btn-danger" %>
+          <%= link_to "応募フォームへ", new_micropost_apply_path(@micropost), class: "btn btn-danger" %>
         </div>
       <% end %>
     </div>
+
   </div>
 </div>

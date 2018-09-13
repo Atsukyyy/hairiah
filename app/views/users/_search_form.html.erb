@@ -8,24 +8,20 @@
     </div>
     <div class="search-form-inner">
       <%= form_tag(users_path, method: "get") do %>
+        <%= submit_tag "条件をリセット", id: "search-reset-btn", class: "form-control" %>
         <div class="row">
           <div class="form-group col-md-3">
             <%= label_tag :name, "名前" %>
-            <%= text_field_tag :name, "", class: "form-control" %>
+            <%= text_field_tag :name, params[:name], class: "form-control" %>
           </div>
 
           <div class="form-group col-md-2">
             <%= label_tag :sex, "性別" %>
-            <%= select_tag :sex, options_for_select(User.sexes), include_blank: true, class: "form-control" %>
+            <%= select_tag :sex, options_for_select(User.sexes, selected: params[:sex]), include_blank: true, class: "form-control" %>
           </div>
 
           <div class="form-group col-md-2">
-            <%= label_tag :age, "年齢（何歳から）" %>
-            <%= number_field_tag :age_from, "", class: "form-control" %>
-          </div>
-          <div class="form-group col-md-2">
-            <%= label_tag :age, "年齢（何歳まで）" %>
-            <%= number_field_tag :age_to, "", class: "form-control" %>
+            <%= select_tag :age, options_for_select([["19歳以下","1"], ["20代","2"], ["30代","3"], ["40代","4"], ["50歳以上","5"]]) %>
           </div>
 
         </div>
@@ -45,12 +41,12 @@
         <div class="row">
           <div class="form-group col-md-3">
             <%= label_tag :prefecture_id, "都道府県" %>
-            <%= select_tag :prefecture_id, options_from_collection_for_select(Prefecture.all, :id, :name), include_blank: true, id: "prefecture_id", class: "form-control" %>
+            <%= select_tag :prefecture_id, options_from_collection_for_select(Prefecture.all, :id, :name, params[:prefecture_id]), include_blank: true, id: "prefecture_id", class: "form-control" %>
           </div>
 
           <div class="form-group col-md-3">
             <%= label_tag :area_id, "市町村区" %>
-            <%= select_tag :area_id, options_from_collection_for_select(Area.all, :id, :name), include_blank: true, id: "area_id", class: "form-control" %>
+            <%= select_tag :area_id, options_from_collection_for_select(Area.all, :id, :name, params[:area_id]), include_blank: true, id: "area_id", class: "form-control" %>
           </div>
           <!-- regionからは検索しない -->
 
@@ -58,15 +54,15 @@
 
         <div class="row">
           <div class="form-group radio-inline">
-            <%= check_box_tag(:color, true, checked = false, class: "", id: "checkbox01") %>
+            <%= check_box_tag(:color, true, params[:color], class: "", id: "checkbox01") %>
             <label for="checkbox01" class="checkbox">カラー</label>
           </div>
           <div class="form-group radio-inline">
-            <%= check_box_tag(:hair_extension, true, checked = false, class: "", id: "checkbox02") %>
+            <%= check_box_tag(:hair_extension, true, params[:hair_extension], class: "", id: "checkbox02") %>
             <label for="checkbox02" class="checkbox">エクステ</label>
           </div>
           <div class="form-group radio-inline">
-            <%= check_box_tag(:nail, true, checked = false, class: "", id: "checkbox03") %>
+            <%= check_box_tag(:nail, true, params[:nail], class: "", id: "checkbox03") %>
             <label for="checkbox03" class="checkbox">ネイル</label>
           </div>
           <%= submit_tag "検索", id: "user_find_btn", class: "form-control" %>

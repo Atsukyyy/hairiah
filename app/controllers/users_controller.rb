@@ -10,20 +10,8 @@ class UsersController < ApplicationController
     if params[:name].present?
       @users = @users.get_by_name params[:name]
     end
-    if params[:age_from].present? && params[:age_to].present?
-      if params[:age_from].present? && params[:age_to].present?
-        if params[:age_from] < params[:age_to]
-          @users = @users.get_by_age(params[:age_from], params[:age_to])
-        else
-          @users = @users.get_by_age(params[:age_to], params[:age_from])
-        end
-      elsif params[:age_from].present? && params[:age_to].empty?
-        flash.now[:danger] = "年齢欄を使用するときは両方に値を入力してください。"
-        render 'index'
-      elsif params[:age_from].empty? && params[:age_to].present?
-        flash.now[:danger] = "年齢欄を使用するときは両方に値を入力してください。"
-        render 'index'
-      end
+    if params[:age].present?
+      @users = @users.get_by_age params[:age]
     end
     if params[:sex].present?
       @users = @users.get_by_sex params[:sex]
@@ -48,8 +36,8 @@ class UsersController < ApplicationController
     end
     if params[:reason].present?
       @users = @users.get_by_reason params[:reason]
-      debugger
     end
+    render 'index'
   end
 
   def staff_index
@@ -91,6 +79,7 @@ class UsersController < ApplicationController
     prefecture = area.prefecture
     @user = area.users.build(user_params)
     @user.prefecture = prefecture
+    @user.last_accessed_at = Time.now
     if @user.save # => Validation
       # Sucess
       @user.send_activation_email

@@ -13,7 +13,14 @@
           <% end %>
         </div>
       </div>
-
+      <div class="row">
+        <div class="form-group">
+          <div class="control-label form-align-left">
+            <%= f.label :image, "写真を変更する" %>
+          </div>
+          <%= f.file_field :image, id: "user_img", class: "form-control input-lg" %>
+        </div>
+      </div>
       <div class="row">
         <div class="form-group">
           <%= f.label :name, "お名前/ニックネーム" %>
@@ -90,14 +97,6 @@
         });
       </script>
 
-      <div class="row">
-        <div class="form-group">
-          <div class="control-label form-align-left">
-            <%= f.label :image, "写真（髪型がわかるように正面から）" %>
-          </div>
-          <%= f.file_field :image, id: "user_img", class: "form-control input-lg" %>
-        </div>
-      </div>
       <div class="row">
         <div class="form-group">
           <%= f.label :prefecture_id, "都道府県" %>

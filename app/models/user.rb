@@ -158,8 +158,8 @@ class User < ApplicationRecord
     where("name like ?", "%#{name}%")
   }
   # 年齢による絞り込み
-  scope :get_by_age, ->(age_from, age_to) {
-    where(age: age_from..age_to)
+  scope :get_by_age, ->(age) {
+    where(age: age)
   }
   # 性別による絞り込み
   scope :get_by_sex, ->(sex) {
