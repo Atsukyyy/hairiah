@@ -7,28 +7,37 @@
       <i class="fa fa-chevron-left"></i>モデル検索画面を閉じる
     </div>
     <div class="search-form-inner">
-      <%= form_tag(users_path, method: "get") do %>
-        <%= submit_tag "条件をリセット", id: "search-reset-btn", class: "form-control" %>
+      <%= search_form_for @search do |f| %>
         <div class="row">
-          <div class="form-group col-md-3">
-            <%= label_tag :name, "名前" %>
-            <%= text_field_tag :name, params[:name], class: "form-control" %>
+          <div class="form-group col-xs-4">
+            <%= f.label :name_cont, "名前" %>
+            <% if params_present?(:name_cont) %>
+              <%= f.text_field :name_cont, value: params[:q][:name_cont], class: "form-control" %>
+            <% else %>
+              <%= f.text_field :name_cont, class: "form-control input-lg" %>
+            <% end %>
           </div>
-
-          <div class="form-group col-md-2">
-            <%= label_tag :sex, "性別" %>
-            <%= select_tag :sex, options_for_select(User.sexes, selected: params[:sex]), include_blank: true, class: "form-control" %>
+          <div class="form-group col-xs-4">
+            <%= f.label :sex, "性別" %>
+            <% if params_present?(:sex_eq) %>
+              <%= f.select :sex_eq, options_for_select(User.sexes, selected: params[:q][:sex_eq]), {include_blank: true}, {class: "form-control input-lg"} %>
+            <% else %>
+              <%= f.select :sex_eq, options_for_select(User.sexes), {include_blank: true}, {class: "form-control input-lg"} %>
+            <% end %>
           </div>
-
-          <div class="form-group col-md-2">
-            <%= select_tag :age, options_for_select([["19歳以下","1"], ["20代","2"], ["30代","3"], ["40代","4"], ["50歳以上","5"]]) %>
+        </div>
+        <div class="row">
+        <div class="form-group col-xs-4">
+          <div class="">
+            <%= f.label :Age, "年齢" %>
+            <%= f.number_field :age_gteq, class: "form-control input-lg"%>以上 ~
+            <%= f.number_field :age_lteq, class: "form-control input-lg" %>以下
           </div>
-
         </div>
         <script>
           $(function() {
-            $('#prefecture_id').change(function() {
-              var prefecture_id = $("#prefecture_id").val();
+            $('#q_prefecture_id_eq').change(function() {
+              var prefecture_id = $("#q_prefecture_id_eq").val();
               if (prefecture_id !== "") {
                 $.get("<%= prefectures_areas_path %>",
                   { prefecture_id: prefecture_id },
@@ -38,34 +47,90 @@
             });
           });
         </script>
-        <div class="row">
-          <div class="form-group col-md-3">
-            <%= label_tag :prefecture_id, "都道府県" %>
-            <%= select_tag :prefecture_id, options_from_collection_for_select(Prefecture.all, :id, :name, params[:prefecture_id]), include_blank: true, id: "prefecture_id", class: "form-control" %>
+          <div class="form-group col-xs-4">
+            <%= f.label :prefecture_id, "都道府県" %>
+            <% if params_present?(:prefecture_id_eq) %>
+              <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, {selected: params[:q][:prefecture_id_eq], include_blank: true}, class: 'form-control input-lg fix-input-lg'%>
+            <% else %>
+              <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, {include_blank: true}, class: 'form-control input-lg fix-input-lg'%>
+            <% end %>
           </div>
-
-          <div class="form-group col-md-3">
-            <%= label_tag :area_id, "市町村区" %>
-            <%= select_tag :area_id, options_from_collection_for_select(Area.all, :id, :name, params[:area_id]), include_blank: true, id: "area_id", class: "form-control" %>
+          <div class="form-group col-xs-4">
+            <%= f.label :area_id, "市町村区" %>
+            <% if params_present?(:area_id_eq) %>
+              <%= f.collection_select :area_id_eq, Area.all, :id, :name, {selected: params[:q][:area_id_eq], include_blank: true}, class: 'form-control input-lg fix-input-lg' %>
+            <% else %>
+              <%= f.collection_select :area_id_eq, Area.all, :id, :name, {include_blank: true}, class: 'form-control input-lg fix-input-lg' %>
+            <% end %>
           </div>
-          <!-- regionからは検索しない -->
-
         </div>
-
         <div class="row">
-          <div class="form-group radio-inline">
-            <%= check_box_tag(:color, true, params[:color], class: "", id: "checkbox01") %>
-            <label for="checkbox01" class="checkbox">カラー</label>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :color_eq , {class: "my_check", id: "my_check_01"}, checked_value = "true", unchecked_value = "" %>
+            <%= f.label :color, "カラー", for: "my_check_01" %>
+
           </div>
-          <div class="form-group radio-inline">
-            <%= check_box_tag(:hair_extension, true, params[:hair_extension], class: "", id: "checkbox02") %>
-            <label for="checkbox02" class="checkbox">エクステ</label>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :hair_extension_eq , {class: "my_check", id: "my_check_02"}, checked_value = "true", unchecked_value = "" %>
+            <%= f.label :hair_extension, "エクステ", for: "my_check_02" %>
           </div>
-          <div class="form-group radio-inline">
-            <%= check_box_tag(:nail, true, params[:nail], class: "", id: "checkbox03") %>
-            <label for="checkbox03" class="checkbox">ネイル</label>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :hair_permed_eq , {class: "my_check", id: "my_check_03"}, checked_value = "true", unchecked_value = "" %>
+            <%= f.label :hair_permed, "パーマ", for: "my_check_03" %>
           </div>
-          <%= submit_tag "検索", id: "user_find_btn", class: "form-control" %>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :nail_eq , {class: "my_check", id: "my_check_04"}, checked_value = "true", unchecked_value = "" %>
+            <%= f.label :nail, "ネイル", for: "my_check_04" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :use_eq , {class: "my_check", id: "my_check_05"}, checked_value = "true", unchecked_value = "" %>
+            <%= f.label :use, "広告利用", for: "my_check_05" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <% if params_present?(:hair_style) %>
+              <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_06"}, checked_value = 0, unchecked_value = "" %>
+              <%= f.label :hair_style, "ベリーショート" , for: "my_check_06" %>
+            <% else %>
+              <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_07"}, checked_value = 0, unchecked_value = "" %>
+              <%= f.label :hair_style, "ベリーショート" , for: "my_check_07" %>
+            <% end %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_08"}, checked_value = 1, unchecked_value = "" %>
+            <%= f.label :hair_style, "ショート", for: "my_check_08" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_10"}, checked_value = 2, unchecked_value = "" %>
+            <%= f.label :hair_style, "ミディアム", for: "my_check_10" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_12"}, checked_value = 3, unchecked_value = "" %>
+            <%= f.label :hair_style, "セミロング", for: "my_check_12" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_14"}, checked_value = 4, unchecked_value = "" %>
+            <%= f.label :hair_style, "ロング", for: "my_check_14" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :hair_type_eq , {class: "my_check", id: "my_check_16"}, checked_value = 2, unchecked_value = "" %>
+            <%= f.label :hair_style, "直毛", for: "my_check_16" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :hair_type_eq , {class: "my_check", id: "my_check_18"}, checked_value = 3, unchecked_value = "" %>
+            <%= f.label :hair_style, "ややクセ毛", for: "my_check_18" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :hair_type_eq , {class: "my_check", id: "my_check_20"}, checked_value = 4, unchecked_value = "" %>
+            <%= f.label :hair_style, "クセ毛", for: "my_check_20" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="actions col-md-6">
+            <%= f.submit "上記の条件で検索", class: "btn btn-primary form-control" %>
+          </div>
+          <div class="col-md-6">
+            <%= submit_tag "条件をリセット", id: "search-reset-btn", class: "form-control btn btn-default" %>
+          </div>
         </div>
       <% end %>
     </div>

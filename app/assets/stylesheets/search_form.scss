@@ -42,3 +42,9 @@
     margin-right: 5px;
   }
 }
+
+@include mq-down(md) {
+  #search-reset-btn {
+    margin-top: 15px;
+  }
+}

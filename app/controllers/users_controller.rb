@@ -4,44 +4,49 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
+    @search = User.ransack(params[:q])
+    @users = @search.result(distinct: true).order(id: :desc).paginate(page: params[:page], per_page: 20 )
     #@users = User.all
-    @users = User.where(staff: false).paginate(page: params[:page], per_page: 20)
-
-    if params[:name].present?
-      @users = @users.get_by_name params[:name]
-    end
-    if params[:age].present?
-      @users = @users.get_by_age params[:age]
-    end
-    if params[:sex].present?
-      @users = @users.get_by_sex params[:sex]
-    end
-    if params[:prefecture_id].present?
-      @users = @users.get_by_prefecture_id params[:prefecture_id]
-    end
-    if params[:area_id].present?
-      @users = @users.get_by_area_id params[:area_id]
-    end
-    if params[:color].present?
-      bool = ActiveRecord::Type::Boolean.new.cast(params[:color])
-      @users = @users.get_by_color bool
-    end
-    if params[:hair_extension].present?
-      bool = ActiveRecord::Type::Boolean.new.cast(params[:hair_extension])
-      @users = @users.get_by_hair_extension bool
-    end
-    if params[:nail].present?
-      bool = ActiveRecord::Type::Boolean.new.cast(params[:nail])
-      @users = @users.get_by_nail bool
-    end
-    if params[:reason].present?
-      @users = @users.get_by_reason params[:reason]
-    end
-    render 'index'
+    # @users = User.where(staff: false).paginate(page: params[:page], per_page: 20)
+    #
+    # if params[:name].present?
+    #   @users = @users.get_by_name params[:name]
+    # end
+    # if params[:age].present?
+    #   @users = @users.get_by_age params[:age]
+    # end
+    # if params[:sex].present?
+    #   @users = @users.get_by_sex params[:sex]
+    # end
+    # if params[:prefecture_id].present?
+    #   @users = @users.get_by_prefecture_id params[:prefecture_id]
+    # end
+    # if params[:area_id].present?
+    #   @users = @users.get_by_area_id params[:area_id]
+    # end
+    # if params[:color].present?
+    #   bool = ActiveRecord::Type::Boolean.new.cast(params[:color])
+    #   @users = @users.get_by_color bool
+    # end
+    # if params[:hair_extension].present?
+    #   bool = ActiveRecord::Type::Boolean.new.cast(params[:hair_extension])
+    #   @users = @users.get_by_hair_extension bool
+    # end
+    # if params[:nail].present?
+    #   bool = ActiveRecord::Type::Boolean.new.cast(params[:nail])
+    #   @users = @users.get_by_nail bool
+    # end
+    # if params[:reason].present?
+    #   @users = @users.get_by_reason params[:reason]
+    # end
+    # render 'index'
   end
 
   def staff_index
-    @users = User.where(staff: true).paginate(page: params[:page])
+    @staff_users = User.where(staff: true)
+    @search = @staff_users.ransack(params[:q])
+    @users = @search.result(distinct: true).order(last_accessed_at: :desc).paginate(page: params[:page], per_page: 20 )
+
   end
 
   # GET /users/:id
