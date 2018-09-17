@@ -59,3 +59,40 @@
   from { border-right-color: rgba(255,255,255,.75); }
   to { border-right-color: transparent; }
 }
+
+.about-text {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.hairiah-feature {
+  margin: 0 auto;
+  .feature-text {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+  }
+
+  .feature-outer {
+    margin: 0 auto;
+    .feature-inner {
+      padding: 20px 0;
+      .feature-inner-text {
+        font-size: 1.2em;
+      }
+      .feature-icon {
+        i {
+          font-size: 10em;
+        }
+      }
+    }
+  }
+}
+.register {
+  padding: 0 20px;
+  .home-register-btn {
+    margin-bottom: 10px;
+  }
+}

@@ -106,3 +106,9 @@ input[type="checkbox"].my_check:checked + label::before{
 .fix-input-lg {
   line-height: 1.33333333 !important;
 }
+
+.col-md-offset-1-5 {
+  @include mq-up(lg) {
+    margin-left: 12.499999999%;
+  }
+}
