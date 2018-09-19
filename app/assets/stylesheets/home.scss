@@ -136,13 +136,14 @@
     }
   }
   .register-text {
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: bold;
   }
   .path-inner {
     padding: 20px 0;
     .path-text-outer {
       margin-bottom: 10px;
+      font-size: 1.2em;
     }
     .path-btn {/*周りの凹み*/
       display: inline-block;
@@ -174,5 +175,29 @@
     .path-btn:hover {
       opacity: 0.7;
     }
+  }
+  .arrow-border {
+    position: relative;
+    padding-left: 25px;
+  }
+
+  .arrow-border:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px #6495ed;
+  }
+  .arrow-border:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 100%;
+    border-bottom: solid 3px #6495ed;
   }
 }
