@@ -4,8 +4,12 @@
   padding-left: 0;
   padding-right: 0;
   .row {
-    margin-right: -15px;
-    margin-left: -15px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .padding-fix {
+    padding-left: 0;
+    padding-right: 0;
   }
   .first-view {
     height: auto;
