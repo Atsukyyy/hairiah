@@ -1,98 +1,106 @@
 @import "global";
 
-.first-view {
-  height: auto;
-  min-height: 100vh; //レスポンシブのため
-  width: 100vw;
-  background-size: cover;
-  background-position: center;
-  background-image: url("top.jpg");
-  @include mq-down(md) {
-    background-image: url("top-sp.png");
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+  .row {
+    margin-right: -15px;
+    margin-left: -15px;
   }
-  position: relative;
-  right: 0;
-  left: 0;
+  .first-view {
+    height: auto;
+    min-height: 100vh; //レスポンシブのため
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-image: url("top.jpg");
+    @include mq-down(md) {
+      background-image: url("top-sp.png");
+    }
+    position: relative;
+    right: 0;
+    left: 0;
 
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 
-  /* 左右中央寄せ */
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+    /* 左右中央寄せ */
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 
-  /* 上下中央寄せ */
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.first-view-text {
-  font-size: 1.5em;
-  color: white;
-}
-.line-1 {
-  position: relative;
-  top: 50%;
-  width: 8em;
-  margin: 0 auto;
-  border-right: 2px solid rgba(255,255,255,.75);
-  font-size: 180%;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  transform: translateY(-50%);
-}
-
-/* Animation */
-.anim-typewriter {
-  animation: typewriter 1.7s steps(15) 1s 1 normal both,
-  blinkTextCursor 800ms steps(15) infinite normal;
-}
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 8em; }
-}
-@keyframes blinkTextCursor {
-  from { border-right-color: rgba(255,255,255,.75); }
-  to { border-right-color: transparent; }
-}
-
-.about-text {
-  font-size: 1.4em;
-  font-weight: bold;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-.hairiah-feature {
-  margin: 0 auto;
-  .feature-text {
-    font-size: 1.3em;
-    font-weight: bold;
-    margin-bottom: 20px;
-
+    /* 上下中央寄せ */
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
   }
 
-  .feature-outer {
+  .first-view-text {
+    font-size: 1.5em;
+    color: white;
+  }
+  .line-1 {
+    position: relative;
+    top: 50%;
+    width: 8em;
     margin: 0 auto;
-    .feature-inner {
-      padding: 20px 0;
-      .feature-inner-text {
-        font-size: 1.2em;
-      }
-      .feature-icon {
-        i {
-          font-size: 10em;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 180%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+  }
+
+  /* Animation */
+  .anim-typewriter {
+    animation: typewriter 1.7s steps(15) 1s 1 normal both,
+    blinkTextCursor 800ms steps(15) infinite normal;
+  }
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 8em; }
+  }
+  @keyframes blinkTextCursor {
+    from { border-right-color: rgba(255,255,255,.75); }
+    to { border-right-color: transparent; }
+  }
+
+  .about-text {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .hairiah-feature {
+    margin: 0 auto;
+    .feature-text {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 20px;
+
+    }
+
+    .feature-outer {
+      margin: 0 auto;
+      .feature-inner {
+        padding: 20px 0;
+        .feature-inner-text {
+          font-size: 1.2em;
+        }
+        .feature-icon {
+          i {
+            font-size: 10em;
+          }
         }
       }
     }
   }
-}
-.register {
-  padding: 0 20px;
-  .home-register-btn {
-    margin-bottom: 10px;
+  .register {
+    padding: 0 20px;
+    .home-register-btn {
+      margin-bottom: 10px;
+    }
   }
 }

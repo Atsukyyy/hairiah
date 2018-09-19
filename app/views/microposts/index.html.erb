@@ -107,15 +107,12 @@
             <%= micropost.content.truncate(20) %>
           </div>
         </div>
-        <div class="post-area-right col-xs-2 col-sm-4">
-
-          <div class="">
-            <%= link_to micropost_path(micropost), class: "visible-sp" do %>
-              <i class="fa fa-chevron-right"></i>
-            <% end %>
-            <%= link_to "詳細はこちら", micropost_path(micropost), class: "btn btn-primary hidden-sp" %>
+        <%= link_to micropost_path(micropost), class: "col-xs-2 col-sm-4 post-area-right" do %>
+          <div class="micropost-next-area">
+            <span class="hidden-sp">詳細を見る</span>
+            <i class="fa fa-chevron-right micropost-next-btn"></i>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>

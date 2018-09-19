@@ -3,44 +3,55 @@
 .post-btn {
 margin-bottom: 10px;
 }
-.post-area {
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #e0e0e0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.post-container {
   @include mq-up(lg) {
-    height: 250px;
+    padding: 0 200px;
   }
-  .post-staff {
-    margin-bottom: 10px;
-
-  }
-  .post-title {
-    margin-bottom: 10px;
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-  .post-tag {
-    margin-bottom: 10px;
-    .post-tag-inner {
-      border: 1px solid #0099cc;
-      border-radius: 3px;
-      padding: 5px;
-      display: inline-block;
-      margin-right: 5px;
-      margin-bottom: 5px;
+  .post-area {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include mq-up(lg) {
+      height: 250px;
+    }
+    .post-area-right {
+      height: 150px;
+      .micropost-next-area {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+      }
+    }
+    .post-staff {
+      margin-bottom: 10px;
+    }
+    .post-title {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .post-tag {
+      margin-bottom: 10px;
+      .post-tag-inner {
+        border: 1px solid #0099cc;
+        border-radius: 3px;
+        padding: 5px;
+        display: inline-block;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+    }
+    .post-address {
+      margin-bottom: 10px;
+    }
+    .post-content {
+      font-size: 1.1em;
+      font-weight: bold;
     }
   }
-  .post-address {
-    margin-bottom: 10px;
-  }
-  .post-content {
-    font-size: 1.1em;
-    font-weight: bold;
-  }
-
 }
 
 .post-area-height {
