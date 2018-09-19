@@ -200,4 +200,25 @@
     width: 100%;
     border-bottom: solid 3px #6495ed;
   }
+  .arrow-border-right {
+    padding-right: 25px;
+    padding-left: 0;
+  }
+  .arrow-border-right:before {
+    right: 0;
+    left: inherit;
+    border-left: none;
+    border-right: solid 15px transparent;
+    border-bottom: solid 15px #db7093;
+  }
+  .arrow-border-right:after {
+    right: 10px;
+    left: inherit;
+    border-bottom: solid 3px #db7093;
+  }
+  .detail-text {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
 }
