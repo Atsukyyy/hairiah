@@ -117,7 +117,7 @@
   .box26 .box-title {
     position: absolute;
     display: inline-block;
-    top: -16px;
+    top: -9px;
     left: 10px;
     padding: 0 9px;
     line-height: 1;
@@ -209,19 +209,16 @@
     left: inherit;
     border-left: none;
     border-right: solid 15px transparent;
-    border-bottom: solid 15px #db7093;
+    border-bottom: solid 15px #6495ed;
   }
   .arrow-border-right:after {
     right: 10px;
     left: inherit;
-    border-bottom: solid 3px #db7093;
+    border-bottom: solid 3px #6495ed;
   }
   .detail-text {
     font-size: 1.3em;
     font-weight: bold;
     margin-bottom: 15px;
-  }
-  .circle-red {
-    color: #db7093;
   }
 }
