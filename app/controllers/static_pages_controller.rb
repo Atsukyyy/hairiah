@@ -10,6 +10,10 @@ class StaticPagesController < ApplicationController
     # app/views/static_pages/home.html.erb
   end
 
+  def staff_usage
+
+  end
+
   def help
   end
 
