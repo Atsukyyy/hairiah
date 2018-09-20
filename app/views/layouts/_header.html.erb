@@ -26,19 +26,40 @@
     </div>
   </div>
   <div class="hamburger-menu">
-    <div class="header-item-hm"><%= link_to "ホーム", root_path %></div>
-    <div class="header-item-hm"><%= link_to "Hairiahの使い方", "#" %></div>
-    <div class="header-item-hm"><%= link_to "モデル募集掲示板", microposts_path %></div>
+    <%= link_to "ホーム", root_path, class: "header-item-hm" %>
+    <div class="header-inner-border"></div>
+    <%= link_to "#", class: "header-item-hm" do %>
+      Hairiahの使い方
+    <% end %>
+    <%= link_to  microposts_path, class: "header-item-hm" do %>
+      モデル募集掲示板<i class="fa fa-list-alt hamburger-icon"></i>
+    <% end %>
     <% if logged_in? %>
-      <div class="header-item-hm"><%= link_to "美容師を探す", staffs_path %></div>
-      <div class="header-item-hm"><%= link_to "カットモデルを探す", users_path %></div>
-      <div class="header-item-hm"><%= link_to "トーク履歴", current_user %></div>
-      <div class="header-item-hm"><%= link_to "プロフィール編集", edit_user_path(current_user) %></div>
-      <div class="header-item-hm"><%= link_to "ログアウト", logout_path, method: :delete %></div>
+      <%= link_to staffs_path, class: "header-item-hm" do %>
+        美容師を探す<i class="fa fa-search hamburger-icon"></i>
+      <% end %>
+      <%= link_to users_path, class: "header-item-hm" do %>
+        カットモデルを探す<i class="fa fa-search hamburger-icon"></i>
+      <% end %>
+      <%= link_to current_user, class: "header-item-hm" do %>
+        トーク履歴<i class="fa fa-comments-o hamburger-icon"></i>
+      <% end %>
+      <%= link_to edit_user_path(current_user), class: "header-item-hm" do %>
+        プロフィール編集<i class="fa fa-edit hamburger-icon"></i>
+      <% end %>
+      <%= link_to logout_path, method: :delete, class: "header-item-hm" do %>
+        ログアウト<i class="fa fa-sign-out-alt hamburger-icon"></i>
+      <% end %>
     <% else %>
-      <div class="header-item-hm"><%= link_to "モデル会員登録", signup_page_path %></div>
-      <div class="header-item-hm"><%= link_to "美容師会員登録", staff_signup_page_path %></div>
-      <div class="header-item-hm"><%= link_to "ログイン", login_path %></div>
+      <%= link_to  signup_page_path, class: "header-item-hm" do %>
+        モデル会員登録<i class="fa fa-id-badge hamburger-icon"></i>
+      <% end %>
+      <%= link_to staff_signup_page_path, class: "header-item-hm" do %>
+        美容師会員登録<i class="fa fa-id-badge hamburger-icon"></i>
+      <% end %>
+      <%= link_to login_path, class: "header-item-hm" do %>
+        ログイン<i class="fa fa-sign-out-alt hamburger-icon"></i>
+      <% end %>
     <% end %>
   </div>
 </header>
