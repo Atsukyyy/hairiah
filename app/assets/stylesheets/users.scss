@@ -1,10 +1,17 @@
+@import "global";
 // user-index
 .user-item {
   margin-bottom: 10px;
 }
+.users {
+  padding-left: 0;
+}
 
 .user-item img {
-  height: auto;
+  height: 200px;
+  @include mq-up() {
+    height: 300px;
+  }
 }
 
 // user-show
@@ -17,4 +24,10 @@
 .user-image {
   width: 100%;
   height: auto;
+}
+
+#follow_form {
+  .btn {
+    font-size: 0.7em;
+  }
 }

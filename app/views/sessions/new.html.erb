@@ -45,8 +45,8 @@
     </div>
     <div class="row text-left">
       <%= f.label :remember_me, class: "" do %>
-        <%= f.check_box(:remember_me, {id: "checkbox01"}) %>
-        <label for="checkbox01" class="checkbox">ログイン状態を保持する</label>
+        <%= f.check_box :remember_me , {class: "my_check", id: "my_check_01"}, checked_value = "true", unchecked_value = "" %>
+        <%= f.label :remember_me, "ログイン状態を保持する", for: "my_check_01" %>
       <% end %>
     </div>
     <div class="row text-center">

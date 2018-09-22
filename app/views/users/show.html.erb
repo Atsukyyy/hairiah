@@ -1,40 +1,39 @@
 <% provide(:title, @user.name) %>
 
 <div class="row">
-  <aside class="col-xs-3">
-
+  <aside class="col-xs-4">
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
     <%= render 'follow_form' if logged_in? %>
-
   </aside>
-
-  <div class="col-xs-9">
-    <div class="user-info-detail">
-      <div>トーク履歴</div>
-      <div>
+  <% if current_user?(@user) %>
+    <div class="col-xs-9">
+      <div class="user-info-detail">
+        <div>トーク履歴</div>
         <div>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">美容師名</th>
-                <th scope="col">最終やりとり日</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @message_users.zip(@messages_history).each do |u, m| %>
+          <div>
+            <table class="table">
+              <thead>
                 <tr>
-                  <td><%= link_to u.name, user_path(u) %></td>
-                  <td><%= m.created_at_to_date %></td>
+                  <th scope="col">美容師名</th>
+                  <th scope="col">最終やりとり日</th>
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <% @message_users.zip(@messages_history).each do |u, m| %>
+                  <tr>
+                    <td><%= link_to u.name, user_path(u) %></td>
+                    <td><%= m.created_at_to_date %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
 
 <div class="row">
