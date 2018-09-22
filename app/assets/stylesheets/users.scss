@@ -8,7 +8,10 @@
 }
 
 .user-item img {
-  height: 200px;
+  height: 150px;
+  @include mq-up(xs) {
+    height: 200px;
+  }
   @include mq-up() {
     height: 300px;
   }
