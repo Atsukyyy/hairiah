@@ -8,6 +8,11 @@ div.message_form {
 
 #message_content {
   font-size: 1.2em;
+  padding: 10px 0;
+  span {
+    background-color: gainsboro;
+    padding: 5px;
+  }
 }
 
 .message {

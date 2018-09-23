@@ -4,8 +4,16 @@
   <% else %>
     <div><%= link_to image_tag('/no-image.png', class: "no-image", width: "300", height: "300"), user_path(user) %></div>
   <% end %>
-  <div class="user-info"><%= user.sex %>/<%= user.prefecture.name %><%= user.area.name %></div>
-  <div class="">最終ログイン: <%= user.last_accessed_at %></div>
+  <div class="user-info">
+    <%= user.name %>
+    <% if user.staff? %>
+      <i class="fa fa-star"></i><span class="followers-count"><%= user.followers.count %></span>
+    <% end %>
+  </div>
+  <div class=""><%= user.prefecture.name %><%= user.area.name %></div>
+  <div class="last-login">最終ログイン</div>
+  <div class="">→ <%= user.last_accessed_at %></div>
+
 
 
   <% if false %>

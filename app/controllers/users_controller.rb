@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @search = User.ransack(params[:q])
+    @model_users = User.where(staff: false)
+    @search = @model_users.ransack(params[:q])
     @users = @search.result(distinct: true).order(id: :desc).paginate(page: params[:page], per_page: 20 )
     #@users = User.all
     # @users = User.where(staff: false).paginate(page: params[:page], per_page: 20)

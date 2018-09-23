@@ -1,19 +1,32 @@
 <% @user ||= current_user %>
 <div class="stats row">
-  <div class="stats-inner col-md-4">
-    <a href="<%= following_user_path(@user) %>">
-      <strong id="following" class="stat">
-        <%= @user.following.count %>
-      </strong>
-      フォロー中
-    </a>
-  </div>
-  <div class="stats-inner col-md-4">
-    <a href="<%= followers_user_path(@user) %>">
-      <strong id="followers" class="stat">
-        <%= @user.followers.count %>
-      </strong>
-      フォロワー
-    </a>
-  </div>
+  <% if current_user?(@user) %>
+    <div class="stats-inner col-md-4">
+      <a href="<%= following_user_path(@user) %>">
+        <strong id="following" class="stat">
+          <%= @user.following.count %>
+        </strong>
+        お気に入りしてる数
+      </a>
+    </div>
+    <div class="stats-inner col-md-4">
+      <a href="<%= followers_user_path(@user) %>">
+        <strong id="followers" class="stat">
+          <%= @user.followers.count %>
+        </strong>
+        お気に入りされてる数
+      </a>
+    </div>
+  <% else %>
+    <% if @user.staff? %>
+      <div class="stats-inner col-md-4">
+        <a href="<%= followers_user_path(@user) %>">
+          <strong id="followers" class="stat">
+            <%= @user.followers.count %>
+          </strong>
+          お気に入りされてる数
+        </a>
+      </div>
+    <% end %>
+  <% end %>
 </div>
