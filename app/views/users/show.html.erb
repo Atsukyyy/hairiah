@@ -4,17 +4,16 @@
   <div class="col-md-4">
     <div class="user-edit-image col-xs-4 col-md-12">
       <% if !current_user?(@user) %>
-          <% if @user.image.present?  %>
-            <%= cl_image_tag(@user.image_url, width: 300, height: 200, crop: :fill, class: 'user-image') %>
-          <% else %>
-            <%= image_tag '/no-image.png', class: "no-image"%>
-          <% end %>
+        <% if @user.image.present?  %>
+          <%= cl_image_tag(@user.image_url, width: 300, height: 200, crop: :fill, class: 'user-image') %>
+        <% else %>
+          <%= image_tag '/no-image.png', class: "no-image"%>
+        <% end %>
       <% end %>
       <div><%= @user.name %></div>
       最終ログイン<%= @user.last_accessed_at %>
     </div>
     <div class="col-xs-7 col-xs-offset-1 col-md-12 col-md-offset-0">
-      <div class=""><%= @user.name %></div>
       <div class=""><%= @user.prefecture.name %> <%= @user.area.name %></div>
       <% if @user.experience.present? %>
         <div>美容師歴</div>
@@ -48,34 +47,31 @@
        <%= render 'messages/message_form',
          {from_user: current_user, to_user: @user, room_id: @room_id} %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+
 <div class="row">
   <% if current_user?(@user) %>
     <div class="col-md-6">
       <div class="user-info-detail">
-        <div>トーク履歴</div>
-        <div>
-          <div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">美容師名</th>
-                  <th scope="col">最終やりとり日</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @message_users.zip(@messages_history).each do |u, m| %>
-                  <tr>
-                    <td><%= link_to u.name, user_path(u) %></td>
-                    <td><%= m.created_at_to_date %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <table class="table">
+          <div>トーク履歴</div>
+          <thead>
+            <tr>
+              <th scope="col">美容師名</th>
+              <th scope="col">最終やりとり日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @message_users.zip(@messages_history).each do |u, m| %>
+              <tr>
+                <td><%= link_to u.name, user_path(u) %></td>
+                <td><%= m.created_at_to_date %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
     <% if @user.staff? %>

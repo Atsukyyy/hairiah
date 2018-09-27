@@ -7,9 +7,9 @@
     var from_id = <%= message.from_id %>;
     var current_user_id = $('.message').data('session');
     if(from_id == current_user_id) {
-      $('div.' + <%= message.id %>).css('text-align', 'right');
+      $('div.' + <%= message.id %>).css({'text-align': 'right', 'margin-left': '30px'});
     } else {
-      $('div.' + <%= message.id %>).css('text-align', 'left');
+      $('div.' + <%= message.id %>).css({'text-align': "left", 'margin-right': "30px"});
     }
   </script>
 </div>
