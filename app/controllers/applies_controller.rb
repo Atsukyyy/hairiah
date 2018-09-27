@@ -23,8 +23,13 @@ class AppliesController < ApplicationController
       flash[:success] = "応募しました。美容師からの連絡をお待ち下さい。"
       redirect_to root_url
     else
-      flas.now[:danger] = "応募に失敗しました。度画面を更新して再度応募してください。"
-      render 'new'
+      if Apply.find_by(user_id: current_user.id).present?
+        flash[:danger] = "既にこの募集には応募済みです。応募履歴を確認してください。"
+        redirect_to user_path(current_user)
+      else
+        flash.now[:danger] = "応募に失敗しました。画面を更新してからもう一度応募してください。"
+        render 'new'
+      end
     end
   end
 
