@@ -11,7 +11,7 @@
         <% end %>
       <% end %>
       <div><%= @user.name %></div>
-      最終ログイン<%= @user.last_accessed_at %>
+      最終ログイン: <%= @user.last_accessed_at %>
     </div>
     <div class="col-xs-7 col-xs-offset-1 col-md-12 col-md-offset-0">
       <div class=""><%= @user.prefecture.name %> <%= @user.area.name %></div>

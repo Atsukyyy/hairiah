@@ -1,20 +1,20 @@
 <% @user ||= current_user %>
 <div class="stats row">
   <% if current_user?(@user) %>
-    <div class="stats-inner col-md-4">
+    <div class="stats-inner col-xs-12">
       <a href="<%= following_user_path(@user) %>">
+        お気に入りしてる数:
         <strong id="following" class="stat">
           <%= @user.following.count %>
         </strong>
-        お気に入りしてる数
       </a>
     </div>
-    <div class="stats-inner col-md-4">
+    <div class="stats-inner">
       <a href="<%= followers_user_path(@user) %>">
+        お気に入りされてる数:
         <strong id="followers" class="stat">
           <%= @user.followers.count %>
         </strong>
-        お気に入りされてる数
       </a>
     </div>
   <% else %>

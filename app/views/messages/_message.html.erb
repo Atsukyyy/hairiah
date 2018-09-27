@@ -1,7 +1,7 @@
 <div class="message" data-session="<%= session[:user_id] %>">
   <% user = User.find_by(id: message.from_id) %>
   <div class="<%= message.id %>" id="message_sender"><%= user.name %></div>
-  <div class="<%= message.id %>" id="message_content"><%= simple_format(h(message.content), {}, wrapper_tag: "div") %></div>
+  <div class="<%= message.id %>" id="message_content"><%= simple_format(h(raw(message.content.gsub(/\n/, '<br>'))), {}, wrapper_tag: "div") %></div>
   <div class="<%= message.id %>" id="message_date"><%= message.created_at.strftime('%m/%d %H:%M') %></div>
   <script>
     var from_id = <%= message.from_id %>;
