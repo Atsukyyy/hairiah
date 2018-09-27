@@ -27,26 +27,25 @@
           </div>
         </div>
         <div class="row">
-        <div class="form-group col-xs-4">
-          <div class="">
-            <%= f.label :Age, "年齢" %>
-            <%= f.number_field :age_gteq, class: "form-control input-lg"%>以上 ~
-            <%= f.number_field :age_lteq, class: "form-control input-lg" %>以下
+          <div class="form-group col-xs-4">
+            <div class="">
+              <%= f.label :age, "年齢" %>
+              <%= f.select :age_lteq, options_for_select({"19歳以下": 19}), {include_blank: true}, {class: "form-control input-lg"} %>
+            </div>
           </div>
-        </div>
-        <script>
-          $(function() {
-            $('#q_prefecture_id_eq').change(function() {
-              var prefecture_id = $("#q_prefecture_id_eq").val();
-              if (prefecture_id !== "") {
-                $.get("<%= prefectures_areas_path %>",
-                  { prefecture_id: prefecture_id },
-                  function(data){ }
-                );
-              }
+          <script>
+            $(function() {
+              $('#q_prefecture_id_eq').change(function() {
+                var prefecture_id = $("#q_prefecture_id_eq").val();
+                if (prefecture_id !== "") {
+                  $.get("<%= prefectures_areas_path %>",
+                    { prefecture_id: prefecture_id },
+                    function(data){ }
+                  );
+                }
+              });
             });
-          });
-        </script>
+          </script>
           <div class="form-group col-xs-4">
             <%= f.label :prefecture_id, "都道府県" %>
             <% if params_present?(:prefecture_id_eq) %>

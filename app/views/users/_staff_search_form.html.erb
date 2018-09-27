@@ -30,9 +30,8 @@
           <div class="row">
           <div class="form-group col-xs-4">
             <div class="">
-              <%= f.label :Age, "年齢" %>
-              <%= f.number_field :age_gteq, class: "form-control input-lg"%>以上 ~
-              <%= f.number_field :age_lteq, class: "form-control input-lg" %>以下
+              <%= f.label :age, "年齢" %>
+              <%= f.select :age_lteq, options_for_select({"19歳以下": 19}), {include_blank: true}, {class: "form-control input-lg"} %>
             </div>
           </div>
           <script>

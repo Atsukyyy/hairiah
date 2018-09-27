@@ -209,6 +209,10 @@ class User < ApplicationRecord
     self.password = SecureRandom.hex(16) unless password_digest
   end
 
+  def calc_age
+    self.age = (Date.today - self.birth) / 10000
+  end
+
   private
 
     def downcase_email
