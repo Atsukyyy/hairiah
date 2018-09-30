@@ -14,8 +14,10 @@
       <div class="header-item"><%= link_to "モデル募集掲示板", microposts_path %></div>
       <% if logged_in? %>
         <div class="header-item"><%= link_to "美容師を探す", staffs_path %></div>
-        <div class="header-item"><%= link_to "カットモデルを探す", users_path %></div>
-        <div class="header-item"><%= link_to "トーク履歴", current_user %></div>
+        <% if current_user.staff? %>
+          <div class="header-item"><%= link_to "カットモデルを探す", users_path %></div>
+        <% end %>
+        <div class="header-item"><%= link_to "マイページ", current_user %></div>
         <div class="header-item"><%= link_to "プロフィール編集", edit_user_path(current_user) %></div>
         <div class="header-item"><%= link_to "ログアウト", logout_path, method: :delete %></div>
       <% else %>
@@ -38,11 +40,13 @@
       <%= link_to staffs_path, class: "header-item-hm" do %>
         美容師を探す<i class="fa fa-search hamburger-icon"></i>
       <% end %>
-      <%= link_to users_path, class: "header-item-hm" do %>
-        カットモデルを探す<i class="fa fa-search hamburger-icon"></i>
+      <% if current_user.staff? %>
+        <%= link_to users_path, class: "header-item-hm" do %>
+          カットモデルを探す<i class="fa fa-search hamburger-icon"></i>
+        <% end %>
       <% end %>
       <%= link_to current_user, class: "header-item-hm" do %>
-        トーク履歴<i class="fa fa-comments-o hamburger-icon"></i>
+        マイページ<i class="fa fa-comments-o hamburger-icon"></i>
       <% end %>
       <%= link_to edit_user_path(current_user), class: "header-item-hm" do %>
         プロフィール編集<i class="fa fa-edit hamburger-icon"></i>

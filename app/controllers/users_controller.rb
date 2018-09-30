@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :staff_index, :show, :edit, :update, :destroy, :following, :followers]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
+  before_action :staff_user, only: [:index]
+  before_action :only_model_to_staff, only: [:show]
+  before_action :staff_or_correct_user, only: [:show]
+  before_action :correct_user, only: [:edit, :update, :password]
 
   def index
     @model_users = User.where(staff: false)
@@ -16,36 +18,29 @@ class UsersController < ApplicationController
 
   end
 
-  # GET /users/:id
   def show
-    @user       = User.find(params[:id])
+    @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
-    # => app/views/users/show.html.erb
     @room_id = message_room_id(current_user, @user)
     @messages = Message.recent_in_room(@room_id)
-    # @thumbnails = @user.thumbnails
     @messages_history = Message.where(from_id: @user.id).or(Message.where(to_id: @user.id)).reverse_order.uniq{|h| [h[:from_id],h[:to_id]]}
     ids = []
     @messages_history.each do |message|
       ids << message.to_id unless message.to_id == @user.id
       ids << message.from_id unless message.from_id == @user.id
     end
-
     @message_users = User.where(id: ids)
-
   end
 
-  # GET /users/new
+
   def new
     @user = User.new
-    # => form_for @user
   end
 
   def staff_new
     @user = User.new
   end
 
-  # POST /users
   def create
     area = Area.find(params[:user][:area_id])
     prefecture = area.prefecture
@@ -53,13 +48,11 @@ class UsersController < ApplicationController
     @user.prefecture = prefecture
     @user.last_accessed_at = Time.now
     @user.calc_age
-    if @user.save # => Validation
-      # Sucess
+    if @user.save!
       @user.send_activation_email
       flash[:info] = "メールを送信しました。ユーザー認証のためにご確認ください。メール送信に1〜2分かかることがあります。"
       redirect_to root_url
     else
-      # Failure
       render 'new'
     end
   end
@@ -71,46 +64,36 @@ class UsersController < ApplicationController
     @user.prefecture = prefecture
     @user.staff = true
     @user.calc_age
-    if @user.save # => Validation
-      # Sucess
+    if @user.save!
       @user.send_activation_email
       flash[:info] = "メールを送信しました。ユーザー認証のためにご確認ください。メール送信に1〜2分かかることがあります。"
       redirect_to root_url
     else
-      # Failure
       render 'staff_new'
     end
   end
 
-  # GET /users/:id/edit
-  # params[:id] => :id
   def edit
     @user = User.find(params[:id])
-
   end
 
   def password
     @user = User.find(params[:id])
   end
 
-  #PATCH /users/:id
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      # Success
       flash[:success] = "情報を更新しました。"
       redirect_to @user
     else
-      # Failure
-      # => @user.errors.full_messages()
       render 'edit'
     end
   end
 
-  # DELETE /users/:id
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = "退会が完了しました。"
     redirect_to users_url
   end
 
@@ -142,18 +125,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :use, :prefecture_id, :hair_type, :area_id, :hair_style, :image, :remove_image, :fb_sign_up, :g_sign_up, :hair_permed)
-    end
-
-    # 正しいユーザーかどうか確認
-    def correct_user
-      # GET   /users/:id/edit
-      # PATCH /users/:id
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
     end
 
 end
