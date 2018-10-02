@@ -15,6 +15,23 @@
     </div>
     <div class="col-xs-7 col-xs-offset-1 col-md-12 col-md-offset-0">
       <div class=""><%= @user.prefecture.name %> <%= @user.area.name %></div>
+      <div class="user-tag"><%= @user.hair_type %></div>
+      <div class="user-tag"><%= @user.hair_style %></div>
+      <% if @user.hair_permed? %>
+        <div class="user-tag">パーマ</div>
+      <% end %>
+      <% if @user.hair_extension? %>
+        <div class="user-tag">エクステ</div>
+      <% end %>
+      <% if @user.color? %>
+        <div class="user-tag">カラー</div>
+      <% end %>
+      <% if @user.nail? %>
+        <div class="user-tag">ネイル</div>
+      <% end %>
+      <% if @user.use? %>
+        <div class="user-tag">広告利用</div>
+      <% end %>
       <% if @user.experience.present? %>
         <div>美容師歴</div>
         <%= @user.experience %>

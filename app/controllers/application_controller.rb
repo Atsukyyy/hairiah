@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    # モデルは自分のページ以外見れない、スタッフは全モデルのページを見れる、他のスタッフのページは見れない
+    # モデルは全スタッフを見れる、自分以外のモデルは見れない
+    # スタッフは全モデルを見れる、自分以外のスタッフは見れない
     def staff_or_correct_user
       user = User.find(params[:id])
       if !user.staff?

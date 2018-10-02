@@ -86,28 +86,28 @@
             <%= f.label :use, "広告利用", for: "my_check_05" %>
           </div>
           <div class="checkbox-inline-block">
-            <% if params_present?(:hair_style) %>
-              <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_06"}, checked_value = 0, unchecked_value = "" %>
+            <% if params_present?(:hair_style_eq_any) %>
+              <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_06", checked: true}, checked_value = 0, unchecked_value = "" %>
               <%= f.label :hair_style, "ベリーショート" , for: "my_check_06" %>
             <% else %>
-              <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_07"}, checked_value = 0, unchecked_value = "" %>
+              <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_07"}, checked_value = 0, unchecked_value = "" %>
               <%= f.label :hair_style, "ベリーショート" , for: "my_check_07" %>
             <% end %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_08"}, checked_value = 1, unchecked_value = "" %>
+            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_08", checked: true}, checked_value = 1, unchecked_value = "" %>
             <%= f.label :hair_style, "ショート", for: "my_check_08" %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_10"}, checked_value = 2, unchecked_value = "" %>
+            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_10"}, checked_value = 2, unchecked_value = "" %>
             <%= f.label :hair_style, "ミディアム", for: "my_check_10" %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_12"}, checked_value = 3, unchecked_value = "" %>
+            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_12"}, checked_value = 3, unchecked_value = "" %>
             <%= f.label :hair_style, "セミロング", for: "my_check_12" %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq , {class: "my_check", id: "my_check_14"}, checked_value = 4, unchecked_value = "" %>
+            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_14"}, checked_value = 4, unchecked_value = "" %>
             <%= f.label :hair_style, "ロング", for: "my_check_14" %>
           </div>
           <div class="checkbox-inline-block">
@@ -132,7 +132,7 @@
           </div>
         </div>
       <% end %>
-      
+
     </div>
   </div>
 </div>

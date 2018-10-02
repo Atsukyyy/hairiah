@@ -79,6 +79,7 @@ input[type="checkbox"].my_check + label::before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    margin-right: 5px;
 }
 input[type="checkbox"].my_check + label:hover{
     color: #808080;
@@ -118,6 +119,7 @@ input[type="radio"] {
             margin: -2px 5px 0 0;
             -webkit-transition: .1s;
                     transition: .1s;
+            margin-right: 5px;
         }
         /*hover時の見た目*/
         &:hover {
