@@ -1,0 +1,16 @@
+<ul class="nav nav-tabs">
+  <li class="notice red">退会時のご注意</li>
+</ul>
+<div class="confirm-text">
+  <p class="name"><strong><%= @user.name %></strong> さん</p>
+  <p>一度退会されると、今後同じメールアドレスでアカウントの再登録ができなくなります。</p>
+  <p>また、メッセージ履歴などの全ての情報が消えますがよろしいですか？</p>
+</div>
+<div class="row">
+  <div class="col-md-6 confirm-upper-btn">
+    <%= link_to "プロフィール編集に戻る", edit_user_path(@user), class: 'btn btn-primary' %>
+  </div>
+  <div class="col-md-6">
+    <%= link_to "退会する", user_path(@user), method: :delete, class: 'btn btn-danger' %>
+  </div>
+</div>
