@@ -40,4 +40,8 @@ class StaticPagesController < ApplicationController
   def signup_page
 
   end
+
+  def google_auth_html
+    render file: 'google06c94e3e8ca4cac4.html', layout: false, content_type: 'text/html'
+  end
 end

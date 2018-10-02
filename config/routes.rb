@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get 'auth/failure', to: 'omniauth#failure'
   post 'auth/failure', to: 'omniauth#failure'
 
+  get '/google06c94e3e8ca4cac4.html', to: 'static_pages#google_auth_html'
+
   resources :users do
     member do
       # /users/:id/ ...
