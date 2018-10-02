@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180916060904) do
+ActiveRecord::Schema.define(version: 20181002120114) do
 
   create_table "applies", force: :cascade do |t|
     t.string "memo"
@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20180916060904) do
     t.integer "experience"
     t.boolean "hair_permed"
     t.integer "age"
+    t.datetime "deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

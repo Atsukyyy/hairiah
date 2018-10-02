@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @model_users = User.where(staff: false)
     @search = @model_users.ransack(params[:q])
     @users = @search.result(distinct: true).order(id: :desc).paginate(page: params[:page], per_page: 20 )
-    
+
   end
 
   def staff_index
@@ -92,10 +92,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirm
+    @user = current_user
+  end
+
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "退会が完了しました。"
-    redirect_to users_url
+    @user = User.find(params[:id])
+    @user.soft_delete!
+    session.delete(:user_id)
+    flash[:danger] = "退会しました。"
+    redirect_to root_path
   end
 
   def following

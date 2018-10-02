@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include SoftDeletable
+  
   has_many :from_messages, class_name: "Message",
           foreign_key: "from_id", dependent: :destroy
   has_many :to_messages, class_name: "Message",

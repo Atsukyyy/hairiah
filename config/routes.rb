@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  post 'confirm_user_delete', to: 'users#confirm'
+
   get 'auth/facebook/callback', to: 'omniauth#facebook'
   post 'auth/facebook/callback', to: 'omniauth#facebook'
   get 'auth/line/callback', to: 'omniauth#line'
