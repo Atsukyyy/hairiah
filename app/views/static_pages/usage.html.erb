@@ -1,1 +1,48 @@
-モデル向け使い方ページ
+<div class="row">
+  美容師の方は<%= link_to "こちら", staff_usage_path%>
+</div>
+<div class="hairiah-feature row text-center" id="usage">
+  <span class="feature-text arrow-border">
+    Hairiahの簡単な利用方法
+  </span>
+  <div class="feature-outer row">
+    <div class="col-md-3 text-center col-md-offset-1-5">
+      <div class="feature-inner">
+        <div class="feature-inner-text">
+          1分で簡単登録！
+        </div>
+        <div class="feature-icon">
+          <i class="fa fa-id-badge"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 text-center">
+      <div class="feature-inner">
+        <div class="feature-inner-text">
+          声がかかるのを待つor自分から応募！
+        </div>
+        <div class="feature-icon">
+          <i class="fa fa-search"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 text-center">
+      <div class="feature-inner">
+        <div class="feature-inner-text">
+          あとはメッセージで日程調整！
+        </div>
+        <div class="feature-icon">
+          <i class="fa fa-comments-o"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row text-center">
+  <div class="col-md-6">
+    <%= link_to "さっそく応募してみる", users_path, class: "btn btn-primary" %>
+  </div>
+  <div class="col-md-5">
+    <%= link_to "美容師を探してみる", staffs_path, class: "btn btn-primary" %>
+  </div>
+</div>

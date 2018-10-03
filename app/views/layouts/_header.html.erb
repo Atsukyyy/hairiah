@@ -13,7 +13,9 @@
       <div class="header-item"><%= link_to "Hairiahの使い方", usage_path %></div>
       <div class="header-item"><%= link_to "モデル募集掲示板", microposts_path %></div>
       <% if logged_in? %>
-        <div class="header-item"><%= link_to "美容師を探す", staffs_path %></div>
+        <% unless current_user.staff %>
+          <div class="header-item"><%= link_to "美容師を探す", staffs_path %></div>
+        <% end %>
         <% if current_user.staff? %>
           <div class="header-item"><%= link_to "カットモデルを探す", users_path %></div>
         <% end %>
@@ -37,8 +39,10 @@
       モデル募集掲示板<i class="fa fa-list-alt hamburger-icon"></i>
     <% end %>
     <% if logged_in? %>
-      <%= link_to staffs_path, class: "header-item-hm" do %>
-        美容師を探す<i class="fa fa-search hamburger-icon"></i>
+      <% unless current_user.staff %>
+        <%= link_to staffs_path, class: "header-item-hm" do %>
+          美容師を探す<i class="fa fa-search hamburger-icon"></i>
+        <% end %>
       <% end %>
       <% if current_user.staff? %>
         <%= link_to users_path, class: "header-item-hm" do %>
