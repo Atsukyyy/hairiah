@@ -89,10 +89,10 @@
         </table>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="user-info-detail">
-        <div>投稿履歴</div>
-        <div>
+    <% if @user.staff %>
+      <div class="col-md-6">
+        <div class="user-info-detail">
+          <div>投稿履歴</div>
           <div>
             <table class="table">
               <thead>
@@ -115,7 +115,7 @@
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
     <% if !@user.staff? %>
       <div class="col-md-6">
         <div class="user-info-detail">
