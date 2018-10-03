@@ -22,7 +22,7 @@
         <div class="header-item"><%= link_to "ログアウト", logout_path, method: :delete %></div>
       <% else %>
         <div class="header-item"><%= link_to "モデル会員登録", signup_page_path %></div>
-        <div class="header-item"><%= link_to "美容師会員登録", staff_signup_page_path %></div>
+        <div class="header-item"><%= link_to "美容師会員登録", staff_usage_path %></div>
         <div class="header-item"><%= link_to "ログイン", login_path %></div>
       <% end %>
     </div>
@@ -58,7 +58,7 @@
       <%= link_to  signup_page_path, class: "header-item-hm" do %>
         モデル会員登録<i class="fa fa-id-badge hamburger-icon"></i>
       <% end %>
-      <%= link_to staff_signup_page_path, class: "header-item-hm" do %>
+      <%= link_to staff_usage_path, class: "header-item-hm" do %>
         美容師会員登録<i class="fa fa-id-badge hamburger-icon"></i>
       <% end %>
       <%= link_to login_path, class: "header-item-hm" do %>
