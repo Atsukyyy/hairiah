@@ -15,9 +15,6 @@ margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  @include mq-up(lg) {
-    height: 250px;
-  }
   .post-area-right {
     height: 150px;
     .micropost-next-area {
