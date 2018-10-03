@@ -89,35 +89,34 @@
         </table>
       </div>
     </div>
-    <% if @user.staff? %>
-      <div class="col-md-6">
-        <div class="user-info-detail">
-          <div>投稿履歴</div>
+    <div class="col-md-6">
+      <div class="user-info-detail">
+        <div>投稿履歴</div>
+        <div>
           <div>
-            <div>
-              <table class="table">
-                <thead>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">投稿タイトル</th>
+                  <th scope="col">投稿日</th>
+                  <th scope="col">応募数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @user.microposts.each do |post| %>
                   <tr>
-                    <th scope="col">投稿タイトル</th>
-                    <th scope="col">投稿日</th>
-                    <th scope="col">応募数</th>
+                    <td><%= link_to post.title, micropost_path(post) %></td>
+                    <td><%= post.created_at_to_date %></td>
+                    <td><%= post.applies.count %></td>
                   </tr>
-                </thead>
-                <tbody>
-                  <% @user.microposts.each do |post| %>
-                    <tr>
-                      <td><%= link_to post.title, micropost_path(post) %></td>
-                      <td><%= post.created_at_to_date %></td>
-                      <td><%= post.applies.count %></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
+                <% end %>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    <% elsif !@user.staff? %>
+    </div>
+    <% if !@user.staff? %>
       <div class="col-md-6">
         <div class="user-info-detail">
           <div>応募履歴</div>
