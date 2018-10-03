@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     @user.prefecture = prefecture
     @user.last_accessed_at = Time.now
     @user.calc_age
-    if @user.save!
+    if @user.save
       @user.send_activation_email
       flash[:info] = "メールを送信しました。ユーザー認証のためにご確認ください。メール送信に1〜2分かかることがあります。"
       redirect_to root_url
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     @user.prefecture = prefecture
     @user.staff = true
     @user.calc_age
-    if @user.save!
+    if @user.save
       @user.send_activation_email
       flash[:info] = "メールを送信しました。ユーザー認証のためにご確認ください。メール送信に1〜2分かかることがあります。"
       redirect_to root_url
