@@ -111,7 +111,7 @@
       </div>
 
       <% if @user.staff == false %>
-        <%= f.fields_for :user_hair_style do |h| %>
+        <%= f.fields_for :user_hair_style, @user.user_hair_style || UserHairStyle.new do |h| %>
           <div class="row">
             <div class="form-group">
               <div class="control-label">
@@ -140,7 +140,7 @@
             </div>
           </div>
         <% end %>
-        <%= f.fields_for :user_hair_type do |t| %>
+        <%= f.fields_for :user_hair_type, @user.user_hair_type || UserHairType.new do |t| %>
           <div class="row">
             <div class="form-group">
               <div class="control-label">
