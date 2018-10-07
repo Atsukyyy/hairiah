@@ -85,6 +85,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       @user.calc_age
+      @user.save
       flash[:success] = "情報を更新しました。"
       redirect_to @user
     else
