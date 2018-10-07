@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   include SoftDeletable
-  
+
   has_many :from_messages, class_name: "Message",
           foreign_key: "from_id", dependent: :destroy
   has_many :to_messages, class_name: "Message",
@@ -146,6 +146,16 @@ class User < ApplicationRecord
     クセ毛: 2
   }
 
+  enum age: {
+    "19歳以下": 0,
+    "20代前半": 1,
+    "20代後半": 2,
+    "30代前半": 3,
+    "30代後半": 4,
+    "40代前半": 5,
+    "40代後半": 6,
+    "50歳以上": 7
+  }
 
 
   enum experience: {
@@ -192,10 +202,10 @@ class User < ApplicationRecord
     where(reason: reason)
   }
 
-  def age
-    date_format = "%Y%m%d"
-    (Date.today.strftime(date_format).to_i - birth.strftime(date_format).to_i) / 10000
-  end
+  # def age
+  #   date_format = "%Y%m%d"
+  #   (Date.today.strftime(date_format).to_i - birth.strftime(date_format).to_i) / 10000
+  # end
 
   def created_at_to_date
     self.created_at.strftime("%Y/%m/%d")
@@ -212,7 +222,25 @@ class User < ApplicationRecord
   end
 
   def calc_age
-    self.age = (Date.today - self.birth) / 10000
+    date_format = "%Y%m%d"
+    age = (Date.today.strftime(date_format).to_i - self.birth.strftime(date_format).to_i) / 10000
+    if age <= 19
+      self.age = 0
+    elsif age < 25
+      self.age = 1
+    elsif age < 30
+      self.age = 2
+    elsif age < 35
+      self.age = 3
+    elsif age < 40
+      self.age = 4
+    elsif age < 45
+      self.age = 5
+    elsif age < 50
+      self.age = 6
+    else
+      self.age = 7
+    end
   end
 
   private

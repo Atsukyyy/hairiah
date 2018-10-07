@@ -131,7 +131,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :use, :prefecture_id, :hair_type, :area_id, :hair_style, :image, :remove_image, :fb_sign_up, :g_sign_up, :hair_permed)
+      params.require(:user).permit(:email, :name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :use, :prefecture_id, :hair_type, :area_id, :hair_style, :image, :remove_image, :fb_sign_up, :g_sign_up, :hair_permed, :age)
     end
 
 end

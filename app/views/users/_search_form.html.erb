@@ -30,7 +30,11 @@
           <div class="form-group col-xs-4">
             <div class="">
               <%= f.label :age, "年齢" %>
-              <%= f.select :age_lteq, options_for_select({"19歳以下": 19}), {include_blank: true}, {class: "form-control input-lg"} %>
+              <% if params_present?(:age_eq) %>
+                <%= f.select :age_eq, options_for_select(User.ages, selected: params[:q][:age_eq]), {include_blank: true}, {class: "form-control input-lg"} %>
+              <% else %>
+                <%= f.select :age_eq, options_for_select(User.ages), {include_blank: true}, {class: "form-control input-lg"} %>
+              <% end %>
             </div>
           </div>
           <script>
