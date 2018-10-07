@@ -11,11 +11,10 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      title: "Title",
       reverse: true,
       charset: 'utf-8',
       description: 'Hairiah(ヘアリア)は、無料で髪を切りたい人と、技術を向上させたい美容師をマッチングするサービスです。',
-      keywords: 'カットモデル 無料 美容院 無料カット',
+      keywords: 'カットモデル,無料,美容院,無料カット',
       canonical: request.original_url,
       separator: '|',
       icon: [
@@ -23,7 +22,6 @@ module ApplicationHelper
         { href: image_url('favicon.ico'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
       ],
       og: {
-        title: "title",
         description: 'Hairiah(ヘアリア)は、無料で髪を切りたい人と、技術を向上させたい美容師をマッチングするサービスです。',
         type: 'website',
         url: request.original_url,
