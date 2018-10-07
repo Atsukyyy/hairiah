@@ -99,15 +99,15 @@
             <% end %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_08", checked: true}, checked_value = 1, unchecked_value = "" %>
+            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_08", checked: true}, 1, '' %>
             <%= f.label :hair_style, "ショート", for: "my_check_08" %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_10"}, checked_value = 2, unchecked_value = "" %>
+            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_10"}, 2, '' %>
             <%= f.label :hair_style, "ミディアム", for: "my_check_10" %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_12"}, checked_value = 3, unchecked_value = "" %>
+            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_12"}, 3, '' %>
             <%= f.label :hair_style, "セミロング", for: "my_check_12" %>
           </div>
           <div class="checkbox-inline-block">
@@ -132,7 +132,7 @@
             <%= f.submit "上記の条件で検索", class: "btn btn-primary form-control" %>
           </div>
           <div class="col-md-6">
-            <%= submit_tag "条件をリセット", id: "search-reset-btn", class: "form-control btn btn-default" %>
+            <div id="clear-btn", class="form-control btn btn-default">条件をリセット</div>
           </div>
         </div>
       <% end %>

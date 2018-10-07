@@ -24,7 +24,7 @@ gem 'omniauth-google-oauth2'
 gem 'cloudinary'
 gem 'ransack'
 gem 'meta-tags'
-gem 'whenever', require: false
+gem 'whenever'
 
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'

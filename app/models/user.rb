@@ -243,7 +243,7 @@ class User < ApplicationRecord
     end
   end
 
-  def task_to_run_at_three_thirty_in_the_morning
+  def self.task_to_run_at_three_thirty_in_the_morning
     users = User.all
     users.each do |u|
       if u.birth.present?

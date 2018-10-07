@@ -31,7 +31,11 @@
           <div class="form-group col-xs-4">
             <div class="">
               <%= f.label :age, "年齢" %>
-              <%= f.select :age_lteq, options_for_select({"19歳以下": 19}), {include_blank: true}, {class: "form-control input-lg"} %>
+              <% if params_present?(:age_eq) %>
+                <%= f.select :age_eq, options_for_select(User.ages, selected: params[:q][:age_eq]), {include_blank: true}, {class: "form-control input-lg"} %>
+              <% else %>
+                <%= f.select :age_eq, options_for_select(User.ages), {include_blank: true}, {class: "form-control input-lg"} %>
+              <% end %>
             </div>
           </div>
           <script>
@@ -69,7 +73,7 @@
               <%= f.submit "上記の条件で検索", class: "btn btn-primary form-control" %>
             </div>
             <div class="col-md-6">
-              <%= submit_tag "条件をリセット", id: "search-reset-btn", class: "form-control btn btn-default" %>
+              <div id="clear-btn", class="form-control btn btn-default">条件をリセット</div>
             </div>
           </div>
         <% end %>

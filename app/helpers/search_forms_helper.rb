@@ -1,6 +1,6 @@
 module SearchFormsHelper
   def params_present?(param)
-    params[:q].present? && params[:q][params].present?
+    params[:q].present? && params[:q][param].present?
   end
 
   def aaa(a)

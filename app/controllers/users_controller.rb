@@ -6,10 +6,10 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :password]
 
   def index
+    debugger
     @model_users = User.where(staff: false)
     @search = @model_users.ransack(params[:q])
     @users = @search.result(distinct: true).order(id: :desc).paginate(page: params[:page], per_page: 20 )
-
   end
 
   def staff_index
