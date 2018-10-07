@@ -23,6 +23,7 @@ gem 'omniauth-google-oauth2'
 # gem 'addressable'
 gem 'cloudinary'
 gem 'ransack'
+gem 'meta-tags'
 
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
