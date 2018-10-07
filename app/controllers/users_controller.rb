@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :password]
 
   def index
-    debugger
     @model_users = User.where(staff: false)
     @search = @model_users.ransack(params[:q])
     @users = @search.result(distinct: true).order(id: :desc).paginate(page: params[:page], per_page: 20 )
@@ -132,7 +131,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :use, :prefecture_id, :hair_type, :area_id, :hair_style, :image, :remove_image, :fb_sign_up, :g_sign_up, :hair_permed, :age)
+      params.require(:user).permit(:email, :name, :password, :password_confirmation, :birth, :sex, :color, :hair_extension, :nail, :use, :prefecture_id, :area_id, :image, :remove_image, :fb_sign_up, :g_sign_up, :hair_permed, :age, user_hair_style_attributes: [:very_short, :short, :medium, :semi_long, :long], user_hair_type_attributes: [:straight, :rather_curly, :curly] )
     end
 
 end

@@ -106,80 +106,83 @@
         <%= f.collection_select :area_id, Area.all, :id, :name, {selected: 176}, class: 'form-control input-lg fix-input-lg' %>
       </div>
     </div>
-
-    <div class="row">
-      <div class="form-group form-align-left">
-        <div class="control-label">
-          <%= f.label :hair_style, "現在の髪型" %>
-        </div>
-        <div class="checkbox-inline-block">
-          <%= f.radio_button :hair_style, "ベリーショート", id: "radio03-1" %>
-          <label for="radio03-1" class="radio">ベリーショート</label>
-        </div>
-        <div class="checkbox-inline-block">
-          <%= f.radio_button :hair_style, "ショート", id: "radio03-2" %>
-          <label for="radio03-2" class="radio">ショート</label>
-        </div>
-        <div class="checkbox-inline-block">
-          <%= f.radio_button :hair_style, "ミディアム", id: "radio04" %>
-          <label for="radio04" class="radio">ミディアム</label>
-        </div>
-        <div class="checkbox-inline-block">
-          <%= f.radio_button :hair_style, "セミロング", id: "radio05" %>
-          <label for="radio05" class="radio">セミロング</label>
-        </div>
-        <div class="checkbox-inline-block">
-          <%= f.radio_button :hair_style, "ロング", id: "radio06" %>
-          <label for="radio06" class="radio">ロング</label>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group form-align-left">
-        <div class="control-label">
-          <%= f.label :hair_type, "髪質" %>
-        </div>
-        <div class="checkbox-inline-block">
-          <%= f.radio_button :hair_type, "直毛", id: "radio07" %>
-          <label for="radio07" class="radio">直毛</label>
-        </div>
-        <div class="checkbox-inline-block">
-          <%= f.radio_button :hair_type, "ややクセ毛", id: "radio08" %>
-          <label for="radio08" class="radio">ややクセ毛</label>
-        </div>
-        <div class="checkbox-inline-block">
-          <%= f.radio_button :hair_type, "クセ毛", id: "radio09" %>
-          <label for="radio09" class="radio">クセ毛</label>
+    <%= f.fields_for :user_hair_style, @user.user_hair_style || UserHairStyle.new do |h| %>
+      <div class="row">
+        <div class="form-group form-align-left">
+          <div class="control-label">
+            <strong>現在の髪型</strong>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= h.check_box :very_short , {class: "my_check", id: "my_check_11"}, true, "" %>
+            <%= h.label :very_short, "ベリーショート", for: "my_check_11" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= h.check_box :short , {class: "my_check", id: "my_check_12"}, true, "" %>
+            <%= h.label :short, "ショート", for: "my_check_12" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= h.check_box :medium , {class: "my_check", id: "my_check_13"}, true, "" %>
+            <%= h.label :medium, "ミディアム", for: "my_check_13" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= h.check_box :semi_long , {class: "my_check", id: "my_check_14"}, true, "" %>
+            <%= h.label :semi_long, "セミロング", for: "my_check_14" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= h.check_box :long , {class: "my_check", id: "my_check_15"}, true, "" %>
+            <%= h.label :long, "ロング", for: "my_check_15" %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
+    <%= f.fields_for :user_hair_type, @user.user_hair_type || UserHairType.new do |t| %>
+      <div class="row">
+        <div class="form-group form-align-left">
+          <div class="control-label">
+            <strong>髪質</strong>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= t.check_box :straight , {class: "my_check", id: "my_check_16"}, true, "" %>
+            <%= t.label :straight, "直毛", for: "my_check_16" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= t.check_box :rather_curly , {class: "my_check", id: "my_check_17"}, true, "" %>
+            <%= t.label :rather_curly, "ややクセ毛", for: "my_check_17" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= t.check_box :curly , {class: "my_check", id: "my_check_18"}, true, "" %>
+            <%= t.label :curly, "クセ毛", for: "my_check_18" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
     <div class="row options-label form-align-left">
-      施術可能なオプション
+      <strong>施術可能なオプション</strong>
     </div>
     <div class="row user-form-options">
       <div class="form-group form-align-left">
         <div class="checkbox-inline-block">
-          <%= f.check_box :color , {class: "my_check", id: "my_check_01"}, checked_value = "true", unchecked_value = "" %>
+          <%= f.check_box :color , {class: "my_check", id: "my_check_01"}, true, "" %>
           <%= f.label :color, "カラー", for: "my_check_01" %>
         </div>
         <div class="checkbox-inline-block">
-          <%= f.check_box :hair_extension , {class: "my_check", id: "my_check_02"}, checked_value = "true", unchecked_value = "" %>
+          <%= f.check_box :hair_extension , {class: "my_check", id: "my_check_02"}, true, "" %>
           <%= f.label :hair_extension, "エクステ", for: "my_check_02" %>
         </div>
         <div class="checkbox-inline-block">
-          <%= f.check_box :hair_permed , {class: "my_check", id: "my_check_03"}, checked_value = "true", unchecked_value = "" %>
+          <%= f.check_box :hair_permed , {class: "my_check", id: "my_check_03"}, true, "" %>
           <%= f.label :hair_permed, "パーマ", for: "my_check_03" %>
         </div>
         <div class="checkbox-inline-block">
-          <%= f.check_box :nail , {class: "my_check", id: "my_check_04"}, checked_value = "true", unchecked_value = "" %>
+          <%= f.check_box :nail , {class: "my_check", id: "my_check_04"}, true, "" %>
           <%= f.label :nail, "ネイル", for: "my_check_04" %>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="form-group form-align-left">
-        <%= f.check_box :use , {class: "my_check", id: "my_check_05"}, checked_value = "true", unchecked_value = "" %>
+        <%= f.check_box :use , {class: "my_check", id: "my_check_05"}, true, "" %>
         <%= f.label :use, "撮影/宣伝利用", for: "my_check_05" %>
         <div>※美容院/美容師の宣伝用の使用を許可する</div>
       </div>

@@ -24,6 +24,6 @@ document.addEventListener("turbolinks:load", function() {
   });
 
   $("#clear-btn").bind("click", function(){
-    $(".search-form-inner").find("textarea, :text, select").not("sumbit").val("").end().find(":checked").prop("checked", false);
+    $(".search-form-inner").find("textarea, :text, select").val("").end().find(":checked").prop("checked", false);
   });
 });

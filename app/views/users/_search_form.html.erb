@@ -7,6 +7,11 @@
       <i class="fa fa-chevron-left"></i>モデル検索画面を閉じる
     </div>
     <div class="search-form-inner">
+      <div class="search-alert-text">
+        <div>※選択した<u>全ての条件に一致するモデル</u>が、検索結果に表示されます。</div>
+        <div>全ての条件を空白で検索すると、全モデルが表示されます。</div>
+      </div>
+
       <%= search_form_for @search do |f| %>
         <div class="row">
           <div class="form-group col-xs-4">
@@ -68,10 +73,10 @@
           </div>
         </div>
         <div class="row">
+          <div class="search-element-label">施術可能なオプション</div>
           <div class="checkbox-inline-block">
             <%= f.check_box :color_eq , {class: "my_check", id: "my_check_01"}, checked_value = "true", unchecked_value = "" %>
             <%= f.label :color, "カラー", for: "my_check_01" %>
-
           </div>
           <div class="checkbox-inline-block">
             <%= f.check_box :hair_extension_eq , {class: "my_check", id: "my_check_02"}, checked_value = "true", unchecked_value = "" %>
@@ -89,50 +94,51 @@
             <%= f.check_box :use_eq , {class: "my_check", id: "my_check_05"}, checked_value = "true", unchecked_value = "" %>
             <%= f.label :use, "広告利用", for: "my_check_05" %>
           </div>
+        </div>
+        <div class="row">
+          <div class="search-element-label">現在の髪型</div>
           <div class="checkbox-inline-block">
-            <% if params_present?(:hair_style_eq_any) %>
-              <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_06", checked: true}, checked_value = 0, unchecked_value = "" %>
-              <%= f.label :hair_style, "ベリーショート" , for: "my_check_06" %>
-            <% else %>
-              <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_07"}, checked_value = 0, unchecked_value = "" %>
-              <%= f.label :hair_style, "ベリーショート" , for: "my_check_07" %>
-            <% end %>
+            <%= f.check_box :user_hair_style_very_short_eq, {class: "my_check", id: "my_check_06"}, true, "" %>
+            <%= f.label :user_hair_style_very_short_eq,  "ベリーショート" , for: "my_check_06" %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_08", checked: true}, 1, '' %>
-            <%= f.label :hair_style, "ショート", for: "my_check_08" %>
+            <%= f.check_box :user_hair_style_short_eq, {class: "my_check", id: "my_check_08"}, true, '' %>
+            <%= f.label :user_hair_style_short_eq, "ショート", for: "my_check_08" %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_10"}, 2, '' %>
-            <%= f.label :hair_style, "ミディアム", for: "my_check_10" %>
+            <%= f.check_box :user_hair_style_medium_eq , {class: "my_check", id: "my_check_10"}, true, '' %>
+            <%= f.label :user_hair_style_medium_eq, "ミディアム", for: "my_check_10" %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_12"}, 3, '' %>
-            <%= f.label :hair_style, "セミロング", for: "my_check_12" %>
+            <%= f.check_box :user_hair_style_semi_long_eq , {class: "my_check", id: "my_check_12"}, true, '' %>
+            <%= f.label :user_hair_style_semi_long_eq, "セミロング", for: "my_check_12" %>
           </div>
           <div class="checkbox-inline-block">
-            <%= f.check_box :hair_style_eq_any , {class: "my_check", id: "my_check_14"}, checked_value = 4, unchecked_value = "" %>
-            <%= f.label :hair_style, "ロング", for: "my_check_14" %>
-          </div>
-          <div class="checkbox-inline-block">
-            <%= f.check_box :hair_type_eq , {class: "my_check", id: "my_check_16"}, checked_value = 2, unchecked_value = "" %>
-            <%= f.label :hair_style, "直毛", for: "my_check_16" %>
-          </div>
-          <div class="checkbox-inline-block">
-            <%= f.check_box :hair_type_eq , {class: "my_check", id: "my_check_18"}, checked_value = 3, unchecked_value = "" %>
-            <%= f.label :hair_style, "ややクセ毛", for: "my_check_18" %>
-          </div>
-          <div class="checkbox-inline-block">
-            <%= f.check_box :hair_type_eq , {class: "my_check", id: "my_check_20"}, checked_value = 4, unchecked_value = "" %>
-            <%= f.label :hair_style, "クセ毛", for: "my_check_20" %>
+            <%= f.check_box :user_hair_style_long_eq , {class: "my_check", id: "my_check_14"}, true, "" %>
+            <%= f.label :user_hair_style_long_eq, "ロング", for: "my_check_14" %>
           </div>
         </div>
         <div class="row">
-          <div class="actions col-md-6">
-            <%= f.submit "上記の条件で検索", class: "btn btn-primary form-control" %>
+          <div class="search-element-label">現在の髪質</div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :user_hair_type_straight_eq, {class: "my_check", id: "my_check_16"}, true, "" %>
+            <%= f.label :user_hair_type_straight_eq, "直毛", for: "my_check_16" %>
           </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :user_hair_type_rather_curly_eq , {class: "my_check", id: "my_check_18"}, true, "" %>
+            <%= f.label :user_hair_type_rather_curly_eq, "ややクセ毛", for: "my_check_18" %>
+          </div>
+          <div class="checkbox-inline-block">
+            <%= f.check_box :user_hair_type_curly_eq , {class: "my_check", id: "my_check_20"}, true, "" %>
+            <%= f.label :user_hair_type_curly_eq, "クセ毛", for: "my_check_20" %>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <div id="clear-btn", class="form-control btn btn-default">条件をリセット</div>
+          </div>
+          <div class="actions col-md-6">
+            <%= f.submit "上記の条件で検索", class: "btn btn-primary form-control" %>
           </div>
         </div>
       <% end %>

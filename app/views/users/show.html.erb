@@ -15,8 +15,34 @@
     <div class="col-xs-7 col-xs-offset-1 col-md-12 col-md-offset-0">
       <div class=""><%= @user.prefecture.name %> <%= @user.area.name %></div>
       <% if !@user.staff %>
-        <div class="user-tag"><%= @user.hair_type %></div>
-        <div class="user-tag"><%= @user.hair_style %></div>
+        <% if @user.user_hair_style.present? %>
+          <% if @user.user_hair_style.very_short? %>
+            <div class="user-tag">ベリーショート</div>
+          <% end %>
+          <% if @user.user_hair_style.short? %>
+            <div class="user-tag">ショート</div>
+          <% end %>
+          <% if @user.user_hair_style.medium? %>
+            <div class="user-tag">ミディアム</div>
+          <% end %>
+          <% if @user.user_hair_style.semi_long? %>
+            <div class="user-tag">セミロング</div>
+          <% end %>
+          <% if @user.user_hair_style.long? %>
+            <div class="user-tag">ロング</div>
+          <% end %>
+        <% end %>
+        <% if @user.user_hair_type.present? %>
+          <% if @user.user_hair_type.straight? %>
+            <div class="user-tag">直毛</div>
+          <% end %>
+          <% if @user.user_hair_type.rather_curly? %>
+            <div class="user-tag">ややクセ毛</div>
+          <% end %>
+          <% if @user.user_hair_type.curly? %>
+            <div class="user-tag">クセ毛</div>
+          <% end %>
+        <% end %>
       <% end %>
       <% if @user.hair_permed? %>
         <div class="user-tag">パーマ</div>

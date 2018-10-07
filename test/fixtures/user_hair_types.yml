@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  straight: false
+  rather_curly: false
+  curly: false
+
+two:
+  straight: false
+  rather_curly: false
+  curly: false

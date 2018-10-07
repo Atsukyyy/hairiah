@@ -8,6 +8,11 @@ class User < ApplicationRecord
   has_many :sent_messages, through: :from_messages, source: :from
   has_many :received_messages, through: :to_messages, source: :to
   has_many :social_profiles, dependent: :destroy
+  has_one :user_hair_style, dependent: :destroy
+  has_one :user_hair_type, dependent: :destroy
+
+  accepts_nested_attributes_for :user_hair_style
+  accepts_nested_attributes_for :user_hair_type
 
   # Send message to other user
   def send_message(other_user, room_id, content)
@@ -132,19 +137,19 @@ class User < ApplicationRecord
     女性: 0,
     男性: 1
   }
-  enum hair_style: {
-    ベリーショート: 0,
-    ショート: 1,
-    ミディアム: 2,
-    セミロング: 3,
-    ロング: 4
-  }
-
-  enum hair_type: {
-    直毛: 0,
-    ややクセ毛: 1,
-    クセ毛: 2
-  }
+  # enum hair_style: {
+  #   ベリーショート: 0,
+  #   ショート: 1,
+  #   ミディアム: 2,
+  #   セミロング: 3,
+  #   ロング: 4
+  # }
+  #
+  # enum hair_type: {
+  #   直毛: 0,
+  #   ややクセ毛: 1,
+  #   クセ毛: 2
+  # }
 
   enum age: {
     "19歳以下": 0,

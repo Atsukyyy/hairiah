@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181002120114) do
+ActiveRecord::Schema.define(version: 20181007202105) do
 
   create_table "applies", force: :cascade do |t|
     t.string "memo"
@@ -108,6 +108,26 @@ ActiveRecord::Schema.define(version: 20181002120114) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_hair_styles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "very_short"
+    t.boolean "short"
+    t.boolean "medium"
+    t.boolean "semi_long"
+    t.boolean "long"
+    t.integer "user_id"
+  end
+
+  create_table "user_hair_types", force: :cascade do |t|
+    t.boolean "straight"
+    t.boolean "rather_curly"
+    t.boolean "curly"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

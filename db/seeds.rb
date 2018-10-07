@@ -76,13 +76,18 @@ area_pref = [[1,1], [44,3], [267,15], [435,25],[707,47]]
     color: [true,false].shuffle.shift,
     hair_extension: [true,false].shuffle.shift,
     nail: [true,false].shuffle.shift,
-    hair_type: rand(0..2),
     area_id: area_pref[num][0],
     prefecture_id: area_pref[num][1],
-    hair_style: rand(0..4),
     use: [true,false].shuffle.shift,
     hair_permed: [true,false].shuffle.shift
   )
+end
+
+users = User.all
+users.each do |u|
+  u.build_user_hair_style(very_short: [true,false].shuffle.shift, short: [true,false].shuffle.shift, medium: [true,false].shuffle.shift, semi_long: [true,false].shuffle.shift, long: [true,false].shuffle.shift)
+  u.build_user_hair_type(straight: [true,false].shuffle.shift, rather_curly: [true,false].shuffle.shift, curly: [true,false].shuffle.shift)
+  u.save
 end
 
 date = Date.new(2019,03,31)
